@@ -1,16 +1,11 @@
 <?php 
-// Panggil Header
 include 'layout/header.php'; 
 ?>
 
 <?php
-// LOGIKA PHP (Diletakkan paling atas)
 $pesan_status = "";
 
 if (isset($_POST['kirim_pesan'])) {
-    // Simulasi pengiriman pesan atau simpan ke database
-    // include "config/koneksi.php";
-    
     $nama    = htmlspecialchars($_POST['nama']);
     $email   = htmlspecialchars($_POST['email']);
     $produk  = htmlspecialchars($_POST['produk']);
@@ -36,7 +31,6 @@ if (isset($_POST['kirim_pesan'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ===== CSS INTERNAL ===== */
         :root {
             --primary: #38bdf8;
             --primary-dark: #0284c7;
@@ -205,7 +199,7 @@ if (isset($_POST['kirim_pesan'])) {
                         <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="text-box">
                             <h4>Alamat Workshop</h4>
-                            <p>Pasar Kemis, Tangerang, Banten</p>
+                            <p>Pasar Senen, Jakarta Pusat, DKI Jakarta</p>
                             <small style="color: var(--primary); font-weight: 600;">Lihat di Google Maps &raquo;</small>
                         </div>
                     </div>
@@ -302,6 +296,5 @@ if (isset($_POST['kirim_pesan'])) {
 </html>
 
 <?php 
-// Panggil Footer
 include 'layout/footer.php'; 
 ?>

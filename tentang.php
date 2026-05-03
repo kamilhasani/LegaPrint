@@ -1,14 +1,6 @@
 <?php include 'layout/header.php'; ?>
 
 <main class="about-page">
-    <section class="about-hero">
-        <div class="container">
-            <span class="badge">Tentang Lega DigiPrint</span>
-            <h1>Membangun Kepercayaan <br><span>Melalui Kualitas Cetak</span></h1>
-            <p>Dedikasi Muhammad Farhan Syaakir dalam menghadirkan solusi percetakan modern di Tangerang.</p>
-        </div>
-    </section>
-
     <section class="story-section">
         <div class="container">
             <div class="story-grid">
@@ -140,6 +132,24 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</section>
+
+<section class="client-section" style="padding: 60px 0; background: #fff;">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 40px; font-weight: 800; color: #0f172a; font-size: 2rem;">Our Client</h2>
+        
+        <div class="client-grid">
+            <?php
+            include "config/koneksi.php";
+            $clients = mysqli_query($conn, "SELECT * FROM clients");
+            while($cl = mysqli_fetch_array($clients)){
+            ?>
+            <div class="client-card">
+                <img src="assets/images/clients/<?php echo $cl['logo']; ?>" alt="<?php echo $cl['nama_client']; ?>">
+            </div>
+            <?php } ?>
         </div>
     </div>
 </section>
@@ -602,6 +612,51 @@
         inset: 0;
         background: linear-gradient(to top, rgba(15, 23, 42, 0.4), transparent);
         pointer-events: none;
+    }
+
+    .client-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    }
+
+    .client-card {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+        border: 1px solid #f1f5f9;
+    }
+
+    .client-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .client-card img {
+        max-width: 100%;
+        max-height: 60px;
+        object-fit: contain;
+        filter: grayscale(100%); /* Buat hitam putih ala profesional */
+        opacity: 0.7;
+        transition: 0.3s;
+    }
+
+    .client-card:hover img {
+        filter: grayscale(0%); /* Warna muncul saat hover */
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .client-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     /* Responsive */

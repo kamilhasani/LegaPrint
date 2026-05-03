@@ -4,14 +4,6 @@ include "layout/header.php";
 ?>
 
 <main class="gallery-page">
-    <section class="gallery-hero" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), url('assets/images/about/percetakan.jpg');">
-        <div class="container">
-            <span class="badge">Portofolio Kerja</span>
-            <h1>Galeri <span>Hasil Cetakan</span></h1>
-            <p>Klik pada gambar untuk melihat detail dalam ukuran penuh.</p>
-        </div>
-    </section>
-
     <section class="gallery-section section-padding">
         <div class="container">
             <div class="gallery-grid">
