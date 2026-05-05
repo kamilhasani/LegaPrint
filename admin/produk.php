@@ -345,6 +345,7 @@ include "../layout/admin_header.php";
                         <th width="50">No</th>
                         <th>Gambar</th>
                         <th>Nama Produk</th>
+                        <th>Kategori</th>
                         <th>Harga</th>
                         <th>Deskripsi</th>
                         <th width="150">Aksi</th>
@@ -353,7 +354,12 @@ include "../layout/admin_header.php";
                 <tbody>
                     <?php
                     $no = 1;
-                    $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
+                    $data = mysqli_query($conn, "
+                    SELECT produk.*, kategori.nama_kategori 
+                    FROM produk 
+                    LEFT JOIN kategori ON produk.id_kategori = kategori.id_kategori 
+                    ORDER BY produk.id DESC
+                    ");
                     
                     if(mysqli_num_rows($data) > 0){
                         while($d = mysqli_fetch_array($data)){
@@ -370,6 +376,7 @@ include "../layout/admin_header.php";
                             <?php endif; ?>
                         </td>
                         <td class="prod-name"><?php echo htmlspecialchars($d['nama_produk']); ?></td>
+                        <td class="prod-name"><?php echo htmlspecialchars($d['nama_kategori'] ?? '-'); ?></td>
                         <td>
                             <span class="badge-price">
                                 <?php echo is_numeric($d['harga']) ? "Rp " . number_format($d['harga'],0,',','.') : htmlspecialchars($d['harga']); ?>

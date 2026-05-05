@@ -15,7 +15,7 @@ if(isset($_POST['simpan'])){
 
     if(move_uploaded_file($tmp_utama, "../assets/images/produk/" . $nama_utama_baru)){
         // Masukkan data ke tabel produk
-        $query_produk = "INSERT INTO produk (nama_produk, kategori, harga, deskripsi, gambar) 
+        $query_produk = "INSERT INTO produk (nama_produk, id_kategori, harga, deskripsi, gambar) 
                          VALUES ('$nama', '$kategori', '$harga', '$deskripsi', '$nama_utama_baru')";
         
         if(mysqli_query($conn, $query_produk)){
@@ -67,6 +67,9 @@ if(isset($_POST['simpan'])){
     .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4); }
 </style>
 
+<?php
+$query_kategori = mysqli_query($conn, "SELECT * FROM kategori");
+?>
 <div class="form-container">
     <div class="form-card">
         <div class="form-header">
@@ -82,14 +85,20 @@ if(isset($_POST['simpan'])){
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                 <div class="input-group">
+                    <div class="input-group">
+
                     <label>Kategori</label>
                     <select name="kategori" required>
                         <option value="">-- Pilih Kategori --</option>
-                        <option value="Outdoor Indoor Print">Banner</option>
-                        <option value="Cutting Sticker">Sticker</option>
-                        <option value="Merchandise">Merchandise</option>
-                        <option value="Neon Box">Neon Box / Plakat</option>
+
+                        <?php while($k = mysqli_fetch_assoc($query_kategori)) { ?>
+                            <option value="<?= $k['id_kategori']; ?>">
+                                <?= $k['nama_kategori']; ?>
+                            </option>
+                        <?php } ?>
+
                     </select>
+                </div>
                 </div>
                 <div class="input-group">
                     <label>Harga (Rp)</label>

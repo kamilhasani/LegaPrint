@@ -4,6 +4,7 @@ include "../layout/admin_header.php";
 
 $id = mysqli_real_escape_string($conn, $_GET['id']);
 $data = mysqli_query($conn, "SELECT * FROM produk WHERE id='$id'");
+$query_kategori = mysqli_query($conn, "SELECT * FROM kategori");;
 $d = mysqli_fetch_array($data);
 
 // Jika produk tidak ditemukan
@@ -26,40 +27,64 @@ if (isset($_GET['hapus_foto'])) {
 }
 
 if (isset($_POST['update'])) {
+
     $nama = mysqli_real_escape_string($conn, $_POST['nama']);
+    $kategori = mysqli_real_escape_string($conn, $_POST['kategori']);
     $harga = mysqli_real_escape_string($conn, $_POST['harga']);
     $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
 
-    // 1. Update Gambar Utama
-    $gambar = $_FILES['gambar']['name'];
-    $tmp = $_FILES['gambar']['tmp_name'];
+    $gambar_query = "";
 
-    if ($gambar != "") {
+    // cek gambar
+    if (!empty($_FILES['gambar']['name'])) {
+        $gambar = $_FILES['gambar']['name'];
+        $tmp = $_FILES['gambar']['tmp_name'];
+
         $nama_gambar_baru = time() . "_update_" . str_replace(' ', '_', $gambar);
-        move_uploaded_file($tmp, "../assets/images/produk/" . $nama_gambar_baru);
-        // Hapus gambar lama jika perlu (opsional: unlink("../assets/images/produk/".$d['gambar']);)
-        $query = "UPDATE produk SET nama_produk='$nama', harga='$harga', deskripsi='$deskripsi', gambar='$nama_gambar_baru' WHERE id='$id'";
-    } else {
-        $query = "UPDATE produk SET nama_produk='$nama', harga='$harga', deskripsi='$deskripsi' WHERE id='$id'";
-    }
-    mysqli_query($conn, $query);
 
-    // 2. Tambah Gambar Galeri Baru (Jika ada yang diunggah)
+        if (move_uploaded_file($tmp, "../assets/images/produk/" . $nama_gambar_baru)) {
+            $gambar_query = ", gambar='$nama_gambar_baru'";
+        }
+    }
+
+    // QUERY UPDATE FIXED
+    $query = "UPDATE produk SET 
+                nama_produk='$nama',
+                id_kategori='$kategori',
+                harga='$harga',
+                deskripsi='$deskripsi'
+                $gambar_query
+              WHERE id='$id'";
+
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("ERROR UPDATE: " . mysqli_error($conn));
+    }
+
+    // GALERI
     if (!empty($_FILES['gambar_tambahan']['name'][0])) {
         foreach ($_FILES['gambar_tambahan']['name'] as $key => $val) {
-            $nama_file = $_FILES['gambar_tambahan']['name'][$key];
-            $tmp_file = $_FILES['gambar_tambahan']['tmp_name'][$key];
-            
+
             if ($_FILES['gambar_tambahan']['error'][$key] === 0) {
-                $nama_galeri_baru = time() . "_" . rand(10, 99) . "_galeri_" . str_replace(' ', '_', $nama_file);
+
+                $nama_file = $_FILES['gambar_tambahan']['name'][$key];
+                $tmp_file = $_FILES['gambar_tambahan']['tmp_name'][$key];
+
+                $nama_galeri_baru = time() . "_" . rand(10,99) . "_galeri_" . str_replace(' ', '_', $nama_file);
+
                 if (move_uploaded_file($tmp_file, "../assets/images/produk/" . $nama_galeri_baru)) {
-                    mysqli_query($conn, "INSERT INTO produk_gambar (id_produk, gambar_tambahan) VALUES ('$id', '$nama_galeri_baru')");
+                    mysqli_query($conn, "INSERT INTO produk_gambar (id_produk, gambar_tambahan)
+                                         VALUES ('$id', '$nama_galeri_baru')");
                 }
             }
         }
     }
 
-    echo "<script>alert('Data produk berhasil diperbarui!'); window.location.href='produk.php';</script>";
+    echo "<script>
+        alert('Produk berhasil diupdate!');
+        window.location.href='produk.php';
+    </script>";
     exit;
 }
 ?>
@@ -107,6 +132,21 @@ if (isset($_POST['update'])) {
                     <label>Harga (Rp)</label>
                     <input type="number" name="harga" value="<?php echo $d['harga']; ?>" required>
                 </div>
+            </div>
+
+            <div class="input-group">
+            <label>Kategori</label>
+                    <select name="kategori" required>
+                        <option value="">-- Pilih Kategori --</option>
+
+                        <?php while($k = mysqli_fetch_assoc($query_kategori)) { ?>
+                            <option value="<?= $k['id_kategori']; ?>"
+                            <?= ($d['id_kategori'] == $k['id_kategori']) ? 'selected' : '' ?>>
+                            <?= $k['nama_kategori']; ?>
+                            </option>
+                        <?php } ?>
+
+                    </select>
             </div>
 
             <div class="input-group">

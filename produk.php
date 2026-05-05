@@ -5,12 +5,15 @@ include "layout/header.php";
 $kategori_filter = isset($_GET['kat']) ? mysqli_real_escape_string($conn, $_GET['kat']) : '';
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 
-$query_str = "SELECT * FROM produk WHERE 1=1";
+$query_str = "SELECT p.*, k.nama_kategori 
+              FROM produk p 
+              JOIN kategori k ON p.id_kategori = k.id_kategori 
+              WHERE 1=1";
+
 
 if ($kategori_filter != '') { 
-    $query_str .= " AND kategori = '$kategori_filter'"; 
+    $query_str .= " AND p.id_kategori = '$kategori_filter'"; 
 }
-
 if ($search != '') { 
     $query_str .= " AND (nama_produk LIKE '%$search%' OR deskripsi LIKE '%$search%')"; 
 }
@@ -54,13 +57,13 @@ $data = mysqli_query($conn, $query_str);
 
                         if ($list_kat && mysqli_num_rows($list_kat) > 0) {
                             while ($row = mysqli_fetch_assoc($list_kat)) {
-                                $nama_kat = $row['nama_kategori'];
-                                $active_class = ($kategori_filter == $nama_kat) ? 'active' : '';
+                                $id_kat = $row['id_kategori'];
+                                $active_class = ($kategori_filter == $id_kat) ? 'active' : '';
                                 $url_search = ($search != '') ? "&search=" . urlencode($search) : "";
 
-                                echo "<a href='produk.php?kat=" . urlencode($nama_kat) . "$url_search' class='$active_class'>
-                                        <i class='fas fa-tag'></i> " . htmlspecialchars($nama_kat) . "
-                                      </a>";
+                                echo "<a href='produk.php?kat=$id_kat$url_search' class='$active_class'>
+                                        <i class='fas fa-tag'></i> " . htmlspecialchars($row['nama_kategori']) . "
+                                    </a>";
                             }
                         }
                         ?>
@@ -99,7 +102,7 @@ $data = mysqli_query($conn, $query_str);
 
                             <div class="product-info">
                                 <div class="category-tag">
-                                    <?php echo $p['kategori']; ?>
+                                    <?php echo $p['nama_kategori']; ?>
                                 </div>
 
                                 <h3>
