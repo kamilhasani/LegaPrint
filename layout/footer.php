@@ -12,9 +12,9 @@
                 <a href="https://www.facebook.com/Lega_Digiprint" target="_blank" class="social-icon facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://wa.me/62821177773741" target="_blank" class="social-icon whatsapp">
+                <a href="https://wa.me/6282117773741?text=Halo%20LegaDigiPrint%2C%0ASaya%20ingin%20tanya%20tentang%20order..." target="_blank" class="social-icon whatsapp">
                     <i class="fab fa-whatsapp"></i>
-                </a>
+                </a>  
                 <a href="https://www.tiktok.com/@legadigiprint5" target="_blank" class="social-icon tiktok">
                     <i class="fab fa-tiktok"></i>
                 </a>

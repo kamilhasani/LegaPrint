@@ -2,53 +2,84 @@
 include "config/koneksi.php"; 
 include "layout/header.php"; 
 
+// FILTER
 $kategori_filter = isset($_GET['kat']) ? mysqli_real_escape_string($conn, $_GET['kat']) : '';
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 
+// QUERY PRODUK
 $query_str = "SELECT p.*, k.nama_kategori 
-              FROM produk p 
-              JOIN kategori k ON p.id_kategori = k.id_kategori 
+              FROM produk p
+              LEFT JOIN kategori k 
+              ON p.id_kategori = k.id_kategori
               WHERE 1=1";
 
-
+// FILTER KATEGORI
 if ($kategori_filter != '') { 
     $query_str .= " AND p.id_kategori = '$kategori_filter'"; 
 }
+
+// FILTER SEARCH
 if ($search != '') { 
-    $query_str .= " AND (nama_produk LIKE '%$search%' OR deskripsi LIKE '%$search%')"; 
+    $query_str .= " AND (
+        p.nama_produk LIKE '%$search%' 
+        OR p.deskripsi LIKE '%$search%'
+    )"; 
 }
 
-$query_str .= " ORDER BY id DESC";
+// URUTKAN PRODUK TERBARU
+$query_str .= " ORDER BY p.id DESC";
+
+// EKSEKUSI QUERY
 $data = mysqli_query($conn, $query_str);
+
+// ERROR DEBUG
+if (!$data) {
+    die("Query Error: " . mysqli_error($conn));
+}
 ?>
 
 <main class="product-page">
+
+    <!-- FILTER -->
     <div class="filter-wrapper">
         <div class="container">
+
             <div class="search-category-container">
+
                 <!-- SEARCH -->
                 <div class="search-box">
                     <form action="" method="GET">
+
                         <?php if ($kategori_filter != ''): ?>
-                            <input type="hidden" name="kat" value="<?php echo $kategori_filter; ?>">
+                            <input type="hidden" 
+                                   name="kat" 
+                                   value="<?php echo $kategori_filter; ?>">
                         <?php endif; ?>
-                        
-                        <input type="text" name="search" placeholder="Cari produk impianmu..." value="<?php echo $search; ?>">
+
+                        <input type="text" 
+                               name="search" 
+                               placeholder="Cari produk impianmu..." 
+                               value="<?php echo htmlspecialchars($search); ?>">
+
                         <button type="submit">
                             <i class="fas fa-search"></i>
                         </button>
+
                     </form>
                 </div>
 
-                <!-- HAMBURGER CATEGORY -->
+                <!-- CATEGORY -->
                 <div class="category-menu">
+
                     <button class="btn-hamburger" onclick="toggleCategory()">
                         <i class="fas fa-list-ul"></i>
                     </button>
 
                     <div id="categoryDropdown" class="category-content">
+
+                        <!-- SEMUA PRODUK -->
                         <a href="produk.php<?php echo ($search != '') ? '?search=' . urlencode($search) : ''; ?>" 
-                           class="<?php echo $kategori_filter == '' ? 'active' : ''; ?>">
+                           class="<?php echo ($kategori_filter == '') ? 'active' : ''; ?>">
                             Semua Produk
                         </a>
 
@@ -56,31 +87,58 @@ $data = mysqli_query($conn, $query_str);
                         $list_kat = mysqli_query($conn, "SELECT * FROM kategori ORDER BY nama_kategori ASC");
 
                         if ($list_kat && mysqli_num_rows($list_kat) > 0) {
-                            while ($row = mysqli_fetch_assoc($list_kat)) {
-                                $id_kat = $row['id_kategori'];
-                                $active_class = ($kategori_filter == $id_kat) ? 'active' : '';
-                                $url_search = ($search != '') ? "&search=" . urlencode($search) : "";
 
-                                echo "<a href='produk.php?kat=$id_kat$url_search' class='$active_class'>
-                                        <i class='fas fa-tag'></i> " . htmlspecialchars($row['nama_kategori']) . "
-                                    </a>";
+                            while ($row = mysqli_fetch_assoc($list_kat)) {
+
+                                $id_kat = $row['id_kategori'];
+
+                                $active_class = ($kategori_filter == $id_kat) ? 'active' : '';
+
+                                $url_search = ($search != '') 
+                                    ? "&search=" . urlencode($search) 
+                                    : "";
+
+                                echo "
+                                <a href='produk.php?kat=$id_kat$url_search' class='$active_class'>
+                                    <i class='fas fa-tag'></i>
+                                    " . htmlspecialchars($row['nama_kategori']) . "
+                                </a>";
                             }
                         }
                         ?>
+
                     </div>
                 </div>
             </div>
 
+            <!-- INFO FILTER -->
             <?php if ($kategori_filter != '' || $search != ''): ?>
+
                 <div class="search-result-info">
+
                     Menampilkan hasil untuk:
-                    <strong><?php echo $kategori_filter ?: 'Semua Kategori'; ?></strong>
-                    
-                    <?php if ($search != '') echo " | Kata kunci: <em>\"$search\"</em>"; ?>
-                    
-                    <a href="produk.php" class="clear-filter">Hapus Filter</a>
+
+                    <strong>
+                        <?php 
+                        echo ($kategori_filter != '') 
+                            ? $kategori_filter 
+                            : 'Semua Kategori'; 
+                        ?>
+                    </strong>
+
+                    <?php if ($search != ''): ?>
+                        | Kata kunci:
+                        <em>"<?php echo htmlspecialchars($search); ?>"</em>
+                    <?php endif; ?>
+
+                    <a href="produk.php" class="clear-filter">
+                        Hapus Filter
+                    </a>
+
                 </div>
+
             <?php endif; ?>
+
         </div>
     </div>
 
@@ -89,36 +147,50 @@ $data = mysqli_query($conn, $query_str);
         <div class="container">
             <div class="product-grid">
                 <?php if ($data && mysqli_num_rows($data) > 0): ?>
-                    <?php while ($p = mysqli_fetch_array($data)): ?>
+                    <?php while ($p = mysqli_fetch_assoc($data)): ?>
                         <div class="product-card">
-                            <a href="detail_produk.php?id=<?php echo $p['id']; ?>" class="product-img-link">
+
+                            <!-- GAMBAR -->
+                            <a href="detail_produk.php?id=<?php echo $p['id']; ?>" 
+                               class="product-img-link">
                                 <div class="product-img">
-                                    <img src="assets/images/produk/<?php echo $p['gambar']; ?>" alt="<?php echo $p['nama_produk']; ?>">
+                                    <img 
+                                        src="assets/images/produk/<?php echo (!empty($p['gambar'])) ? $p['gambar'] : 'default.png'; ?>" 
+                                        alt="<?php echo htmlspecialchars($p['nama_produk']); ?>">
                                     <div class="product-overlay">
-                                        <span class="view-text">Lihat Detail</span>
+                                        <span class="view-text">
+                                            Lihat Detail
+                                        </span>
                                     </div>
                                 </div>
                             </a>
 
+                            <!-- INFO -->
                             <div class="product-info">
+                                <!-- KATEGORI -->
                                 <div class="category-tag">
-                                    <?php echo $p['nama_kategori']; ?>
+                                    <?php echo htmlspecialchars($p['nama_kategori']); ?>
                                 </div>
 
+                                <!-- NAMA -->
                                 <h3>
-                                    <a href="detail_produk.php?id=<?php echo $p['id']; ?>" style="text-decoration:none;color:inherit;">
-                                        <?php echo $p['nama_produk']; ?>
+                                    <a href="detail_produk.php?id=<?php echo $p['id']; ?>" 
+                                       style="text-decoration:none;color:inherit;">
+                                        <?php echo htmlspecialchars($p['nama_produk']); ?>
                                     </a>
                                 </h3>
 
+                                <!-- DESKRIPSI -->
                                 <p class="desc">
                                     <?php
-                                    echo (strlen($p['deskripsi']) > 80)
-                                        ? substr($p['deskripsi'], 0, 80) . "..."
-                                        : $p['deskripsi'];
+                                    $deskripsi = strip_tags($p['deskripsi']);
+                                    echo (strlen($deskripsi) > 80)
+                                        ? substr($deskripsi, 0, 80) . "..."
+                                        : $deskripsi;
                                     ?>
                                 </p>
 
+                                <!-- HARGA -->
                                 <div class="price-action">
                                     <div class="price">
                                         <?php
@@ -127,9 +199,10 @@ $data = mysqli_query($conn, $query_str);
                                             : $p['harga'];
                                         ?>
                                     </div>
-
+                                    <!-- BUTTON PESAN -->
                                     <a href="https://wa.me/628123456789?text=Halo, saya ingin pesan produk: <?php echo urlencode($p['nama_produk']); ?>" 
-                                       class="btn-order" target="_blank">
+                                       class="btn-order"
+                                       target="_blank">
                                         <i class="fab fa-whatsapp"></i>
                                         Pesan
                                     </a>
@@ -138,10 +211,13 @@ $data = mysqli_query($conn, $query_str);
                         </div>
                     <?php endwhile; ?>
                 <?php else: ?>
-                    <div class='alert-empty'>
-                        <i class='fas fa-search'></i>
+                    <!-- PRODUK KOSONG -->
+                    <div class="alert-empty">
+                        <i class="fas fa-search"></i>
                         <p>Maaf, produk tidak ditemukan.</p>
-                        <a href='produk.php' class='btn-back'>Kembali</a>
+                        <a href="produk.php" class="btn-back">
+                            Kembali
+                        </a>
                     </div>
                 <?php endif; ?>
             </div>
@@ -272,6 +348,7 @@ $data = mysqli_query($conn, $query_str);
         text-decoration: none; 
     }
 
+    /*PRODUK*/
     .product-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -390,28 +467,73 @@ $data = mysqli_query($conn, $query_str);
         padding: 60px;
     }
 
+    /* Update khusus untuk tampilan smartphone */
     @media(max-width: 768px) {
-        .search-category-container {
-            flex-direction: column;
+        body {
+            padding: 0;
+            margin: 0;
         }
 
         .product-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 6px; 
+            padding: 8px 4px; 
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .product-card {
+            border-radius: 8px;
+            border: 1px solid #f1f5f9; 
         }
 
         .product-img {
-            height: 180px;
+            height: auto;
+            aspect-ratio: 1 / 1; 
+        }
+
+        .product-info {
+            padding: 8px; 
+        }
+
+        .category-tag {
+            font-size: 10px;
+            padding: 1px 5px;
+            margin-bottom: 4px;
+        }
+
+        .desc {
+            font-size: 12px;
+            line-height: 1.3;
+            margin-bottom: 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 32px; 
         }
 
         .price-action {
             flex-direction: column;
-            gap: 10px;
             align-items: flex-start;
+            gap: 6px;
+        }
+
+        .price {
+            font-size: 14px;
+            color: #000000; 
         }
 
         .btn-order {
             width: 100%;
+            padding: 6px 0;
+            font-size: 11px;
             justify-content: center;
+        }
+
+        .product-card:hover {
+            transform: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
     }
 </style>

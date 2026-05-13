@@ -2,7 +2,15 @@
 <?php
 include "config/koneksi.php";
 
-$data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
+$query = mysqli_query($conn, "
+    SELECT *
+    FROM produk
+    ORDER BY id DESC
+");
+
+if (!$query) {
+    die(mysqli_error($conn));
+}
 ?>
 <html lang="id">
 <head>
@@ -323,48 +331,46 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
         }
     }
 
-        /* Container Utama: Paksa Full Width walau berada di dalam elemen lain */
+        /* Container Utama */
         .banner-slider {
             width: 100vw;
             position: relative;
-            /* Memaksa elemen keluar dari container jika terkurung */
             left: 50%;
             right: 50%;
             margin-left: -50vw;
             margin-right: -50vw;
-            
-            /* KUNCI: Menghilangkan jarak atas dan bawah */
             margin-top: 0; 
             margin-bottom: 0;
             padding: 0;
-            line-height: 0; /* Menghilangkan gap kecil akibat whitespace inline-block */
+            line-height: 0;
             overflow: hidden;
+            background-color: #f0f0f0; /* Background netral saat loading */
         }
 
         .slider-container {
             position: relative;
             width: 100%;
-            aspect-ratio: 1920 / 600; 
-            min-height: 250px;
+            /* PERBAIKAN: Gunakan auto agar mengikuti tinggi gambar asli */
+            height: auto; 
             overflow: hidden;
         }
 
         .slider-wrapper {
             display: flex;
             width: 100%;
-            height: 100%;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .slide {
             min-width: 100%;
-            height: 100%;
+            height: auto;
         }
 
         .slide img {
             width: 100%;
-            height: 100%;
-            object-fit: cover; 
+            /* PERBAIKAN UTAMA: */
+            height: auto;         /* Biarkan tinggi menyesuaikan secara alami */
+            object-fit: contain;  /* Pastikan SELURUH isi gambar masuk dalam frame */
             display: block;
         }
 
@@ -373,7 +379,7 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
             color: white;
             border: none;
             width: 45px;
@@ -388,11 +394,8 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
         }
 
         .slider-btn:hover {
-            background: #ff8000; /* Warna khas percetakan Anda */
+            background: #0ea5e9; /* Mengikuti tema biru Lega DigiPrint */
         }
-
-        .prev-btn { left: 20px; }
-        .next-btn { right: 20px; }
 
         /* Indikator Dot */
         .slider-dots {
@@ -411,25 +414,26 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
             background: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
             cursor: pointer;
-            transition: 0.3s;
         }
 
         .dot.active {
             background: #fff;
-            transform: scale(1.3);
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            transform: scale(1.2);
         }
 
-        /* Responsive: Sesuaikan tinggi di smartphone */
+        /* Responsive: Smartphone */
         @media (max-width: 768px) {
             .slider-container {
-                aspect-ratio: 16 / 9; /* Lebih kotak untuk HP */
+                /* PERBAIKAN: Jangan paksa aspect-ratio di HP jika gambar memanjang horizontal */
+                aspect-ratio: auto; 
             }
             .slider-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 0.8rem;
+                width: 30px;
+                height: 30px;
+                background: rgba(0, 0, 0, 0.2); /* Lebih transparan di HP agar tidak ganggu teks */
             }
+            .prev-btn { left: 5px; }
+            .next-btn { right: 5px; }
         }
 
         /* ===== HERO SECTION ===== */
@@ -568,6 +572,60 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
 
         }
 
+        /* Update khusus untuk tampilan Smartphone */
+        @media (max-width: 767px) {
+            .hero {
+                padding: 40px 10px; /* Mengurangi padding agar lebih luas */
+            }
+
+            .hero-grid {
+                /* Memaksa menjadi 2 kolom: 60% teks, 40% gambar */
+                grid-template-columns: 1.2fr 0.8fr; 
+                gap: 15px; /* Jarak antara teks dan gambar diperkecil */
+                align-items: center;
+                text-align: left; /* Memastikan semua teks rata kiri */
+            }
+
+            .hero-content {
+                text-align: left; /* Rata kiri untuk container konten */
+            }
+
+            .badge {
+                font-size: 0.6rem; /* Mengecilkan badge agar tidak makan tempat */
+                padding: 4px 10px;
+                margin-bottom: 10px;
+            }
+
+            .hero h1 {
+                font-size: 1.2rem; /* Mengecilkan ukuran judul agar muat 2 kolom */
+                margin-bottom: 10px;
+                line-height: 1.3;
+            }
+
+            .hero p {
+                font-size: 0.85rem; /* Mengecilkan paragraf */
+                margin-bottom: 15px;
+                line-height: 1.4;
+            }
+
+            .buttons {
+                flex-direction: column; /* Tombol tetap susun bawah agar tidak sempit */
+                gap: 8px;
+            }
+
+            .btn-primary, .btn-outline {
+                padding: 8px 12px; /* Mengecilkan ukuran tombol */
+                font-size: 0.8rem;
+                border-radius: 8px;
+            }
+
+            .hero-image img {
+                max-width: 100%; /* Gambar menyesuaikan lebar kolom */
+                border-radius: 12px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+        }
+
         /* ===== SECTION UMUM ===== */
         section {
             padding: 60px 0;
@@ -601,52 +659,6 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
         .text-white h2 {
             color: white !important;
         }
-
-        /* ===== ABOUT SECTION ===== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        
-        .about-img img {
-            width: 100%;
-            border-radius: 28px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            color: #0f172a;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-        
-        .about-features {
-            list-style: none;
-            margin-top: 20px;
-        }
-        
-        .about-features li {
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 500;
-        }
-        
-        .about-features i {
-            background: #0ea5e9;
-            color: white;
-            width: 28px;
-            height: 28px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            font-size: 0.8rem;
-        }
         
         @media (min-width: 768px) {
             .about-grid {
@@ -658,256 +670,205 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
             }
         }
 
-        /* ===== PRODUK SECTION ===== */
+        /*PRODUK GRID*/
         .produk-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
+        /*CARD PRODUK*/
         .produk-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             position: relative;
-        }
-
-        .produk-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #004d95, #00a8ff, #004d95);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
         }
 
         .produk-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
-            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
         }
 
-        .produk-card:hover::before {
-            transform: scaleX(1);
-        }
-
+        /* GAMBAR */
         .produk-img {
-            height: 240px;
-            overflow: hidden;
             position: relative;
-            background: linear-gradient(135deg, #f5f7fa 0%, #f0f2f5 100%);
+            width: 100%;
+            height: 170px;
+            overflow: hidden;
+            background: #f5f5f5;
         }
 
         .produk-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: 0.4s;
         }
 
         .produk-card:hover .produk-img img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
-        .produk-img::after {
-            content: '';
+        /* OVERLAY */
+        .produk-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(0, 0, 0, 0.1) 100%);
+            inset: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: 0.3s;
         }
 
-        .produk-card:hover .produk-img::after {
+        .produk-card:hover .produk-overlay {
             opacity: 1;
         }
 
+        .view-text {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /*INFO PRODUK */
         .produk-info {
-            padding: 24px 20px 20px;
-            position: relative;
-            background: white;
+            padding: 12px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: #eef4ff;
+            color: #004d95;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
         .produk-info h3 {
-            font-size: 1.1rem;
+            font-size: 15px;
             font-weight: 700;
-            margin: 0 0 10px 0;
-            color: #1e293b;
+            color: #222;
             line-height: 1.4;
+            margin-bottom: 6px;
         }
 
-        .price-tag {
-            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
-            padding: 6px 16px;
-            border-radius: 50px;
-            display: inline-block;
-            margin: 12px 0 16px;
-            font-weight: 800;
-            color: #004d95;
-            font-size: 1.2rem;
-            letter-spacing: -0.5px;
-            box-shadow: 0 2px 4px rgba(0, 77, 149, 0.1);
-        }
-
-        .btn-wa {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 20px;
-            border-radius: 50px;
+        .produk-info h3 a {
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            color: inherit;
         }
 
-        .btn-wa::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn-wa:hover {
-            background: linear-gradient(135deg, #20b859 0%, #0e6e5c 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-wa:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-wa i {
-            font-size: 1.1rem;
-            transition: transform 0.2s ease;
-        }
-
-        .btn-wa:hover i {
-            transform: scale(1.1);
-        }
-
-        /* Badge untuk diskon atau new */
-        .produk-card .badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            z-index: 10;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
-        }
-
-        /* Rating stars styling */
-        .rating {
-            display: flex;
-            justify-content: center;
-            gap: 4px;
-            margin: 8px 0;
-        }
-
-        .rating i {
-            color: #fbbf24;
-            font-size: 0.85rem;
-        }
-
-        /* Deskripsi singkat */
         .produk-desc {
-            font-size: 0.85rem;
-            color: #64748b;
+            font-size: 12px;
+            color: #666;
             line-height: 1.5;
-            margin: 10px 0;
+            margin-bottom: 10px;
+
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        /* Responsive */
-        @media (min-width: 640px) {
+        /*PRICE & BUTTON */
+        .price-action {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .price-tag {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e63946;
+        }
+
+        /* BUTTON WA */
+        .btn-wa {
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .btn-wa:hover {
+            background: #1da851;
+        }
+
+        /*EMPTY */
+        .alert-empty {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .alert-empty i {
+            font-size: 40px;
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .alert-empty p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn-back {
+            background: #004d95;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        /* TABLET */
+        @media (min-width: 768px) {
+
             .produk-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
             }
-            
+
             .produk-img {
                 height: 220px;
             }
-        }
 
-        @media (min-width: 1024px) {
-            .produk-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 30px;
+            .produk-info h3 {
+                font-size: 16px;
             }
-            
-            .produk-img {
-                height: 260px;
+
+            .produk-desc {
+                font-size: 13px;
             }
         }
 
-        @media (min-width: 1280px) {
+        /*  DESKTOP */
+        @media (min-width: 1200px) {
+
             .produk-grid {
                 grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
             }
-        }
 
-        /* Loading animation for images */
-        .produk-img img {
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
+            .produk-img {
+                height: 250px;
             }
-        }
-
-        /* Optional: Add a "quick view" button on hover */
-        .produk-img .quick-view {
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: bottom 0.3s ease;
-            cursor: pointer;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-        }
-
-        .produk-card:hover .produk-img .quick-view {
-            bottom: 15px;
         }
 
         /* ===== LAYANAN SECTION ===== */
@@ -915,41 +876,54 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
             background: var(--dark);
             color: white;
         }
-        
+
         .layanan-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
         }
-        
+
         .layanan-item {
             background: rgba(255,255,255,0.04);
-            padding: 30px 20px;
-            border-radius: 28px;
+            padding: 15px 10px; 
+            border-radius: 16px; 
             text-align: center;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.2s;
+            transition: all 0.3s ease; 
+            cursor: pointer;
         }
-        
-        .layanan-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+
+        .layanan-item:hover {
+            transform: translateY(-8px); 
+            background: rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
-        .layanan-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+
+        .layanan-item:hover i {
+            transform: scale(1.1);
+            transition: 0.3s;
         }
-        
+
+        /* DESKTOP & TABLET TETAP SEPERTI ASLINYA */
         @media (min-width: 768px) {
             .layanan-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
+            .layanan-item {
+                padding: 30px 20px;
+                border-radius: 28px;
+            }
+            .layanan-item i {
+                font-size: 2.5rem;
+            }
+            .layanan-item h4 {
+                font-size: 1.3rem;
+            }
         }
-        
+
         @media (min-width: 1024px) {
             .layanan-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -960,95 +934,99 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
         #tenaga-kerja {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             padding: 60px 0;
-            color: #fff;
+            color: #ffffff !important; 
         }
-        
-        .subtitle {
-            color: #38bdf8;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 10px;
+
+        #tenaga-kerja h2, 
+        #tenaga-kerja .section-title h2 {
+            color: #ffffff !important;
         }
-        
-        .divider {
-            width: 50px;
-            height: 3px;
-            background: #38bdf8;
-            margin: 15px auto;
-            border-radius: 10px;
-        }
-        
+
         .tim-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 10px; 
         }
-        
+
         .tim-item {
             background: rgba(255,255,255,0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 30px 20px;
-            border-radius: 20px;
+            padding: 15px 10px; 
+            border-radius: 16px; 
             text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
-        
+
         .tim-item:hover {
-            background: rgba(255,255,255,0.07);
-            transform: translateY(-5px);
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-8px);
             border-color: #38bdf8;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
-        
+
         .icon-box {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
-            margin: 0 auto 20px;
+            margin: 0 auto 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 18px;
-            font-size: 1.8rem;
-            color: #fff;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            color: #ffffff; /* Warna icon putih */
             transition: 0.3s;
         }
-        
-        .tim-item:hover .icon-box {
-            transform: rotateY(180deg);
-            background: #fff;
-            color: #0ea5e9;
-        }
-        
+
         .tim-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: #f8fafc;
+            font-size: 0.75rem; 
+            margin-bottom: 5px;
+            /* Mengubah ke putih murni */
+            color: #ffffff !important; 
             font-weight: 700;
         }
-        
+
         .tim-item p {
-            color: #94a3b8;
-            line-height: 1.6;
-            font-size: 0.9rem;
+            color: #e2e8f0; 
+            display: none; 
         }
-        
+
+        /* TABLET & DESKTOP (KEMBALI KE PENGATURAN ASLI) */
         @media (min-width: 768px) {
             .tim-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
+            
+            .tim-item {
+                padding: 30px 20px;
+            }
+
+            .icon-box {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+
+            .tim-item h4 {
+                font-size: 1.2rem;
+            }
+
+            .tim-item p {
+                display: block; 
+                font-size: 0.9rem;
+            }
         }
-        
+
         @media (min-width: 1024px) {
             .tim-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
+        /*CLIENT*/
         .client-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -1080,13 +1058,13 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
             max-width: 100%;
             max-height: 60px;
             object-fit: contain;
-            filter: grayscale(100%); /* Buat hitam putih ala profesional */
-            opacity: 0.7;
+            filter: grayscale(0%); 
+            opacity: 1; 
             transition: 0.3s;
         }
 
         .client-card:hover img {
-            filter: grayscale(0%); /* Warna muncul saat hover */
+            transform: scale(1.05);
             opacity: 1;
         }
 
@@ -1098,27 +1076,42 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
         footer {
             background: #0f172a;
             color: white;
-            padding: 50px 0 20px;
+            padding: 40px 20px 20px; /* Padding samping ditambah agar tidak mepet layar HP */
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 35px;
+            gap: 25px; /* Mengurangi gap agar lebih rapat di smartphone */
             text-align: center;
             margin-bottom: 30px;
+        }
+
+        /* Merapikan judul di footer */
+        .footer-grid h3, .footer-grid h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #f8fafc;
+        }
+
+        /* Merapikan teks/link di footer */
+        .footer-grid p, .footer-grid a {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            text-decoration: none;
         }
         
         .socials {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 10px;
         }
         
         .socials a {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             background: #1e293b;
             border-radius: 50%;
             display: flex;
@@ -1126,29 +1119,36 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
             justify-content: center;
             color: white;
             transition: 0.2s;
-            text-decoration: none;
         }
         
         .socials a:hover {
             background: var(--primary);
+            transform: scale(1.1);
         }
         
         .footer-bottom {
-            border-top: 1px solid #1e2a3a;
-            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.05); /* Border dibuat lebih halus */
+            padding-top: 20px;
             text-align: center;
-            font-size: 0.8rem;
-            color: #94a3b8;
+            font-size: 0.75rem; /* Font copyright sedikit diperkecil */
+            color: #64748b;
         }
         
+        /* TABLET & DESKTOP */
         @media (min-width: 768px) {
+            footer {
+                padding: 60px 0 30px;
+            }
             .footer-grid {
                 grid-template-columns: 1.5fr 1fr 1fr;
                 text-align: left;
-                gap: 40px;
+                gap: 50px;
             }
             .socials {
                 justify-content: flex-start;
+            }
+            .footer-bottom {
+                font-size: 0.8rem;
             }
         }
 
@@ -1162,7 +1162,10 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
 
 <header>
     <nav class="container">
-        <a href="index.php" class="logo">Lega<span>DigiPrint</span></a>
+        <a href="index.php" class="logo">
+            <img src="assets/images/logo/logo.jpeg" alt="Logo LegaDigiPrint" style="height: 40px; vertical-align: middle; margin-right: 8px;">
+            Lega<span>DigiPrint</span>
+        </a>
         
         <ul class="nav-links" id="navMenu">
             <li><a href="index.php">Beranda</a></li>
@@ -1238,11 +1241,8 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
         <div class="hero-grid">
 
             <div class="hero-content">
-                <div class="badge">✔ Percetakan Digital Terpercaya</div>
-
                 <h1>
-                    Percetakan <span>Digital Printing</span><br>
-                    Terlengkap
+                    Percetakan <span>Digital Printing</span>
                 </h1>
 
                 <p>
@@ -1265,52 +1265,51 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
     </div>
 </section>
 
-
 <section class="product-section section-padding">
     <div class="container">
-        <div class="produk-grid">  <!-- Ubah dari product-grid ke produk-grid -->
-            <?php if ($data && mysqli_num_rows($data) > 0): ?>
-                <?php while ($p = mysqli_fetch_array($data)): ?>
-                    <div class="produk-card">  <!-- Ubah dari product-card ke produk-card -->
-                        <a href="detail_produk.php?id=<?php echo $p['id']; ?>" class="produk-img-link">
-                            <div class="produk-img">  <!-- Ubah dari product-img ke produk-img -->
-                                <img src="assets/images/produk/<?php echo $p['gambar']; ?>" alt="<?php echo $p['nama_produk']; ?>">
-                                <div class="produk-overlay">  <!-- Ubah dari product-overlay ke produk-overlay -->
-                                    <span class="view-text">Lihat Detail</span>
+        <div class="produk-grid">
+            <?php if(mysqli_num_rows($query) > 0): ?>
+                <?php while($p = mysqli_fetch_assoc($query)): ?>
+                    <div class="produk-card">
+                        <a href="detail_produk.php?id=<?php echo $p['id']; ?>" 
+                           class="produk-img-link">
+                            <div class="produk-img">
+                                <img 
+                                    src="assets/images/produk/<?php echo $p['gambar']; ?>" 
+                                    alt="<?php echo $p['nama_produk']; ?>">
+                                <div class="produk-overlay">
+                                    <span class="view-text">
+                                        Lihat Detail
+                                    </span>
                                 </div>
                             </div>
                         </a>
-
-                        <div class="produk-info">  <!-- Ubah dari product-info ke produk-info -->
+                        <div class="produk-info">
                             <div class="category-tag">
-                                <?php echo $p['kategori']; ?>
+                                <?php echo $p['id_kategori']; ?>
                             </div>
-
                             <h3>
-                                <a href="detail_produk.php?id=<?php echo $p['id']; ?>" style="text-decoration:none;color:inherit;">
+                                <a href="detail_produk.php?id=<?php echo $p['id']; ?>"
+                                   style="text-decoration:none;color:inherit;">
                                     <?php echo $p['nama_produk']; ?>
                                 </a>
                             </h3>
-
-                            <p class="produk-desc">  <!-- Ubah dari desc ke produk-desc -->
+                            <p class="produk-desc">
                                 <?php
                                 echo (strlen($p['deskripsi']) > 80)
                                     ? substr($p['deskripsi'], 0, 80) . "..."
                                     : $p['deskripsi'];
                                 ?>
                             </p>
-
                             <div class="price-action">
-                                <div class="price-tag">  <!-- Ubah dari price ke price-tag -->
+                                <div class="price-tag">
                                     <?php
-                                    echo is_numeric($p['harga'])
-                                        ? "Rp " . number_format($p['harga'], 0, ',', '.')
-                                        : $p['harga'];
+                                    echo "Rp " . number_format((int)$p['harga'], 0, ',', '.');
                                     ?>
                                 </div>
-
-                                <a href="https://wa.me/628123456789?text=Halo, saya ingin pesan produk: <?php echo urlencode($p['nama_produk']); ?>" 
-                                    class="btn-wa" target="_blank">  <!-- Ubah dari btn-order ke btn-wa -->
+                                <a href="https://wa.me/628123456789?text=Halo saya ingin pesan <?php echo urlencode($p['nama_produk']); ?>" 
+                                   class="btn-wa"
+                                   target="_blank">
                                     <i class="fab fa-whatsapp"></i>
                                     Pesan
                                 </a>
@@ -1319,11 +1318,7 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
-                <div class='alert-empty'>
-                    <i class='fas fa-search'></i>
-                    <p>Maaf, produk tidak ditemukan.</p>
-                    <a href='produk.php' class='btn-back'>Kembali</a>
-                </div>
+                <h2>Produk tidak ditemukan</h2>
             <?php endif; ?>
         </div>
     </div>
@@ -1357,7 +1352,6 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
 <section id="tenaga-kerja">
     <div class="container">
         <div class="section-title">
-            <span class="subtitle">Keahlian & Dedikasi</span>
             <h2>Tenaga Kerja Profesional</h2>
             <div class="divider"></div>
         </div>
@@ -1387,30 +1381,6 @@ $data = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC");
     </div>
 </section>
 
-<section id="tentang" class="bg-light">
-    <div class="container">
-        <div class="section-title">
-            <h2>Tentang Kami</h2>
-            <div class="line"></div>
-        </div>
-        <div class="about-grid">
-            <div class="about-img">
-                <img src="https://picsum.photos/500/350" alt="Workshop Kami">
-            </div>
-            <div class="about-text">
-                <h3>Kualitas Adalah Prioritas Kami</h3>
-                <p>
-                    Lega DigiPrint merupakan pusat percetakan digital yang mengedepankan presisi warna dan ketajaman hasil cetak. Kami melayani berbagai skala kebutuhan, mulai dari personal hingga korporat.
-                </p>
-                <ul class="about-features">
-                    <li><i class="fas fa-check"></i> Teknologi canggih dan Mesin Terbaru</li>
-                    <li><i class="fas fa-check"></i> Tim Desain Profesional</li>
-                    <li><i class="fas fa-check"></i> Kontrol Kualitas Berlapis</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="client-section" style="padding: 60px 0; background: #fff;">
     <div class="container">
