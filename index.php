@@ -435,440 +435,336 @@ if (!$query) {
             .prev-btn { left: 5px; }
             .next-btn { right: 5px; }
         }
+        
+        /* =========================
+        IKLAN SECTION
+        ========================= */
 
-        /* ===== HERO SECTION ===== */
-        .hero {
-            padding: 70px 0;
-            background: radial-gradient(circle at 10% 30%, #e0f2fe, #ffffff);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero-content {
-            text-align: center;
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-image img {
+        .iklan-section{
+            padding: 50px 0; /* hilangkan jarak kiri kanan */
+            background: #f4f8ff;
             width: 100%;
-            max-width: 420px;
-            border-radius: 22px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-            transition: 0.3s;
         }
 
-        .hero-image img:hover {
-            transform: translateY(-6px) scale(1.02);
+        .iklan-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
         }
 
-        /* BADGE */
-        .badge {
-            background: #e0f2fe;
-            color: var(--primary-dark);
-            padding: 6px 18px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        /* TITLE */
-        .hero h1 {
-            font-size: 2rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        /* DESC */
-        .hero p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        /* BUTTON */
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .btn-primary,
-        .btn-outline {
-            padding: 12px 24px;
-            border-radius: 14px;
-            font-weight: 700;
-            text-align: center;
-            transition: 0.3s;
+        .iklan-card{
+            display: block;
             text-decoration: none;
+            overflow: hidden;
+
+            background: #fff;
+            border-radius: 0; /* agar full sampai ujung */
+            box-shadow: none;
+            transition: 0.3s ease;
+            aspect-ratio: 16/9;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 8px 18px rgba(56,189,248,0.3);
+        .iklan-card:hover{
+            transform: scale(1.01);
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
+        .iklan-card img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
         }
 
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
+        /* =========================
+        TABLET
+        ========================= */
 
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
+        @media(max-width:992px){
 
-        /* TABLET */
-        @media (min-width:768px){
-
-        .hero-grid{
-        grid-template-columns: 1.1fr 0.9fr;
-        }
-
-        .hero-content{
-        text-align:left;
-        }
-
-        .hero h1{
-        font-size:2.8rem;
-        }
-
-        .buttons{
-        flex-direction:row;
-        }
-
-        }
-
-        /* DESKTOP */
-        @media (min-width:1024px){
-
-        .hero h1{
-        font-size:3.5rem;
-        }
-
-        .hero-image img{
-        max-width:480px;
-        }
-
-        }
-
-        /* Update khusus untuk tampilan Smartphone */
-        @media (max-width: 767px) {
-            .hero {
-                padding: 40px 10px; /* Mengurangi padding agar lebih luas */
-            }
-
-            .hero-grid {
-                /* Memaksa menjadi 2 kolom: 60% teks, 40% gambar */
-                grid-template-columns: 1.2fr 0.8fr; 
-                gap: 15px; /* Jarak antara teks dan gambar diperkecil */
-                align-items: center;
-                text-align: left; /* Memastikan semua teks rata kiri */
-            }
-
-            .hero-content {
-                text-align: left; /* Rata kiri untuk container konten */
-            }
-
-            .badge {
-                font-size: 0.6rem; /* Mengecilkan badge agar tidak makan tempat */
-                padding: 4px 10px;
-                margin-bottom: 10px;
-            }
-
-            .hero h1 {
-                font-size: 1.2rem; /* Mengecilkan ukuran judul agar muat 2 kolom */
-                margin-bottom: 10px;
-                line-height: 1.3;
-            }
-
-            .hero p {
-                font-size: 0.85rem; /* Mengecilkan paragraf */
-                margin-bottom: 15px;
-                line-height: 1.4;
-            }
-
-            .buttons {
-                flex-direction: column; /* Tombol tetap susun bawah agar tidak sempit */
+            .iklan-grid{
+                grid-template-columns: repeat(2,1fr);
                 gap: 8px;
             }
 
-            .btn-primary, .btn-outline {
-                padding: 8px 12px; /* Mengecilkan ukuran tombol */
-                font-size: 0.8rem;
-                border-radius: 8px;
+        }
+
+        /* =========================
+        SMARTPHONE
+        ========================= */
+
+        @media(max-width:768px){
+
+            .iklan-section{
+                padding: 20px 0;
             }
 
-            .hero-image img {
-                max-width: 100%; /* Gambar menyesuaikan lebar kolom */
-                border-radius: 12px;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            }
-        }
-
-        /* ===== SECTION UMUM ===== */
-        section {
-            padding: 60px 0;
-            background: white;
-        }
-        
-        .bg-light {
-            background: var(--light-bg);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: #0f172a;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        
-        .section-title .line {
-            width: 70px;
-            height: 4px;
-            background: linear-gradient(90deg, #0ea5e9, #38bdf8);
-            margin: 12px auto;
-            border-radius: 4px;
-        }
-        
-        .text-white h2 {
-            color: white !important;
-        }
-        
-        @media (min-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 50px;
-            }
-            .about-text {
-                text-align: left;
-            }
-        }
-
-        /*PRODUK GRID*/
-        .produk-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        /*CARD PRODUK*/
-        .produk-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            position: relative;
-        }
-
-        .produk-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-        }
-
-        /* GAMBAR */
-        .produk-img {
-            position: relative;
-            width: 100%;
-            height: 170px;
-            overflow: hidden;
-            background: #f5f5f5;
-        }
-
-        .produk-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.4s;
-        }
-
-        .produk-card:hover .produk-img img {
-            transform: scale(1.05);
-        }
-
-        /* OVERLAY */
-        .produk-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        .produk-card:hover .produk-overlay {
-            opacity: 1;
-        }
-
-        .view-text {
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        /*INFO PRODUK */
-        .produk-info {
-            padding: 12px;
-        }
-
-        .category-tag {
-            display: inline-block;
-            background: #eef4ff;
-            color: #004d95;
-            padding: 4px 10px;
-            border-radius: 30px;
-            font-size: 11px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .produk-info h3 {
-            font-size: 15px;
-            font-weight: 700;
-            color: #222;
-            line-height: 1.4;
-            margin-bottom: 6px;
-        }
-
-        .produk-info h3 a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .produk-desc {
-            font-size: 12px;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 10px;
-
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /*PRICE & BUTTON */
-        .price-action {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .price-tag {
-            font-size: 16px;
-            font-weight: 700;
-            color: #e63946;
-        }
-
-        /* BUTTON WA */
-        .btn-wa {
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 10px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-
-            font-size: 13px;
-            font-weight: 600;
-
-            transition: 0.3s;
-        }
-
-        .btn-wa:hover {
-            background: #1da851;
-        }
-
-        /*EMPTY */
-        .alert-empty {
-            grid-column: 1/-1;
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .alert-empty i {
-            font-size: 40px;
-            color: #999;
-            margin-bottom: 15px;
-        }
-
-        .alert-empty p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .btn-back {
-            background: #004d95;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-        }
-
-        /* TABLET */
-        @media (min-width: 768px) {
-
-            .produk-grid {
+            .iklan-grid{
                 grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
+                gap: 4px;
             }
 
-            .produk-img {
-                height: 220px;
+            .iklan-card{
+                aspect-ratio: auto; /* hilangkan crop paksa */
             }
 
-            .produk-info h3 {
-                font-size: 16px;
+            .iklan-card img{
+                width: 100%;
+                height: auto; /* agar gambar full tidak terpotong */
+                object-fit: contain;
+                display: block;
             }
 
-            .produk-desc {
-                font-size: 13px;
-            }
         }
 
-        /*  DESKTOP */
-        @media (min-width: 1200px) {
+        /* =========================
+        PRODUK GRID
+        ========================= */
 
-            .produk-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 25px;
+        .produk-grid{
+            display:grid;
+            grid-template-columns:repeat(2,1fr); /* smartphone 2 kesamping */
+            gap:12px;
+        }
+
+        /* =========================
+        CARD PRODUK
+        ========================= */
+
+        .produk-card{
+            background:#fff;
+            border-radius:10px; /* lebih kotak */
+            overflow:hidden;
+            transition:all 0.3s ease;
+            box-shadow:0 4px 12px rgba(0,0,0,0.08);
+            position:relative;
+            border:1px solid #e5e7eb;
+        }
+
+        .produk-card:hover{
+            transform:translateY(-4px);
+            box-shadow:0 10px 22px rgba(0,0,0,0.12);
+        }
+
+        /* =========================
+        GAMBAR
+        ========================= */
+
+        .produk-img{
+            position:relative;
+            width:100%;
+            aspect-ratio:1/1; /* kotak presisi */
+            overflow:hidden;
+            background:#f5f5f5;
+        }
+
+        .produk-img img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition:0.4s;
+        }
+
+        .produk-card:hover .produk-img img{
+            transform:scale(1.05);
+        }
+
+        /* =========================
+        OVERLAY
+        ========================= */
+
+        .produk-overlay{
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,0.35);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            opacity:0;
+            transition:0.3s;
+        }
+
+        .produk-card:hover .produk-overlay{
+            opacity:1;
+        }
+
+        .view-text{
+            color:#fff;
+            font-size:13px;
+            font-weight:600;
+        }
+
+        /* =========================
+        INFO PRODUK
+        ========================= */
+
+        .produk-info{
+            padding:12px;
+        }
+
+        .category-tag{
+            display:inline-block;
+            background:#eef4ff;
+            color:#004d95;
+            padding:4px 10px;
+            border-radius:30px;
+            font-size:10px;
+            font-weight:600;
+            margin-bottom:8px;
+        }
+
+        .produk-info h3{
+            font-size:14px;
+            font-weight:700;
+            color:#222;
+            line-height:1.4;
+            margin-bottom:10px;
+        }
+
+        .produk-info h3 a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        /* =========================
+        DESKRIPSI DIHILANGKAN
+        ========================= */
+
+        .produk-desc{
+            display:none;
+        }
+
+        /* =========================
+        PRICE & BUTTON
+        ========================= */
+
+        .price-action{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:6px;
+        }
+
+        .price-tag{
+            font-size:14px;
+            font-weight:700;
+            color:#e63946;
+            white-space:nowrap;
+            flex-shrink:0;
+        }
+
+        /* =========================
+        BUTTON WHATSAPP
+        ========================= */
+
+        .btn-wa{
+            background:#25D366;
+            color:#fff;
+            text-decoration:none;
+
+            padding:8px 10px;
+            border-radius:8px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:4px;
+
+            font-size:11px;
+            font-weight:600;
+
+            transition:0.3s;
+
+            flex:1;
+            min-width:0;
+            white-space:nowrap;
+        }
+
+        .btn-wa:hover{
+            background:#1da851;
+        }
+
+        /* =========================
+        SMARTPHONE
+        ========================= */
+
+        @media(max-width:768px){
+
+            .price-action{
+                flex-direction:row; /* tetap kesamping */
+                align-items:center;
+                gap:5px;
             }
 
-            .produk-img {
-                height: 250px;
+            .price-tag{
+                font-size:12px;
             }
+
+            .btn-wa{
+                font-size:10px;
+                padding:7px 6px;
+                border-radius:7px;
+            }
+
+        }
+
+        /* =========================
+        EMPTY
+        ========================= */
+
+        .alert-empty{
+            grid-column:1/-1;
+            text-align:center;
+            padding:50px 20px;
+        }
+
+        .alert-empty i{
+            font-size:40px;
+            color:#999;
+            margin-bottom:15px;
+        }
+
+        .alert-empty p{
+            color:#666;
+            margin-bottom:15px;
+        }
+
+        .btn-back{
+            background:#004d95;
+            color:#fff;
+            padding:10px 20px;
+            border-radius:10px;
+            text-decoration:none;
+        }
+
+        /* =========================
+        TABLET
+        ========================= */
+
+        @media (min-width:768px){
+
+            .produk-grid{
+                grid-template-columns:repeat(3,1fr);
+                gap:20px;
+            }
+
+            .produk-info h3{
+                font-size:15px;
+            }
+
+        }
+
+        /* =========================
+        DESKTOP
+        ========================= */
+
+        @media (min-width:1200px){
+
+            .produk-grid{
+                grid-template-columns:repeat(4,1fr);
+                gap:25px;
+            }
+
         }
 
         /* ===== LAYANAN SECTION ===== */
@@ -1163,7 +1059,7 @@ if (!$query) {
 <header>
     <nav class="container">
         <a href="index.php" class="logo">
-            <img src="assets/images/logo/logo.jpeg" alt="Logo LegaDigiPrint" style="height: 40px; vertical-align: middle; margin-right: 8px;">
+            <img src="assets/images/logo/logo1.png" alt="Logo LegaDigiPrint" style="height: 40px; vertical-align: middle; margin-right: 8px;">
             Lega<span>DigiPrint</span>
         </a>
         
@@ -1236,34 +1132,29 @@ if (!$query) {
 </section>
 
 
-<section class="hero">
+<section class="iklan-section">
     <div class="container">
-        <div class="hero-grid">
+        <div class="iklan-grid">
 
-            <div class="hero-content">
-                <h1>
-                    Percetakan <span>Digital Printing</span>
-                </h1>
+            <!-- IKLAN 1 -->
+            <a href="cutting-sticker.php" class="iklan-card">
+                <img src="assets/images/iklan/iklan1.png" alt="Cutting Sticker">
+            </a>
 
-                <p>
-                    Lega DigiPrint hadir sebagai mitra percetakan digital profesional 
-                    dengan kualitas premium dan pengerjaan kilat untuk segala 
-                    kebutuhan bisnis Anda.
-                </p>
+            <!-- IKLAN 2 -->
+            <a href="cetak-banner.php" class="iklan-card">
+                <img src="assets/images/iklan/iklan2.png" alt="Cetak Banner">
+            </a>
 
-                <div class="buttons">
-                    <a href="produk.php" class="btn-primary">Eksplor Produk</a>
-                    <a href="#" class="btn-outline">Konsultasi Gratis</a>
-                </div>
-            </div>
-
-            <div class="hero-image">
-                <img src="assets/images/hero/hero.JPEG" alt="Digital Printing">
-            </div>
+            <!-- IKLAN 3 -->
+            <a href="jasa-plakat.php" class="iklan-card">
+                <img src="assets/images/iklan/iklan3.png" alt="Jasa Plakat">
+            </a>
 
         </div>
     </div>
 </section>
+
 
 <section class="product-section section-padding">
     <div class="container">

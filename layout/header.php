@@ -224,6 +224,7 @@
     <header>
         <nav class="container">
             <a href="index.php" class="logo">
+                <img src="assets/images/logo/logo1.png" alt="Logo LegaDigiPrint" style="height: 40px; vertical-align: middle; margin-right: 8px;">
                 Lega<span>DigiPrint</span>
             </a>
 

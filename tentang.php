@@ -156,7 +156,6 @@
 </main>
 
 <style>
-    /* Update pada Hero Section */
     .about-hero {
         height: 500px;
         display: flex;
@@ -388,127 +387,256 @@
         }
     }
 
-    /* ===== PRIORITY SECTION UPDATED ===== */
-    .section-title {
-    text-align: center;
-    margin-bottom: 50px; /* Jarak antara judul dan kartu di bawahnya */
-    width: 100%;
+    /* =========================
+    SECTION TITLE
+    ========================= */
+
+    .section-title{
+        width:100%;
+        margin-bottom:50px;
+        text-align:center; /* judul tetap di tengah */
     }
 
-    /*Prioritas Kami*/
-    .section-title h2 {
-        font-size: 2.8rem;
-        font-weight: 800;
-        color: #0f172a;
-        position: relative;
-        display: inline-block; /* Agar garis hiasan hanya sepanjang teks */
+    .section-title h2{
+        font-size:2.8rem;
+        font-weight:800;
+        color:#0f172a;
+        position:relative;
+        display:inline-block;
+        line-height:1.3;
     }
 
-    .section-title h2 span {
-        color: var(--primary);
+    .section-title h2 span{
+        color:var(--primary);
     }
 
-    /* Hiasan garis bawah agar lebih manis (Opsional) */
-    .section-title h2::after {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 4px;
-        background: var(--primary);
-        margin: 15px auto 0; /* Margin auto untuk menengahkan garis */
-        border-radius: 10px;
+    /* GARIS BAWAH */
+
+    .section-title h2::after{
+        content:'';
+        display:block;
+        width:60px;
+        height:4px;
+        background:var(--primary);
+        margin:15px auto 0;
+        border-radius:10px;
     }
 
-    .priority-section {
-        background: #f8fafc; /* Background abu-abu sangat muda agar kartu putih terlihat kontras */
+    /* =========================
+    STORY TEXT
+    ========================= */
+
+    .story-text{
+        text-align:left; /* isi text rata kiri */
     }
 
-    .priority-grid { 
-        display: grid; 
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 30px; 
-        margin-top: 60px; 
+    .story-text h2{
+        font-size:3rem;
+        font-weight:800;
+        margin-bottom:25px;
+        line-height:1.2;
+        color:#0f172a;
+        text-align:center; /* judul tengah */
     }
 
-    .priority-item { 
-        padding: 40px 30px; 
-        border-radius: 24px; 
-        background: #ffffff; 
-        border: 1px solid #f1f5f9; 
-        position: relative; 
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden; /* Agar angka besar tidak keluar jalur */
-        z-index: 1;
+    .story-text h2 span{
+        color:var(--primary);
     }
 
-    /* Efek Hover: Kartu Terangkat & Border Warna */
-    .priority-item:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-        border-color: var(--primary);
+    .story-text p{
+        font-size:1.05rem;
+        line-height:1.8;
+        color:#64748b;
+        margin-bottom:20px;
+        text-align:left;
     }
 
-    /* Angka Latar Belakang yang Lebih Estetik */
-    .priority-item .number { 
-        font-size: 5rem; 
-        font-weight: 900; 
-        color: rgba(56, 189, 248, 0.05); /* Warna biru sangat transparan */
-        position: absolute; 
-        top: -10px; 
-        right: -5px; 
-        z-index: 0;
-        transition: 0.4s;
-        user-select: none;
+    /* =========================
+    VISI MISI
+    ========================= */
+
+    .vm-grid{
+        display:grid;
+        grid-template-columns:0.9fr 1.1fr;
+        gap:40px;
+        align-items:stretch;
     }
 
-    .priority-item:hover .number {
-        color: rgba(56, 189, 248, 0.12);
-        transform: scale(1.1) rotate(-5deg);
+    .vm-card{
+        background:#fff;
+        padding:50px 40px;
+        border-radius:30px;
+        box-shadow:0 15px 40px rgba(15,23,42,0.05);
+        border:1px solid #f1f5f9;
+        transition:0.4s ease;
     }
 
-    /* Judul & Teks */
-    .priority-item h4 { 
-        position: relative; 
-        z-index: 2; 
-        font-size: 1.3rem;
-        font-weight: 800;
-        margin-bottom: 15px; 
-        color: #0f172a;
-        display: flex;
-        align-items: center;
-        gap: 10px;
+    .vm-card:hover{
+        transform:translateY(-5px);
+        box-shadow:0 25px 50px rgba(15,23,42,0.1);
     }
 
-    /* Garis aksen kecil di bawah judul */
-    .priority-item h4::after {
-        content: '';
-        display: block;
-        width: 30px;
-        height: 3px;
-        background: var(--primary);
-        border-radius: 10px;
-        margin-top: 8px;
+    /* =========================
+    PRIORITY
+    ========================= */
+
+    .priority-grid{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:30px;
+        margin-top:60px;
     }
 
-    .priority-item p { 
-        position: relative; 
-        z-index: 2; 
-        font-size: 1rem; 
-        line-height: 1.6;
-        color: #64748b; 
+    .priority-item{
+        padding:35px 25px;
+        border-radius:24px;
+        background:#fff;
+        border:1px solid #f1f5f9;
+        position:relative;
+        overflow:hidden;
+        transition:0.4s ease;
     }
 
-    /* Responsive */
-    @media (max-width: 992px) {
-        .priority-grid {
-            grid-template-columns: 1fr 1fr;
+    .priority-item:hover{
+        transform:translateY(-10px);
+        box-shadow:0 20px 40px rgba(15,23,42,0.08);
+        border-color:var(--primary);
+    }
+
+    .priority-item .number{
+        font-size:5rem;
+        font-weight:900;
+        color:rgba(56,189,248,0.05);
+        position:absolute;
+        top:-10px;
+        right:-5px;
+    }
+
+    .priority-item h4{
+        position:relative;
+        z-index:2;
+        font-size:1.3rem;
+        font-weight:800;
+        margin-bottom:15px;
+        color:#0f172a;
+        text-align:center;
+    }
+
+    .priority-item p{
+        position:relative;
+        z-index:2;
+        font-size:1rem;
+        line-height:1.7;
+        color:#64748b;
+        text-align:center;
+    }
+
+    /* =========================
+    TABLET
+    ========================= */
+
+    @media(max-width:992px){
+
+        .priority-grid{
+            grid-template-columns:1fr 1fr;
         }
+
     }
 
-    @media (max-width: 768px) {
-        .priority-grid {
-            grid-template-columns: 1fr;
+    /* =========================
+    SMARTPHONE
+    ========================= */
+
+    @media(max-width:768px){
+
+        /* HERO */
+
+        .about-hero{
+            height:320px;
+            margin-bottom:50px;
+            border-bottom-left-radius:25px;
+            border-bottom-right-radius:25px;
+            background-attachment:scroll;
         }
+
+        /* TITLE */
+
+        .section-title{
+            margin-bottom:30px;
+        }
+
+        .section-title h2{
+            font-size:1.7rem;
+            line-height:1.4;
+        }
+
+        .story-text h2{
+            font-size:1.7rem;
+            line-height:1.4;
+        }
+
+        .story-text p{
+            font-size:14px;
+            line-height:1.8;
+        }
+
+        /* VISI MISI */
+
+        .vm-grid{
+            grid-template-columns:1fr;
+            gap:18px;
+        }
+
+        .vm-card{
+            padding:22px 18px;
+            border-radius:18px;
+        }
+
+        .vm-card h3{
+            font-size:1.1rem;
+            text-align:center;
+        }
+
+        .vm-card p,
+        .vm-list span{
+            font-size:13px;
+            line-height:1.7;
+        }
+
+        .vm-list li{
+            gap:10px;
+        }
+
+        /* PRIORITAS 3 KESAMPING */
+
+        .priority-grid{
+            grid-template-columns:repeat(3,1fr);
+            gap:10px;
+            margin-top:25px;
+        }
+
+        .priority-item{
+            padding:18px 10px;
+            border-radius:15px;
+        }
+
+        .priority-item .number{
+            font-size:2.5rem;
+            top:0;
+            right:5px;
+        }
+
+        .priority-item h4{
+            font-size:11px;
+            line-height:1.4;
+            margin-bottom:8px;
+        }
+
+        .priority-item p{
+            font-size:10px;
+            line-height:1.5;
+        }
+
     }
 
     /* ===== UPDATED FEATURES SECTION ===== */
