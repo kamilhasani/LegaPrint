@@ -5,7 +5,14 @@ include "layout/header.php";
 // Ambil ID dari URL
 $id = mysqli_real_escape_string($conn, $_GET['id']);
 $query = mysqli_query($conn, "SELECT * FROM produk WHERE id = '$id'");
+$katquery = mysqli_query($conn, "SELECT p.*, k.nama_kategori 
+                                FROM produk p
+                                LEFT JOIN kategori k 
+                                ON p.id_kategori = k.id_kategori
+                                WHERE 1=1");
 $p = mysqli_fetch_array($query);
+$kat = mysqli_fetch_array($katquery);
+
 
 // Ambil Galeri Foto Tambahan
 $query_galeri = mysqli_query($conn, "SELECT * FROM produk_gambar WHERE id_produk = '$id'");
@@ -42,7 +49,7 @@ if (!$p) {
 
             <div class="detail-info">
                 <nav class="breadcrumb">
-                    <a href="produk.php">Produk</a> / <span><?php echo $p['id_kategori']; ?></span>
+                    <a href="produk.php">Produk</a><span>/<?php echo $kat['nama_kategori']; ?>/<?php echo $p['nama_produk']; ?></span>
                 </nav>
                 
                 <h1><?php echo $p['nama_produk']; ?></h1>

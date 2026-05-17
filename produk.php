@@ -13,6 +13,20 @@ $query_str = "SELECT p.*, k.nama_kategori
               ON p.id_kategori = k.id_kategori
               WHERE 1=1";
 
+$kategori_nama = 'Semua Kategori';
+
+if ($kategori_filter != '') {
+    $kat_query = mysqli_query($conn, "
+        SELECT nama_kategori 
+        FROM kategori 
+        WHERE id_kategori = '$kategori_filter'
+    ");
+
+    if ($kat_data = mysqli_fetch_assoc($kat_query)) {
+        $kategori_nama = $kat_data['nama_kategori'];
+    }
+}
+
 // FILTER KATEGORI
 if ($kategori_filter != '') { 
     $query_str .= " AND p.id_kategori = '$kategori_filter'"; 
@@ -120,9 +134,7 @@ if (!$data) {
 
                     <strong>
                         <?php 
-                        echo ($kategori_filter != '') 
-                            ? $kategori_filter 
-                            : 'Semua Kategori'; 
+                        echo $kategori_nama;
                         ?>
                     </strong>
 

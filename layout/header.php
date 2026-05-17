@@ -100,9 +100,35 @@
             font-size: 0.95rem;
             position: relative;
             transition: var(--transition);
+            padding: 6px 0;
         }
 
-        .nav-links li a:not(.btn-cta):hover { color: var(--primary); }
+        /* GARIS ANIMASI */
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0%;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 10px;
+            transition: 0.3s ease;
+        }
+
+        /* HOVER */
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        /* TAB AKTIF */
+        .nav-links li a.active {
+            color: var(--primary);
+        }
+
+        .nav-links li a.active::after {
+            width: 100%;
+        }
 
         /* --- DROPDOWN SYSTEM --- */
         .dropdown {
@@ -162,11 +188,15 @@
         .btn-cta {
             background: var(--primary);
             color: var(--white) !important;
-            padding: 10px 24px;
-            border-radius: 12px;
+            padding: 14px 30px; 
+            border-radius: 14px;
+            font-size: 1rem; 
             font-weight: 700 !important;
             box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-cta:hover {
@@ -232,21 +262,15 @@
                 <li><a href="index.php">Beranda</a></li>
                 <li><a href="tentang.php">Tentang Kami</a></li>
                 <li><a href="galeri.php">Galeri</a></li>
-                
-                <li class="dropdown">
-                    <a href="produk.php" class="dropbtn">
-                        Produk <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <ul class="dropdown-content">
-                        <li><a href="produk.php?kat=outdoor-indoor">Banner</a></li>
-                        <li><a href="produk.php?kat=cutting-sticker">Cutting Sticker</a></li>
-                        <li><a href="produk.php?kat=outdoor-indoor">Plakat</a></li>
-                        <li><a href="produk.php?kat=outdoor-indoor">Merchandise</a></li>
-                    </ul>
-                </li>
+                <li><a href="produk.php">Produk </a></li>
 
                 <li><a href="kontak.php">Kontak</a></li>
                 <li><a href="https://wa.me/6282117773741" class="btn-cta">Order Sekarang</a></li>
+                <li class="mobile-only">
+                <a href="../legaprint/admin/login.php" class="btn-cta">
+                    <i class="fas fa-key"></i> Login
+                </a>
+            </li>
             </ul>
 
             <div class="mobile-toggle" id="mobile-btn">
@@ -274,17 +298,6 @@
             }
         });
 
-        // Dropdown Click (untuk Mobile)
-        const dropdowns = document.querySelectorAll('.dropdown');
-        dropdowns.forEach(dropdown => {
-            const dropBtn = dropdown.querySelector('.dropbtn');
-            dropBtn.addEventListener('click', (e) => {
-                if (window.innerWidth <= 992) {
-                    e.preventDefault(); 
-                    dropdown.classList.toggle('active');
-                }
-            });
-        });
 
         // Close when overlay clicked
         overlay.addEventListener('click', () => {
@@ -305,6 +318,15 @@
                 }
             });
         });
+        // AUTO ACTIVE NAVBAR
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".nav-links a");
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) {
+            link.classList.add("active");
+        }
+    });
     </script>
 
 </body>

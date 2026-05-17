@@ -2,11 +2,13 @@
 <?php
 include "config/koneksi.php";
 
-$query = mysqli_query($conn, "
-    SELECT *
-    FROM produk
-    ORDER BY id DESC
-");
+$query = mysqli_query($conn, 
+        "SELECT p.*, k.nama_kategori 
+        FROM produk p
+        LEFT JOIN kategori k 
+        ON p.id_kategori = k.id_kategori
+        WHERE 1=1"
+        );
 
 if (!$query) {
     die(mysqli_error($conn));
@@ -59,382 +61,123 @@ if (!$query) {
             padding: 0 20px;
         }
 
-        /* ===== NAVBAR RESPONSIVE ===== */
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            height: 75px;
-            display: flex;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            width: 100%;
-        }
 
-        nav.container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
+    .banner-slider{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--dark);
-            text-decoration: none;
-            letter-spacing: -0.5px;
-            z-index: 1001;
-            white-space: nowrap;
-        }
+.slider-container{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+}
 
-        .logo span {
-            color: var(--primary);
-        }
+.slider-wrapper{
+    display:flex;
+    transition:transform .6s ease;
+}
 
-        /* Desktop menu */
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-            margin: 0 auto;
-        }
+.slide{
+    min-width:100%;
+}
 
-        .nav-links li a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
+.slide img{
+    width:100%;
+    display:block;
+    object-fit:cover;
+}
 
-        .nav-links li a:hover {
-            color: var(--primary);
-        }
-        
-        /* Container Dropdown */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+/* BUTTON */
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    
+    width:45px;
+    height:45px;
 
-        /* Styling Link Utama (Produk) */
-        .dropbtn {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+    border:none;
+    border-radius:50%;
 
-        .dropbtn i {
-            font-size: 0.7rem;
-            transition: transform 0.3s;
-        }
+    background:rgba(0,0,0,.4);
+    color:#fff;
 
-        /* Isi Dropdown (Sembunyi secara default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            min-width: 220px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
-            z-index: 1001;
-            border-radius: 4px;
-            padding: 10px 0;
-            list-style: none;
-            top: 100%; /* Muncul tepat di bawah menu */
-            left: 0;
-        }
+    cursor:pointer;
+    z-index:10;
 
-        /* Styling Item di dalam Dropdown */
-        .dropdown-content li a {
-            color: #333;
-            padding: 12px 20px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.95rem;
-            text-align: left;
-            transition: all 0.2s ease;
-        }
+    transition:.3s;
 
-        /* Hover pada Item Dropdown */
-        .dropdown-content li a:hover {
-            background-color: #f8f9fa;
-            color: #38bdf8; /* Warna identitas LegaDigiPrint */
-            padding-left: 25px; /* Efek geser sedikit saat hover */
-        }
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
-        /* Tampilkan Dropdown saat Menu di-hover */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+.slider-btn:hover{
+    background:var(--primary);
+}
 
-        /* Putar icon panah saat di-hover */
-        .dropdown:hover .dropbtn i {
-            transform: rotate(180deg);
-        }
+.prev-btn{
+    left:20px;
+}
 
-        /* Responsive Mobile */
-        @media (max-width: 768px) {
-            .dropdown-content {
-                position: static;
-                display: none;
-                width: 100%;
-                box-shadow: none;
-                background-color: #f1f5f9;
-                padding-left: 20px;
-            }
-            
-            .nav-menu.active .dropdown.active .dropdown-content {
-                display: block;
-            }
-        }
+.next-btn{
+    right:20px;
+}
 
-        /* Tombol Login Desktop */
-        .nav-btns {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
+/* DOTS */
+.slider-dots{
+    position:absolute;
+    left:50%;
+    bottom:15px;
+    transform:translateX(-50%);
+    
+    display:flex;
+    gap:8px;
+}
 
-        .login-btn {
-            background: var(--primary);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-            white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
-        }
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    
+    background:rgba(255,255,255,.5);
+    cursor:pointer;
 
-        .login-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
-        }
+    transition:.3s;
+}
 
-        /* Mobile Toggle */
-        .mobile-toggle {
-            display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 1001;
-            background: none;
-            border: none;
-            color: var(--dark);
-            width: 42px;
-            height: 42px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            transition: 0.2s;
-        }
+.dot.active{
+    background:#fff;
+    transform:scale(1.2);
+}
 
-        .mobile-toggle:hover {
-            background: rgba(0,0,0,0.05);
-        }
+/* MOBILE */
+@media(max-width:768px){
 
-        /* Overlay */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 998;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-    /* ===== RESPONSIVE MOBILE ===== */
-    @media (min-width: 993px) {
-        .mobile-only { display: none !important; }
-        .mobile-toggle { display: none !important; }
-        .nav-links { display: flex !important; }
+    .slider-btn{
+        width:32px;
+        height:32px;
     }
 
-    /* --- TAMPILAN HP (Layar Kecil) --- */
-    @media (max-width: 992px) {
-        /* 1. Sembunyikan menu teks dari layar utama */
-        .nav-links {
-            display: none; /* Default sembunyi */
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100vh;
-            background: #fff;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            z-index: 999;
-            transition: 0.3s;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        }
-
-        /* Munculkan menu saat tombol diklik */
-        .nav-links.active {
-            display: flex !important;
-            right: 0;
-        }
-
-        /* 2. Sembunyikan tombol login bawaan header agar tidak mengambang */
-        .nav-btns .login-btn {
-            display: none !important;
-        }
-
-        /* 3. PASTIKAN Hamburger Tetap Muncul */
-        .mobile-toggle {
-            display: flex !important; /* Paksa muncul */
-            cursor: pointer;
-            font-size: 1.6rem;
-            color: var(--dark);
-            z-index: 1000;
-            padding: 5px;
-        }
-
-        /* 4. Login di DALAM Hamburger */
-        .mobile-only {
-            display: block !important;
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        .login-btn-mobile {
-            background: var(--primary);
-            color: white !important;
-            padding: 12px 0;
-            border-radius: 10px;
-            text-align: center;
-            display: block;
-            width: 80%;
-            margin: 0 auto;
-            font-weight: 700;
-            text-decoration: none;
-        }
+    .prev-btn{
+        left:8px;
     }
 
-        /* Container Utama */
-        .banner-slider {
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            margin-top: 0; 
-            margin-bottom: 0;
-            padding: 0;
-            line-height: 0;
-            overflow: hidden;
-            background-color: #f0f0f0; /* Background netral saat loading */
-        }
+    .next-btn{
+        right:8px;
+    }
 
-        .slider-container {
-            position: relative;
-            width: 100%;
-            /* PERBAIKAN: Gunakan auto agar mengikuti tinggi gambar asli */
-            height: auto; 
-            overflow: hidden;
-        }
+    .dot{
+        width:8px;
+        height:8px;
+    }
 
-        .slider-wrapper {
-            display: flex;
-            width: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide {
-            min-width: 100%;
-            height: auto;
-        }
-
-        .slide img {
-            width: 100%;
-            /* PERBAIKAN UTAMA: */
-            height: auto;         /* Biarkan tinggi menyesuaikan secara alami */
-            object-fit: contain;  /* Pastikan SELURUH isi gambar masuk dalam frame */
-            display: block;
-        }
-
-        /* Navigasi Tombol */
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.4);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slider-btn:hover {
-            background: #0ea5e9; /* Mengikuti tema biru Lega DigiPrint */
-        }
-
-        /* Indikator Dot */
-        .slider-dots {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background: #fff;
-            transform: scale(1.2);
-        }
-
-        /* Responsive: Smartphone */
-        @media (max-width: 768px) {
-            .slider-container {
-                /* PERBAIKAN: Jangan paksa aspect-ratio di HP jika gambar memanjang horizontal */
-                aspect-ratio: auto; 
-            }
-            .slider-btn {
-                width: 30px;
-                height: 30px;
-                background: rgba(0, 0, 0, 0.2); /* Lebih transparan di HP agar tidak ganggu teks */
-            }
-            .prev-btn { left: 5px; }
-            .next-btn { right: 5px; }
-        }
+    .slider-dots{
+        bottom:10px;
+    }
+}
         
         /* =========================
         IKLAN SECTION
@@ -771,6 +514,7 @@ if (!$query) {
         #layanan {
             background: var(--dark);
             color: white;
+            margin-bo
         }
 
         .layanan-grid {
@@ -1055,50 +799,7 @@ if (!$query) {
     </style>
 </head>
 <body>
-
-<header>
-    <nav class="container">
-        <a href="index.php" class="logo">
-            <img src="assets/images/logo/logo1.png" alt="Logo LegaDigiPrint" style="height: 40px; vertical-align: middle; margin-right: 8px;">
-            Lega<span>DigiPrint</span>
-        </a>
-        
-        <ul class="nav-links" id="navMenu">
-            <li><a href="index.php">Beranda</a></li>
-            <li><a href="tentang.php">Tentang</a></li>
-            <li class="dropdown">
-            <a href="produk.php" class="dropbtn">
-                Produk <i class="fas fa-chevron-down"></i>
-            </a>
-            <ul class="dropdown-content">
-                <li><a href="produk.php?kat=Banner">Banner</a></li>
-                <li><a href="produk.php?kat=Cutting Sticker">Cutting Sticker</a></li>
-                <li><a href="produk.php?kat=Plakat">Plakat</a></li>
-                <li><a href="produk.php?kat=Merchandise">Merchandise</a></li>
-                </ul>
-            <li><a href="galeri.php">Galeri</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
-            
-            <li class="mobile-only">
-                <a href="../legaprint/admin/login.php" class="login-btn-mobile">
-                    <i class="fas fa-key"></i> Login
-                </a>
-            </li>
-        </ul>
-
-        <div class="nav-btns">
-            <a href="../legaprint/admin/login.php" class="login-btn">
-                <i class="fas fa-key"></i> Login
-            </a>
-            
-            <div class="mobile-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<div class="overlay" id="menuOverlay"></div> 
+<?php include "layout/header.php"; ?>
                 <?php
                 $no = 1;
                 $data = mysqli_query($conn, "SELECT * FROM hero ORDER BY id DESC");
@@ -1124,10 +825,17 @@ if (!$query) {
         </button>
         
         <div class="slider-dots" id="sliderDots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
+        <?php
+        mysqli_data_seek($data, 0);
+        $i = 0;
+        while($d = mysqli_fetch_assoc($data)):
+        ?>
+            <span class="dot <?php echo $i == 0 ? 'active' : ''; ?>"></span>
+        <?php
+        $i++;
+        endwhile;
+        ?>
+    </div>
     </div>
 </section>
 
@@ -1177,7 +885,7 @@ if (!$query) {
                         </a>
                         <div class="produk-info">
                             <div class="category-tag">
-                                <?php echo $p['id_kategori']; ?>
+                                <?php echo $p['nama_kategori']; ?>
                             </div>
                             <h3>
                                 <a href="detail_produk.php?id=<?php echo $p['id']; ?>"
@@ -1270,10 +978,6 @@ if (!$query) {
             </div>
         </div>
     </div>
-</section>
-
-
-<section class="client-section" style="padding: 60px 0; background: #fff;">
     <div class="container">
         <h2 style="text-align: center; margin-bottom: 40px; font-weight: 800; color: #0f172a; font-size: 2rem;">Our Client</h2>
         
@@ -1291,10 +995,10 @@ if (!$query) {
     </div>
 </section>
 
+
+
 <script>
-    // ==================== MOBILE MENU TOGGLE ====================
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
+
     
     // Cek jika elemen menu ada sebelum menjalankan event listener
     if (menuToggle && navMenu) {
