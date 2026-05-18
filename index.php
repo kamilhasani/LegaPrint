@@ -804,39 +804,43 @@ if (!$query) {
                 <?php
                 $no = 1;
                 $data = mysqli_query($conn, "SELECT * FROM hero ORDER BY id DESC");
+
+                $heroData = [];
+                while($row = mysqli_fetch_assoc($data)){
+                    $heroData[] = $row;
+                }
                 ?>
 
 <section class="banner-slider">
     <div class="slider-container">
+
         <div class="slider-wrapper" id="sliderWrapper">
-            <?php while($d = mysqli_fetch_assoc($data)): ?>
+
+            <?php foreach($heroData as $d): ?>
                 <div class="slide">
-                    <img src="assets/images/hero/<?php echo $d['gambar']; ?>" 
-                         alt="Hero Image" 
-                         loading="lazy">
+                    <img src="assets/images/hero/<?php echo $d['gambar']; ?>"
+                         alt="Hero Image">
                 </div>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
+
         </div>
-        
+
         <button class="slider-btn prev-btn" id="prevBtn">
             <i class="fas fa-chevron-left"></i>
         </button>
+
         <button class="slider-btn next-btn" id="nextBtn">
             <i class="fas fa-chevron-right"></i>
         </button>
-        
-        <div class="slider-dots" id="sliderDots">
-        <?php
-        mysqli_data_seek($data, 0);
-        $i = 0;
-        while($d = mysqli_fetch_assoc($data)):
-        ?>
-            <span class="dot <?php echo $i == 0 ? 'active' : ''; ?>"></span>
-        <?php
-        $i++;
-        endwhile;
-        ?>
-    </div>
+
+        <div class="slider-dots">
+
+            <?php foreach($heroData as $index => $d): ?>
+                <span class="dot <?php echo $index == 0 ? 'active' : ''; ?>"></span>
+            <?php endforeach; ?>
+
+        </div>
+
     </div>
 </section>
 
@@ -1002,6 +1006,7 @@ if (!$query) {
 
     
     // Cek jika elemen menu ada sebelum menjalankan event listener
+    const menuToggle = document.querySelector('.menu-toggle');
     if (menuToggle && navMenu) {
         const icon = menuToggle.querySelector('i');
         menuToggle.addEventListener('click', () => {
@@ -1034,6 +1039,7 @@ if (!$query) {
         
         // Update slider position & UI
         function updateSlider() {
+            console.log(currentIndex);
             sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
             
             // Update active dot
