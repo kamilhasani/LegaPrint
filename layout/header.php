@@ -265,7 +265,6 @@
                 <li><a href="produk.php">Produk </a></li>
 
                 <li><a href="kontak.php">Kontak</a></li>
-                <li><a href="https://wa.me/6282117773741" class="btn-cta">Order Sekarang</a></li>
                 <li class="mobile-only">
                 <a href="../legaprint/admin/login.php" class="btn-cta">
                     <i class="fas fa-key"></i> Login

@@ -580,6 +580,7 @@ if (!$query) {
         #tenaga-kerja h2, 
         #tenaga-kerja .section-title h2 {
             color: #ffffff !important;
+            text-align: center;
         }
 
         .tim-grid {
@@ -926,7 +927,7 @@ if (!$query) {
 <section id="layanan">
     <div class="container">
         <div class="section-title text-white">
-            <h2 style="color: white;">Mengapa Memilih Kami?</h2>
+            <h2 style="text-align: center;">Mengapa Memilih Kami?</h2>
         </div>
         <div class="layanan-grid">
             <div class="layanan-item">

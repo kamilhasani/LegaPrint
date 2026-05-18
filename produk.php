@@ -212,7 +212,7 @@ if (!$data) {
                                         ?>
                                     </div>
                                     <!-- BUTTON PESAN -->
-                                    <a href="https://wa.me/628123456789?text=Halo, saya ingin pesan produk: <?php echo urlencode($p['nama_produk']); ?>" 
+                                    <a href="https://wa.me/6282117773741?text=Halo, saya ingin pesan produk: <?php echo urlencode($p['nama_produk']); ?>" 
                                        class="btn-order"
                                        target="_blank">
                                         <i class="fab fa-whatsapp"></i>

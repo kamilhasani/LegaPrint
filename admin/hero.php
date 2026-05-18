@@ -3,44 +3,7 @@ include "../config/koneksi.php";
 include "../layout/admin_header.php"; // Pastikan path ../ sudah benar
 ?>
 
-<div class="sidebar">
-    <div class="sidebar-brand">
-        <i class="fas fa-print"></i> <span>Lega DigiPrint</span>
-    </div>
-    
-    <ul class="nav-menu">
-        <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
-                <i class="fas fa-th-large"></i> Dashboard
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="produk.php" class="nav-link">
-                <i class="fas fa-box"></i> Kelola Produk
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="hero.php" class="nav-link active"> <i class="fas fa-image"></i> Kelola Hero
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="galeri.php" class="nav-link">
-                <i class="fas fa-images"></i> Kelola Galeri
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="client.php" class="nav-link">
-                <i class="fas fa-user-tie"></i> Kelola Client
-            </a>
-        </li>
-        <hr class="sidebar-divider">
-        <li class="nav-item">
-            <a href="../index.php" class="nav-link">
-                <i class="fas fa-external-link-alt"></i> Lihat Website
-            </a>
-        </li>
-    </ul>
-</div>
+
 <div class="main-content">
     
     <div class="dashboard-header">

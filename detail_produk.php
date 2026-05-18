@@ -66,10 +66,10 @@ if (!$p) {
                 </div>
 
                 <div class="detail-action">
-                    <a href="https://wa.me/628123456789?text=Halo, saya ingin bertanya tentang produk: <?php echo urlencode($p['nama_produk']); ?>" class="btn-wa">
+                    <a href="https://wa.me/6282117773741?text=Halo, saya ingin bertanya tentang produk: <?php echo urlencode($p['nama_produk']); ?>" class="btn-wa">
                         <i class="fab fa-whatsapp"></i> Tanya Stok
                     </a>
-                    <a href="https://wa.me/628123456789?text=Halo, saya ingin order: <?php echo urlencode($p['nama_produk']); ?>" class="btn-order-now">
+                    <a href="https://wa.me/6282117773741?text=Halo, saya ingin order: <?php echo urlencode($p['nama_produk']); ?>" class="btn-order-now">
                         Order Sekarang
                     </a>
                 </div>

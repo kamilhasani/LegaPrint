@@ -264,7 +264,7 @@ if (isset($_POST['kirim_pesan'])) {
             const pesan = document.getElementById('pesan').value;
             
             // 2. Ganti nomor WhatsApp admin di bawah ini (Gunakan kode negara, tanpa tanda +)
-            const nomorAdmin = "6281317908079"; 
+            const nomorAdmin = "6282117773741"; 
 
             // 3. Validasi sederhana
             if (nama === "" || pesan === "") {

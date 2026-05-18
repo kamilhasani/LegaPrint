@@ -1,6 +1,8 @@
+<?php include "../layout/admin_header.php";?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Lega DigiPrint | Dashboard Manajemen</title>
@@ -22,158 +24,7 @@
         /* Import Inter font */
         @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
 
-        /* ========== SIDEBAR STYLE ========== */
-        .sidebar {
-            width: 280px;
-            background: linear-gradient(180deg, #0a1a2f 0%, #0c1e36 100%);
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            z-index: 1000;
-            overflow-y: auto;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
-            scrollbar-width: thin;
-        }
-
-        .sidebar::-webkit-scrollbar {
-            width: 5px;
-        }
-        .sidebar::-webkit-scrollbar-track {
-            background: #142b44;
-        }
-        .sidebar::-webkit-scrollbar-thumb {
-            background: #2e4a76;
-            border-radius: 10px;
-        }
-
-        /* Brand area di sidebar */
-        .sidebar-brand {
-            padding: 28px 24px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 20px;
-        }
-        .sidebar-brand h2 {
-            color: white;
-            font-weight: 600;
-            font-size: 1.6rem;
-            letter-spacing: -0.3px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .sidebar-brand h2 i {
-            color: #3b82f6;
-            font-size: 1.8rem;
-        }
-        .sidebar-brand span {
-            font-weight: 400;
-            font-size: 0.75rem;
-            color: #9ab3d5;
-            display: block;
-            margin-top: 6px;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            padding: 0 16px;
-        }
-        .sidebar-menu li {
-            margin-bottom: 6px;
-        }
-        .sidebar-menu a {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 16px;
-            color: #e2e8f0;
-            text-decoration: none;
-            border-radius: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-            font-size: 0.95rem;
-        }
-        .sidebar-menu a i {
-            width: 24px;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-        .sidebar-menu a:hover {
-            background: rgba(59,130,246,0.2);
-            color: white;
-            transform: translateX(4px);
-        }
-        .sidebar-menu .active a {
-            background: #1e3a5f;
-            color: white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        /* ========== MAIN CONTENT ========== */
-        .main-content {
-            margin-left: 280px;
-            width: calc(100% - 280px);
-            min-height: 100vh;
-            background: #f5f7fc;
-            transition: all 0.3s ease;
-        }
-
-        /* TOP NAVBAR */
-        .top-nav {
-            background: white;
-            height: 72px;
-            padding: 0 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
-            position: sticky;
-            top: 0;
-            z-index: 99;
-            backdrop-filter: blur(0px);
-            border-bottom: 1px solid #eef2f6;
-        }
-
-        /* Bagian kiri: Logo + Hamburger (untuk mobile) */
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .mobile-logo {
-            display: none;
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: #0f1e35;
-            letter-spacing: -0.5px;
-        }
-        .mobile-logo i {
-            color: #2563eb;
-            margin-right: 6px;
-        }
-
-        /* HAMBURGER BUTTON */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            background: #f1f5f9;
-            padding: 8px 12px;
-            border-radius: 12px;
-            transition: 0.2s;
-        }
-        .hamburger span {
-            width: 24px;
-            height: 2.5px;
-            background: #1e293b;
-            border-radius: 4px;
-            transition: 0.2s;
-        }
-        .hamburger:hover {
-            background: #e2e8f0;
-        }
+      
 
         /* Nav Right (user & logout) */
         .nav-right {
@@ -482,53 +333,9 @@
     </style>
 </head>
 <body>
-
-<div class="sidebar" id="sidebar">
-    <div class="sidebar-brand">
-        <h2><i class="fas fa-print"></i> Lega<span style="color:#3b82f6;">Digi</span>Print</h2>
-        <span>Solusi cetak digital premium</span>
-    </div>
-    <ul class="sidebar-menu">
-        <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-        <li><a href="produk.php"><i class="fas fa-boxes"></i> Manajemen Produk</a></li>
-        <li><a href="hero.php"><i class="fas fa-images"></i> Hero Visual</a></li>
-        <li><a href="galeri.php"><i class="fas fa-chart-line"></i> Kelola Galeri</a></li>
-        <li><a href="clients.php"><i class="fas fa-user-tie"></i> Client</a></li>
-        <li><a href="pengaturan.php"><i class="fas fa-cog"></i> Pengaturan</a></li>
-        <hr class="sidebar-divider">
-        <li><a href="../index.php"><i class="fas fa-globe"></i> Lihat Website</a></li>
-    </ul>
-</div>
-
-<div class="overlay" id="overlay"></div>
-
 <div class="main-content">
-    <div class="top-nav">
-        <div class="nav-left">
-            <div class="hamburger" id="hamburgerBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        <div class="nav-right">
-            <div class="user-badge">
-                <i class="fas fa-user-circle"></i>
-                <span>Admin Studio</span>
-            </div>
-            <a href="../index.php" class="btn-logout" id="logoutBtn">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Keluar</span>
-            </a>
-        </div>
-    </div>
 
     <div class="content">
-        <div class="welcome-header">
-            <h1>Selamat Datang, <span style="color:#2563eb;">Admin</span> 👋</h1>
-            <p>Pantau dan kelola aktivitas percetakan Lega DigiPrint hari ini dengan mudah & profesional.</p>
-        </div>
-
         <div class="dashboard-grid">
             <!-- Card Manajemen Produk -->
             <div class="card">
