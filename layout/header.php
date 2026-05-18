@@ -85,7 +85,7 @@
 
         .logo span { color: var(--primary); }
 
-        /* Nav Links */
+        /* Nav Links (Desktop) */
         .nav-links {
             display: flex;
             align-items: center;
@@ -103,7 +103,7 @@
             padding: 6px 0;
         }
 
-        /* GARIS ANIMASI */
+        /* GARIS ANIMASI HOVER */
         .nav-links li a::after {
             content: '';
             position: absolute;
@@ -116,7 +116,6 @@
             transition: 0.3s ease;
         }
 
-        /* HOVER */
         .nav-links li a:hover::after {
             width: 100%;
         }
@@ -166,53 +165,60 @@
 
         .dropdown-content li { width: 100%; }
 
-        .dropdown-content li a {
-            padding: 12px 20px;
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 500;
+        /* --- BUTTONS & TOGGLE (TAMPILAN LAPTOP / DESKTOP) --- */
+
+        /* SOLUSI: Secara default, sembunyikan titik tiga di layar laptop/desktop */
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
         }
 
-        .dropdown-content li a:hover {
-            background: #f1f5f9;
-            color: var(--primary) !important;
+        .btn-cta {
+            background: var(--primary);
+            color: var(--white) !important;
+            min-width: 140px; 
+            padding: 12px 28px; 
+            border-radius: 50px;             
+            font-size: 1.05rem; 
+            font-weight: 700 !important;
+            text-decoration: none;           
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3); 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;                       
+            border: none;                    
+            cursor: pointer;
+            transition: var(--transition); 
         }
 
-        /* Desktop Hover */
+        .btn-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);     
+            box-shadow: 0 12px 24px rgba(56, 189, 248, 0.45); 
+        }
+
+        .btn-cta i, 
+        .btn-cta img {
+            font-size: 1.2rem;               
+            height: 1.2rem;                  
+            width: auto;
+        }
+
+        /* Desktop Hover Dropdown */
         @media (min-width: 993px) {
             .dropdown:hover .dropdown-content { display: block; }
             .dropdown:hover .dropbtn i { transform: rotate(180deg); }
         }
 
-        /* --- BUTTONS --- */
-        .btn-cta {
-            background: var(--primary);
-            color: var(--white) !important;
-            padding: 14px 30px; 
-            border-radius: 14px;
-            font-size: 1rem; 
-            font-weight: 700 !important;
-            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-cta:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
         /* --- RESPONSIVE MOBILE (< 992px) --- */
         @media (max-width: 992px) {
-            .mobile-toggle { display: block; }
+            /* SOLUSI: Memunculkan kembali ikon titik tiga hanya saat di layar HP */
+            .mobile-toggle { 
+                display: block; 
+            }
 
             .nav-links {
                 position: fixed;
@@ -223,15 +229,42 @@
                 background: var(--white);
                 flex-direction: column;
                 justify-content: flex-start;
-                padding: 100px 20px;
+                align-items: flex-start; 
+                padding: 100px 24px;
                 transition: 0.4s;
                 z-index: 999;
                 box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                gap: 15px;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: left;
+            }
+
+            .nav-links li a {
+                display: block;
+                width: 100%;
+                padding: 10px 0;
+                text-align: left;
             }
 
             .nav-links.active { right: 0; }
 
-            .dropdown { flex-direction: column; width: 100%; }
+            .dropdown { 
+                flex-direction: column; 
+                width: 100%; 
+                align-items: flex-start; 
+            }
+            
+            .dropbtn {
+                width: 100%;
+                text-align: left;
+                display: flex;
+                justify-content: space-between; 
+                align-items: center;
+                padding: 10px 0;
+            }
             
             .dropdown-content {
                 position: static;
@@ -240,11 +273,132 @@
                 box-shadow: none;
                 background: #f8fafc;
                 margin-top: 5px;
+                padding-left: 15px; 
+            }
+
+            .dropdown-content a {
+                text-align: left;
+                padding: 8px 0;
             }
 
             .dropdown.active .dropdown-content { display: block; }
             .dropdown.active .dropbtn i { transform: rotate(180deg); }
+
+            /* Pengaturan Tombol Login Saat Berada Di Dalam Menu HP */
+            .nav-links .login-item,
+            .nav-links li:last-child { 
+                margin-top: auto; 
+                width: 100%;
+                display: flex;
+                justify-content: center; 
+                padding-top: 20px;
+            }
+
+            .nav-links .login-item a,
+            .nav-links li:last-child a {
+                text-align: center !important;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                padding: 14px 0;
+                background: var(--primary); 
+                color: var(--white) !important;
+                border-radius: 50px; 
+                font-weight: 700;
+                box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
+            }
         }
+
+        /* --- RESPONSIVE MOBILE (< 992px) --- */
+        @media (max-width: 992px) {
+        .mobile-toggle { display: block; }
+
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--white);
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start; 
+            padding: 100px 24px;
+            transition: 0.4s;
+            z-index: 999;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            gap: 15px;
+        }
+
+        .nav-links li {
+            width: 100%;
+            text-align: left;
+        }
+
+        .nav-links li a {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            text-align: left;
+        }
+
+        .nav-links.active { right: 0; }
+
+        .dropdown { 
+            flex-direction: column; 
+            width: 100%; 
+            align-items: flex-start; 
+        }
+        
+        .dropbtn {
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            padding: 10px 0;
+        }
+        
+        .dropdown-content {
+            position: static;
+            display: none;
+            width: 100%;
+            box-shadow: none;
+            background: #f8fafc;
+            margin-top: 5px;
+            padding-left: 15px; 
+        }
+
+        .dropdown-content a {
+            text-align: left;
+            padding: 8px 0;
+        }
+
+        .dropdown.active .dropdown-content { display: block; }
+        .dropdown.active .dropbtn i { transform: rotate(180deg); }
+
+        .nav-links .login-item,
+        .nav-links li:last-child { 
+            margin-top: auto; 
+            width: 100%;
+            display: flex;
+            justify-content: center; 
+            padding-top: 20px;
+        }
+
+        .nav-links .login-item a,
+        .nav-links li:last-child a {
+            text-align: center !important;
+            display: inline-block;
+            width: 85%;
+            padding: 12px 0;
+            background: #38bdf8; 
+            color: #ffffff !important;
+            border-radius: 25px; 
+        }
+    }
     </style>
 </head>
 <body>
@@ -254,7 +408,7 @@
     <header>
         <nav class="container">
             <a href="index.php" class="logo">
-                <img src="assets/images/logo/logo1.png" alt="Logo LegaDigiPrint" style="height: 40px; vertical-align: middle; margin-right: 8px;">
+                <img src="assets/images/logo/logo.jpeg" alt="Logo LegaDigiPrint" style="height: 40px; vertical-align: middle; margin-right: 8px;">
                 Lega<span>DigiPrint</span>
             </a>
 

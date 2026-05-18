@@ -4,17 +4,31 @@ include "../layout/admin_header.php";
 ?>
 
 <style>
-    /* ========== RESPONSIVE STYLES ========== */
+    /* ========== RESET & STABILIZER ========== */
+    * {
+        box-sizing: border-box;
+    }
+
+    /* PASTIKAN LAYOUT STABIL TIDAK BERGESER */
+    .content-wrapper {
+        padding: 20px !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    /* CARD UTAMA - TANPA TRANSISI YANG MENGGERAKKAN */
     .admin-card {
         background: #fff;
-        margin: 0px 30px 30px 310px; 
+        margin: 0 30px 30px 310px;
         padding: 30px;
         border-radius: 15px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        transition: all 0.3s ease;
+        /* HAPUS TRANSITION - INI PENYEBAB GERAK */
+        transition: none;
+        width: auto;
     }
 
-    /* Header Section */
+    /* Header Section - TANPA TRANSISI */
     .galeri-header {
         display: flex;
         justify-content: space-between;
@@ -36,6 +50,7 @@ include "../layout/admin_header.php";
         margin-top: 6px;
     }
 
+    /* BUTTON - TRANSISI HALUS TAPI TIDAK MENGGERAKKAN LAYOUT */
     .btn-tambah {
         background: #0ea5e9;
         color: #fff;
@@ -46,22 +61,22 @@ include "../layout/admin_header.php";
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        transition: all 0.25s ease;
+        transition: background 0.2s ease, transform 0.2s ease;
         white-space: nowrap;
+        border: none;
+        cursor: pointer;
     }
 
     .btn-tambah:hover {
         background: #0284c7;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(14,165,233,0.3);
     }
 
-    /* Table Responsive Wrapper */
+    /* Table Responsive Wrapper - TIDAK BERUBAH LEBAR */
     .table-responsive {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        margin: 0 -4px;
-        padding: 0 4px;
+        width: 100%;
     }
 
     .galeri-table {
@@ -95,23 +110,19 @@ include "../layout/admin_header.php";
         border-bottom: none;
     }
 
-    .galeri-table tr:hover {
+    /* HOVER ROW - TANPA TRANSISI YANG BERLEBIHAN */
+    .galeri-table tbody tr:hover {
         background-color: #fafcff;
-        transition: 0.2s;
     }
 
-    /* Image Preview */
+    /* Image Preview - TANPA TRANSISI */
     .galeri-img {
         width: 100px;
         height: 70px;
         object-fit: cover;
         border-radius: 10px;
         border: 2px solid #e2e8f0;
-        transition: transform 0.2s;
-    }
-
-    .galeri-img:hover {
-        transform: scale(1.05);
+        display: block;
     }
 
     /* File Name */
@@ -127,7 +138,7 @@ include "../layout/admin_header.php";
         max-width: 220px;
     }
 
-    /* Action Button */
+    /* Action Button - TRANSISI HALUS */
     .btn-hapus {
         color: #ef4444;
         background: #fee2e2;
@@ -139,15 +150,13 @@ include "../layout/admin_header.php";
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        transition: all 0.2s ease;
+        transition: background 0.2s ease;
         border: 1px solid #fecaca;
     }
 
     .btn-hapus:hover {
         background: #ef4444;
         color: #fff;
-        transform: translateY(-1px);
-        box-shadow: 0 2px 8px rgba(239,68,68,0.3);
     }
 
     .btn-hapus:hover i {
@@ -168,12 +177,22 @@ include "../layout/admin_header.php";
         display: block;
     }
 
+    /* Footer Info */
+    .galeri-footer {
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 1px solid #eef2f6;
+        text-align: right;
+        font-size: 0.75rem;
+        color: #94a3b8;
+    }
+
     /* ========== RESPONSIVE BREAKPOINTS ========== */
     
-    /* Tablet & Laptop Kecil */
+    /* Tablet & Laptop Kecil - TANPA PERUBAHAN MENDADAK */
     @media (max-width: 1024px) {
         .admin-card {
-            margin: 20px 24px;
+            margin: 20px 24px 20px 290px;
             padding: 24px 28px;
         }
         
@@ -192,16 +211,17 @@ include "../layout/admin_header.php";
         }
     }
 
-    /* Mobile (768px ke bawah) */
+    /* Mobile (768px ke bawah) - SIDEBAR BIASANYA HILANG */
     @media (max-width: 768px) {
         .admin-card {
-            margin: 12px 16px; /* Hapus margin 310px saat di mobile */
+            margin: 12px 16px;
             padding: 18px 20px;
             border-radius: 12px;
         }
         
         .galeri-header {
-            margin-top: 0 !important; /* Memastikan judul nempel ke atas kartu */
+            flex-direction: column;
+            align-items: stretch;
         }
         
         .galeri-header h2 {
@@ -215,12 +235,8 @@ include "../layout/admin_header.php";
         .btn-tambah {
             padding: 10px 18px;
             font-size: 0.85rem;
-            width: 100%;
             justify-content: center;
-        }
-        
-        .btn-tambah span {
-            display: inline;
+            width: 100%;
         }
         
         .galeri-table th,
@@ -241,8 +257,6 @@ include "../layout/admin_header.php";
             max-width: 130px;
             font-size: 0.7rem;
             padding: 4px 8px;
-            word-break: break-all;
-            white-space: normal;
         }
         
         .btn-hapus {
@@ -282,21 +296,16 @@ include "../layout/admin_header.php";
             padding: 8px 8px;
         }
         
-        .galeri-table th:nth-child(3),
-        .galeri-table td:nth-child(3) {
-            max-width: 100px;
-        }
-        
         .btn-hapus {
             padding: 5px 10px;
         }
+        
+        .btn-hapus i {
+            font-size: 0.75rem;
+        }
     }
 
-    .content-wrapper {
-        padding-top: 5px !important; /* Mengecilkan jarak dari topbar ke kartu */
-    }
-    
-    /* Scrollbar styling untuk wrapper tabel */
+    /* Scrollbar styling */
     .table-responsive::-webkit-scrollbar {
         height: 5px;
     }
@@ -310,81 +319,101 @@ include "../layout/admin_header.php";
         background: #cbd5e1;
         border-radius: 10px;
     }
-    
-    .table-responsive::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-    }
 </style>
 
-<div class="admin-card">
-    <div class="galeri-header">
-        <div>
-            <h2><i class="fas fa-images" style="color:#0ea5e9; margin-right: 10px;"></i> Kelola Galeri Produk</h2>
-            <p><i class="fas fa-info-circle" style="font-size:0.8rem;"></i> Daftar foto hasil cetakan Lega DigiPrint.</p>
+<div class="content-wrapper">
+    <div class="admin-card">
+        <div class="galeri-header">
+            <div>
+                <h2><i class="fas fa-images"></i> Kelola Galeri Produk</h2>
+                <p><i class="fas fa-info-circle" style="font-size:0.75rem;"></i> Daftar foto hasil cetakan Lega DigiPrint</p>
+            </div>
+            <a href="tambah_galeri.php" class="btn-tambah">
+                <i class="fas fa-plus"></i> 
+                <span>Tambah Foto</span>
+            </a>
         </div>
-        <a href="tambah_galeri.php" class="btn-tambah">
-            <i class="fas fa-plus"></i> <span>Tambah Foto</span>
-        </a>
-    </div>
 
-    <div class="table-responsive">
-        <table class="galeri-table">
-            <thead>
-                <tr>
-                    <th width="60">No</th>
-                    <th>Pratinjau</th>
-                    <th>Nama File</th>
-                    <th width="120" style="text-align:center;">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $no = 1;
-                $query = mysqli_query($conn, "SELECT * FROM galeri ORDER BY id DESC");
-                if(mysqli_num_rows($query) > 0) {
-                    while($row = mysqli_fetch_array($query)) {
-                ?>
-                <tr>
-                    <td style="font-weight: 600;"><?= $no++; ?></td>
-                    <td>
-                        <img src="../assets/images/galeri/<?= $row['gambar']; ?>" 
-                             class="galeri-img" 
-                             alt="Galeri Image"
-                             loading="lazy"
-                             onerror="this.src='../assets/images/no-image.png'">
-                    </td>
-                    <td>
-                        <code class="file-name"><?= htmlspecialchars($row['gambar']); ?></code>
-                    </td>
-                    <td style="text-align:center;">
-                        <a href="hapus_galeri.php?id=<?= $row['id']; ?>" 
-                           class="btn-hapus" 
-                           onclick="return confirm('Yakin ingin menghapus foto <?= htmlspecialchars($row['gambar']); ?>?')">
-                            <i class="fas fa-trash-alt"></i> <span>Hapus</span>
-                        </a>
-                    </td>
-                </tr>
-                <?php 
-                    }
-                } else { 
-                ?>
-                <tr>
-                    <td colspan="4" class="empty-state">
-                        <i class="fas fa-folder-open"></i>
-                        <p>Belum ada foto galeri.</p>
-                        <a href="tambah_galeri.php" class="btn-tambah" style="margin-top: 15px; display: inline-flex;">
-                            <i class="fas fa-plus"></i> Tambah Foto Sekarang
-                        </a>
-                    </td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="galeri-table">
+                <thead>
+                    <tr>
+                        <th width="50">No</th>
+                        <th width="100">Pratinjau</th>
+                        <th>Nama File</th>
+                        <th width="100" style="text-align:center;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    $query = mysqli_query($conn, "SELECT * FROM galeri ORDER BY id DESC");
+                    if(mysqli_num_rows($query) > 0) {
+                        while($row = mysqli_fetch_array($query)) {
+                    ?>
+                    <tr>
+                        <td style="font-weight: 600;"><?= $no++; ?></td>
+                        <td>
+                            <img src="../assets/images/galeri/<?= $row['gambar']; ?>" 
+                                 class="galeri-img" 
+                                 alt="Galeri"
+                                 loading="lazy"
+                                 onerror="this.src='../assets/images/no-image.png'">
+                        </td>
+                        <td>
+                            <code class="file-name"><?= htmlspecialchars($row['gambar']); ?></code>
+                        </td>
+                        <td style="text-align:center;">
+                            <a href="hapus_galeri.php?id=<?= $row['id']; ?>" 
+                               class="btn-hapus" 
+                               onclick="return confirm('Yakin ingin menghapus foto <?= htmlspecialchars($row['gambar']); ?>?')">
+                                <i class="fas fa-trash-alt"></i> 
+                                <span>Hapus</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php 
+                        }
+                    } else { 
+                    ?>
+                    <tr>
+                        <td colspan="4" class="empty-state">
+                            <i class="fas fa-folder-open"></i>
+                            <p>Belum ada foto galeri.</p>
+                            <a href="tambah_galeri.php" class="btn-tambah" style="display: inline-flex; width: auto;">
+                                <i class="fas fa-plus"></i> Tambah Foto Sekarang
+                            </a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        
+        <?php if(mysqli_num_rows($query) > 0): ?>
+        <div class="galeri-footer">
+            <i class="fas fa-chart-line"></i> Total <?= mysqli_num_rows($query); ?> foto dalam galeri
+        </div>
+        <?php endif; ?>
     </div>
-    
-    <?php if(mysqli_num_rows($query) > 0): ?>
-    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eef2f6; text-align: right; font-size: 0.75rem; color: #94a3b8;">
-        <i class="fas fa-chart-line"></i> Total <?= mysqli_num_rows($query); ?> foto dalam galeri
-    </div>
-    <?php endif; ?>
 </div>
+
+<script>
+    // PASTIKAN TIDAK ADA SCRIPT YANG MEMBUAT LAYOUT BERUBAH
+    // Tambahan untuk mencegah sidebar toggle mempengaruhi margin
+    (function() {
+        // Cek apakah ada sidebar toggle yang mengubah margin
+        const style = document.createElement('style');
+        style.textContent = `
+            /* MEMAKSA LAYOUT STABIL */
+            .content-wrapper {
+                margin-left: 0 !important;
+                transition: none !important;
+            }
+            .admin-card {
+                transition: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+    })();
+</script>

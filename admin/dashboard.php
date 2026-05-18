@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['login'])){
+    header("Location: login.php");
+    exit;
+}
+?>
+
 <?php include "../layout/admin_header.php";?>
 <!DOCTYPE html>
 <html lang="id">
@@ -6,7 +15,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Lega DigiPrint | Dashboard Manajemen</title>
-    <!-- Google Fonts & Simple Icons (Font Awesome CDN untuk tampilan profesional) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -158,50 +166,72 @@
             border-bottom: 1px dashed #e2e8f0;
             font-weight: 500;
         }
+        /* CONTAINER TOMBOL - UNIFIED */
         .btn-group {
             display: flex;
             gap: 14px;
             margin-top: 20px;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Menjamin tombol otomatis turun rapi jika di layar HP */
         }
+
+        /* SETTING DASAR UNTUK SEMUA TOMBOL DI BTN-GROUP */
+        .btn-group .btn-primary,
+        .btn-group .btn-outline {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            /* CORRECTED: Standardized kebulatan sudut */
+            border-radius: 40px; 
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            /* CORRECTED: Standardized padding agar semua tombol memiliki tinggi yang sama */
+            padding: 10px 20px; 
+            font-size: 0.85rem;
+        }
+
+        /* KELOLA PRODUK & GALERI (PRIMARY BUTTONS) */
         .btn-primary {
             background: #0f1e35;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
         }
-        .btn-primary i {
-            font-size: 0.9rem;
-        }
+
         .btn-primary:hover {
             background: #1e3a5f;
-            transform: scale(0.97);
+            transform: scale(0.97); /* Efek mengecil sedikit saat diklik/dihover */
         }
+
+        /* HAPUS, TAMBAH PRODUK, & TAMBAH GALERI (OUTLINE BUTTONS) */
         .btn-outline {
             background: transparent;
-            border: 1.5px solid #cbd5e1;
-            padding: 9px 20px;
-            border-radius: 40px;
-            font-weight: 600;
+            /* CORRECTED: Standardized garis tepi agar konsisten */
+            border: 1.5px solid #cbd5e1; 
             color: #1f2937;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
         }
+
         .btn-outline:hover {
             background: #f1f5f9;
             border-color: #94a3b8;
+        }
+
+        /* PENGATURAN OTOMATIS JARAK IKON FONT AWESOME DENGAN TEKS */
+        .btn-group a i {
+            margin-right: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIF UNTUK HP LAYAR KECIL (< 480px) */
+        @media (max-width: 480px) {
+            .btn-group {
+                gap: 10px; /* Jarak antar tombol sedikit dirapatkan di HP */
+            }
+            .btn-group .btn-primary,
+            .btn-group .btn-outline {
+                padding: 8px 16px; /* Mengecilkan padding tombol agar tidak meluber */
+                font-size: 0.8rem;   /* Ukuran text sedikit disesuaikan untuk jari */
+            }
         }
         .hero-preview {
             background: #fefce8;
@@ -344,10 +374,6 @@
                     <i class="fas fa-cubes"></i>
                 </div>
                 <p style="color: #334155; margin-bottom: 8px;">Atur katalog produk mulai dari Banner hingga Stiker.</p>
-                
-                <div class="stats-badge">
-                    <i class="fas fa-database"></i> Total Produk: <span id="totalProdukCount">4</span>
-                </div>
 
                 <div class="product-list">
                     <div class="product-item"><span>🖨️ Banner</span> <span>Aktif</span></div>
@@ -360,6 +386,10 @@
                     <a href="produk.php" class="btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
                         <i class="fas fa-list-ul" style="margin-right: 5px;"></i> Kelola Produk
                     </a>
+
+                    <a href="hapus_galeri.php" class="btn-outline" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-upload" style="margin-right: 5px;"></i> Hapus
+                    </a>
                     
                     <a href="tambah_produk.php" class="btn-outline" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
                         <i class="fas fa-plus-circle" style="margin-right: 5px;"></i> Tambah Produk
@@ -369,33 +399,32 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3><i class="fas fa-images" style="font-size:1.2rem; margin-right: 8px;"></i> Galeri Portofolio</h3>
+                    <h3><i class="fas fa-images"></i> Galeri Portofolio</h3>
                     <i class="fas fa-photo-video"></i>
                 </div>
-                <p style="color: #334155; margin-bottom: 8px;">Kelola foto hasil produksi untuk ditampilkan di landing page.</p>
                 
-                <div class="stats-badge">
-                    <i class="fas fa-camera-retro"></i> Total Foto: <span id="totalGaleriCount">12</span>
-                </div>
+                <p class="card-description">Kelola foto hasil produksi untuk ditampilkan di landing page.</p>
 
                 <div class="product-list">
-                    <div class="product-item"><span>📸 Backdrop Event</span> <span>Terbaru</span></div>
-                    <div class="product-item"><span>✨ Kartu Nama Glossy</span> <span>Unggulan</span></div>
-                    <div class="product-item"><span>🏢 Branding Mobil</span> <span>Aktif</span></div>
-                    <div class="product-item"><span>👕 Sablon Kaos</span> <span>Aktif</span></div>
+                    <div class="product-item"><span>📸 Proses Produksi</span> <span>Terbaru</span></div>
+                    <div class="product-item"><span>🖨️ Mesin Cetak</span> <span>Aktif</span></div>
+                    <div class="product-item"><span>✨ Kegiatan</span> <span>Produktif</span></div>
+                    <div class="product-item"><span>👕 Seragam Karyawan</span> <span>Seragam</span></div>
                 </div>
 
                 <div class="btn-group">
-                    <a href="galeri.php" class="btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-th-large" style="margin-right: 5px;"></i> Koleksi
+                    <a href="galeri.php" class="btn-primary">
+                        <i class="fas fa-list-ul"></i> Kelola Galeri
                     </a>
                     
-                    <a href="hapus_galeri.php" class="btn-outline" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-upload" style="margin-right: 5px;"></i> Hapus
+                    <a href="hapus_galeri.php" class="btn-outline">
+                        <i class="fas fa-upload"></i> Hapus
+                    </a>
+                    
+                    <a href="tambah_galeri.php" class="btn-outline">
+                        <i class="fas fa-plus-circle"></i> Tambah Galeri
                     </a>
                 </div>
-
-                <small style="display: block; margin-top: 12px; color:#6c7a91;"><i class="fas fa-sync-alt"></i> Update realtime</small>
             </div>
 
             <!-- Card Konten Visual Hero -->

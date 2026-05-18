@@ -62,122 +62,122 @@ if (!$query) {
         }
 
 
-    .banner-slider{
-    width:100%;
-    overflow:hidden;
-    position:relative;
-}
+        .banner-slider{
+            width:100%;
+            overflow:hidden;
+            position:relative;
+        }
 
-.slider-container{
-    position:relative;
-    width:100%;
-    overflow:hidden;
-}
+        .slider-container{
+            position:relative;
+            width:100%;
+            overflow:hidden;
+        }
 
-.slider-wrapper{
-    display:flex;
-    transition:transform .6s ease;
-}
+        .slider-wrapper{
+            display:flex;
+            transition:transform .6s ease;
+        }
 
-.slide{
-    min-width:100%;
-}
+        .slide{
+            min-width:100%;
+        }
 
-.slide img{
-    width:100%;
-    display:block;
-    object-fit:cover;
-}
+        .slide img{
+            width:100%;
+            display:block;
+            object-fit:cover;
+        }
 
-/* BUTTON */
-.slider-btn{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    
-    width:45px;
-    height:45px;
+        /* BUTTON */
+        .slider-btn{
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            
+            width:45px;
+            height:45px;
 
-    border:none;
-    border-radius:50%;
+            border:none;
+            border-radius:50%;
 
-    background:rgba(0,0,0,.4);
-    color:#fff;
+            background:rgba(0,0,0,.4);
+            color:#fff;
 
-    cursor:pointer;
-    z-index:10;
+            cursor:pointer;
+            z-index:10;
 
-    transition:.3s;
+            transition:.3s;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
 
-.slider-btn:hover{
-    background:var(--primary);
-}
+        .slider-btn:hover{
+            background:var(--primary);
+        }
 
-.prev-btn{
-    left:20px;
-}
+        .prev-btn{
+            left:20px;
+        }
 
-.next-btn{
-    right:20px;
-}
+        .next-btn{
+            right:20px;
+        }
 
-/* DOTS */
-.slider-dots{
-    position:absolute;
-    left:50%;
-    bottom:15px;
-    transform:translateX(-50%);
-    
-    display:flex;
-    gap:8px;
-}
+        /* DOTS */
+        .slider-dots{
+            position:absolute;
+            left:50%;
+            bottom:15px;
+            transform:translateX(-50%);
+            
+            display:flex;
+            gap:8px;
+        }
 
-.dot{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    
-    background:rgba(255,255,255,.5);
-    cursor:pointer;
+        .dot{
+            width:10px;
+            height:10px;
+            border-radius:50%;
+            
+            background:rgba(255,255,255,.5);
+            cursor:pointer;
 
-    transition:.3s;
-}
+            transition:.3s;
+        }
 
-.dot.active{
-    background:#fff;
-    transform:scale(1.2);
-}
+        .dot.active{
+            background:#fff;
+            transform:scale(1.2);
+        }
 
-/* MOBILE */
-@media(max-width:768px){
+        /* MOBILE */
+        @media(max-width:768px){
 
-    .slider-btn{
-        width:32px;
-        height:32px;
+        .slider-btn{
+            width:32px;
+            height:32px;
+        }
+
+        .prev-btn{
+            left:8px;
+        }
+
+        .next-btn{
+            right:8px;
+        }
+
+        .dot{
+            width:8px;
+            height:8px;
+        }
+
+        .slider-dots{
+            bottom:10px;
+        }
     }
-
-    .prev-btn{
-        left:8px;
-    }
-
-    .next-btn{
-        right:8px;
-    }
-
-    .dot{
-        width:8px;
-        height:8px;
-    }
-
-    .slider-dots{
-        bottom:10px;
-    }
-}
         
         /* =========================
         IKLAN SECTION
@@ -510,170 +510,433 @@ if (!$query) {
 
         }
 
-        /* ===== LAYANAN SECTION ===== */
-        #layanan {
-            background: var(--dark);
-            color: white;
-            margin-bo
+        .commitment-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         }
 
-        .layanan-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 10px; 
-        }
-
-        .layanan-item {
-            background: rgba(255,255,255,0.04);
-            padding: 15px 10px; 
-            border-radius: 16px; 
+        .commitment-header {
             text-align: center;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s ease; 
-            cursor: pointer;
+            margin-bottom: 50px;
         }
 
-        .layanan-item:hover {
-            transform: translateY(-8px); 
-            background: rgba(255, 255, 255, 0.1); 
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .commitment-header .badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--primary-dark);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
         }
 
-        .layanan-item:hover i {
-            transform: scale(1.1);
-            transition: 0.3s;
+        .commitment-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
         }
 
-        /* DESKTOP & TABLET TETAP SEPERTI ASLINYA */
-        @media (min-width: 768px) {
-            .layanan-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-            .layanan-item {
-                padding: 30px 20px;
-                border-radius: 28px;
-            }
-            .layanan-item i {
-                font-size: 2.5rem;
-            }
-            .layanan-item h4 {
-                font-size: 1.3rem;
-            }
+        .commitment-header h2 span {
+            color: var(--primary);
         }
 
-        @media (min-width: 1024px) {
-            .layanan-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .commitment-header p {
+            color: var(--gray);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* ===== TENAGA KERJA SECTION ===== */
-        #tenaga-kerja {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            padding: 60px 0;
-            color: #ffffff !important; 
-        }
-
-        #tenaga-kerja h2, 
-        #tenaga-kerja .section-title h2 {
-            color: #ffffff !important;
-            text-align: center;
-        }
-
-        .tim-grid {
+        .commitment-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 10px; 
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
         }
 
-        .tim-item {
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 15px 10px; 
-            border-radius: 16px; 
+        .commitment-card {
+            background: var(--white);
+            padding: 30px 25px;
+            border-radius: 20px;
             text-align: center;
             transition: all 0.3s ease;
-            cursor: pointer;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
         }
 
-        .tim-item:hover {
-            background: rgba(255,255,255,0.08);
+        .commitment-card:hover {
             transform: translateY(-8px);
-            border-color: #38bdf8;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.1);
         }
 
-        .icon-box {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
-            margin: 0 auto 10px;
+        .commitment-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
-            font-size: 1.4rem;
-            color: #ffffff; /* Warna icon putih */
-            transition: 0.3s;
+            margin: 0 auto 20px;
         }
 
-        .tim-item h4 {
-            font-size: 0.75rem; 
-            margin-bottom: 5px;
-            /* Mengubah ke putih murni */
-            color: #ffffff !important; 
+        .commitment-icon i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .commitment-card h3 {
+            font-size: 1.1rem;
             font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
         }
 
-        .tim-item p {
-            color: #e2e8f0; 
-            display: none; 
+        .commitment-card p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.6;
         }
 
-        /* TABLET & DESKTOP (KEMBALI KE PENGATURAN ASLI) */
-        @media (min-width: 768px) {
-            .tim-grid {
+        .commitment-cta {
+            text-align: center;
+        }
+
+        .commitment-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .commitment-btn:hover {
+            background: #1eb954;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* ==================== RESPONSIVE COMMITMENT ==================== */
+        @media (max-width: 992px) {
+            .commitment-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .commitment-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
             
-            .tim-item {
-                padding: 30px 20px;
+            .commitment-header h2 {
+                font-size: 1.5rem;
             }
-
-            .icon-box {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
+            
+            .commitment-header p {
+                font-size: 0.85rem;
+                padding: 0 15px;
             }
-
-            .tim-item h4 {
-                font-size: 1.2rem;
+            
+            .commitment-section {
+                padding: 50px 0;
             }
-
-            .tim-item p {
-                display: block; 
-                font-size: 0.9rem;
+            
+            .commitment-card {
+                padding: 20px 15px;
+            }
+            
+            .commitment-icon {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .commitment-icon i {
+                font-size: 1.5rem;
+            }
+            
+            .commitment-card h3 {
+                font-size: 1rem;
+            }
+            
+            .commitment-card p {
+                font-size: 0.8rem;
+            }
+            
+            .commitment-btn {
+                padding: 10px 25px;
+                font-size: 0.85rem;
             }
         }
 
-        @media (min-width: 1024px) {
-            .tim-grid {
-                grid-template-columns: repeat(3, 1fr);
+        /* ==================== TESTIMONIAL SECTION ==================== */
+        .testimonial-section {
+            padding: 80px 0;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-header .badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary-dark);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-header h2 span {
+            color: var(--primary);
+        }
+
+        .testimonial-header p {
+            color: var(--gray);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary-light);
+        }
+
+        .testimonial-rating {
+            margin-bottom: 15px;
+        }
+
+        .testimonial-rating i {
+            color: #fbbf24;
+            font-size: 0.9rem;
+            margin-right: 2px;
+        }
+
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .user-avatar i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .user-info h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+
+        .user-info span {
+            font-size: 0.7rem;
+            color: var(--gray);
+        }
+
+        .testimonial-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            background: linear-gradient(135deg, var(--dark), var(--dark-soft));
+            padding: 35px 40px;
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        .testimonial-stats .stat {
+            text-align: center;
+        }
+
+        .testimonial-stats .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .testimonial-stats .stat-label {
+            font-size: 0.85rem;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* ==================== RESPONSIVE TESTIMONIAL ==================== */
+        @media (max-width: 992px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* TESTIMONIAL STATS - MENJADI SATU BARIS (HORIZONTAL SCROLL) */
+            .testimonial-stats {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                gap: 20px;
+                padding: 20px 15px;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+            
+            .testimonial-stats .stat {
+                flex-shrink: 0;
+                min-width: 100px;
+            }
+            
+            .testimonial-stats .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .testimonial-stats .stat-label {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .testimonial-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .testimonial-header p {
+                font-size: 0.85rem;
+                padding: 0 15px;
+            }
+            
+            .testimonial-section {
+                padding: 50px 0;
+            }
+            
+            .testimonial-card {
+                padding: 18px;
+            }
+            
+            .testimonial-text {
+                font-size: 0.85rem;
+            }
+            
+            .user-avatar i {
+                font-size: 2rem;
+            }
+            
+            .user-info h4 {
+                font-size: 0.85rem;
+            }
+            
+            /* TESTIMONIAL STATS - SATU BARIS DI HP KECIL */
+            .testimonial-stats {
+                gap: 15px;
+                padding: 15px 12px;
+            }
+            
+            .testimonial-stats .stat {
+                min-width: 85px;
+            }
+            
+            .testimonial-stats .stat-number {
+                font-size: 1.3rem;
+            }
+            
+            .testimonial-stats .stat-label {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* Untuk HP yang sangat kecil (max-width: 400px) */
+        @media (max-width: 400px) {
+            .testimonial-stats {
+                gap: 10px;
+                padding: 12px 10px;
+            }
+            
+            .testimonial-stats {
+                gap: 15px;
+                padding: 15px 12px;
+            }
+            
+            .testimonial-stats .stat {
+                min-width: 85px;
+            }
+            
+            .testimonial-stats .stat-number {
+                font-size: 1.2rem;
+                margin-bottom: 4px;
+            }
+            
+            .testimonial-stats .stat-label {
+                font-size: 0.6rem;
+                color: rgba(0, 0, 0, 0.9);
             }
         }
 
         /*CLIENT*/
         .client-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 20px;
-        justify-items: center;
-        align-items: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
         }
 
         .client-card {
@@ -709,73 +972,79 @@ if (!$query) {
             opacity: 1;
         }
 
+        /* ==================== RESPONSIVE CLIENT GRID ==================== */
+        /* Tablet */
+        @media (max-width: 992px) {
+            .client-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
+            }
+            
+            .client-card {
+                padding: 15px;
+                height: 90px;
+            }
+            
+            .client-card img {
+                max-height: 50px;
+            }
+        }
+
+        /* HP (768px ke bawah) */
         @media (max-width: 768px) {
-            .client-grid { grid-template-columns: repeat(3, 1fr); }
+            .client-grid { 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            
+            .client-card {
+                padding: 12px;
+                height: 80px;
+                border-radius: 10px;
+            }
+            
+            .client-card img {
+                max-height: 45px;
+            }
         }
 
-        /* ===== FOOTER ===== */
-        footer {
-            background: #0f172a;
-            color: white;
-            padding: 40px 20px 20px; /* Padding samping ditambah agar tidak mepet layar HP */
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px; /* Mengurangi gap agar lebih rapat di smartphone */
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        /* Merapikan judul di footer */
-        .footer-grid h3, .footer-grid h4 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            color: #f8fafc;
+        /* HP Kecil (480px ke bawah) */
+        @media (max-width: 480px) {
+            .client-grid { 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            .client-card {
+                padding: 10px;
+                height: 70px;
+                border-radius: 8px;
+            }
+            
+            .client-card img {
+                max-height: 38px;
+            }
         }
 
-        /* Merapikan teks/link di footer */
-        .footer-grid p, .footer-grid a {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            line-height: 1.6;
-            text-decoration: none;
+        /* HP sangat kecil (380px ke bawah) */
+        @media (max-width: 380px) {
+            .client-grid { 
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .client-card {
+                padding: 8px;
+                height: 65px;
+            }
+            
+            .client-card img {
+                max-height: 35px;
+            }
         }
-        
-        .socials {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        
-        .socials a {
-            width: 36px;
-            height: 36px;
-            background: #1e293b;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: 0.2s;
-        }
-        
-        .socials a:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.05); /* Border dibuat lebih halus */
-            padding-top: 20px;
-            text-align: center;
-            font-size: 0.75rem; /* Font copyright sedikit diperkecil */
-            color: #64748b;
-        }
-        
-        /* TABLET & DESKTOP */
+
+        /* ==================== FOOTER RESPONSIVE ==================== */
+        /* Tablet & Desktop */
         @media (min-width: 768px) {
             footer {
                 padding: 60px 0 30px;
@@ -790,6 +1059,26 @@ if (!$query) {
             }
             .footer-bottom {
                 font-size: 0.8rem;
+            }
+        }
+
+        /* HP */
+        @media (max-width: 767px) {
+            footer {
+                padding: 40px 0 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            .socials {
+                justify-content: center;
+            }
+            .footer-bottom {
+                font-size: 0.7rem;
+                text-align: center;
+                padding: 0 15px;
             }
         }
 
@@ -928,61 +1217,149 @@ if (!$query) {
     </div>
 </section>
 
-<section id="layanan">
+<section class="commitment-section">
     <div class="container">
-        <div class="section-title text-white">
-            <h2 style="text-align: center;">Mengapa Memilih Kami?</h2>
+        <div class="commitment-header">
+            <span class="badge">Komitmen Kami</span>
+            <h2>Kenapa <span>Pelanggan Percaya</span> kepada Kami?</h2>
+            <p>Bukan hanya sekadar cetak, tapi solusi percetakan yang tepat untuk bisnis Anda</p>
         </div>
-        <div class="layanan-grid">
-            <div class="layanan-item">
-                <i class="fas fa-bolt"></i>
-                <h4>Proses Kilat</h4>
-                <p>Sistem antrean efisien, cetak bisa ditunggu atau selesai dalam 24 jam.</p>
+
+        <div class="commitment-grid">
+            <div class="commitment-card">
+                <div class="commitment-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="commitment-content">
+                    <h3>Garansi Kepuasan</h3>
+                    <p>Hasil cetak tidak sesuai? Kami perbaiki GRATIS atau refund 100% uang Anda.</p>
+                </div>
             </div>
-            <div class="layanan-item">
-                <i class="fas fa-medal"></i>
-                <h4>High Definition</h4>
-                <p>Resolusi tinggi hingga 2400 DPI untuk detail yang sangat halus.</p>
+            <div class="commitment-card">
+                <div class="commitment-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div class="commitment-content">
+                    <h3>Prioritaskan Deadline</h3>
+                    <p>Kami paham waktu adalah uang. Pengerjaan tepat waktu, bahkan untuk pesanan dadakan.</p>
+                </div>
             </div>
-            <div class="layanan-item">
-                <i class="fas fa-wallet"></i>
-                <h4>Harga Kompetitif</h4>
-                <p>Kualitas bintang lima dengan harga yang tetap ramah di kantong.</p>
+            <div class="commitment-card">
+                <div class="commitment-icon">
+                    <i class="fas fa-microphone-alt"></i>
+                </div>
+                <div class="commitment-content">
+                    <h3>Konsultasi Langsung</h3>
+                    <p>Diskusikan kebutuhan cetak Anda langsung dengan tim expert kami, gratis!</p>
+                </div>
+            </div>
+            <div class="commitment-card">
+                <div class="commitment-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="commitment-content">
+                    <h3>Pengiriman Terjamin</h3>
+                    <p>Packing aman & ekspedisi terpercaya untuk memastikan pesanan sampai utuh.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="commitment-cta">
+            <a href="https://wa.me/6282117773741" target="_blank" class="commitment-btn">
+                <i class="fab fa-whatsapp"></i> Konsultasi Sekarang
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial Section -->
+<section class="testimonial-section">
+    <div class="container">
+        <div class="testimonial-header">
+            <span class="badge">Testimonial</span>
+            <h2>Apa Kata <span>Pelanggan</span>?</h2>
+            <p>Lebih dari 500+ pelanggan telah mempercayakan kebutuhan cetaknya kepada Lega DigiPrint</p>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Hasil cetak sangat memuaskan, warna tajam dan proses cepat. Recommended banget untuk kebutuhan banner dan stiker!"</p>
+                <div class="testimonial-user">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="user-info">
+                        <h4>Andi Wijaya</h4>
+                        <span>Owner Cafe Kopi Senja</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Pelayanan ramah, harga bersaing, dan hasil cetak premium. Sudah 3x pesan di sini, selalu memuaskan!"</p>
+                <div class="testimonial-user">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="user-info">
+                        <h4>Siti Nurhaliza</h4>
+                        <span>Marketing Event Organizer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Desain kami dikerjakan dengan detail, tepat waktu, dan komunikasinya sangat baik. Terima kasih Lega DigiPrint!"</p>
+                <div class="testimonial-user">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="user-info">
+                        <h4>Budi Santoso</h4>
+                        <span>Digital Agency Owner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-stats">
+            <div class="stat">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Pelanggan Puas</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">1000+</span>
+                <span class="stat-label">Proyek Selesai</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">99%</span>
+                <span class="stat-label">Ulasan Positif</span>
             </div>
         </div>
     </div>
 </section>
 
-<section id="tenaga-kerja">
-    <div class="container">
-        <div class="section-title">
-            <h2>Tenaga Kerja Profesional</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="tim-grid">
-            <div class="tim-item">
-                <div class="icon-box">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <h4>Desainer Ahli</h4>
-                <p>Tim kreatif yang siap mewujudkan ide Anda menjadi desain visual yang menjual dan estetik.</p>
-            </div>
-            <div class="tim-item">
-                <div class="icon-box">
-                    <i class="fas fa-print"></i>
-                </div>
-                <h4>Operator Senior</h4>
-                <p>Tenaga teknis berpengalaman yang memastikan setiap hasil cetak tajam, presisi, dan sempurna.</p>
-            </div>
-            <div class="tim-item">
-                <div class="icon-box">
-                    <i class="fas fa-check-double"></i>
-                </div>
-                <h4>Quality Control</h4>
-                <p>Proses pengecekan ketat pada setiap pesanan sebelum sampai ke tangan Anda.</p>
-            </div>
-        </div>
-    </div>
     <div class="container">
         <h2 style="text-align: center; margin-bottom: 40px; font-weight: 800; color: #0f172a; font-size: 2rem;">Our Client</h2>
         

@@ -1,47 +1,164 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['login'])){
+    header("Location: login.php");
+    exit;
+}
+
 include "../config/koneksi.php";
 include "../layout/admin_header.php";
 
 if(isset($_POST['simpan'])){
-    $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-    $kategori = mysqli_real_escape_string($conn, $_POST['kategori']);
-    $harga = mysqli_real_escape_string($conn, $_POST['harga']);
-    $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
 
-    // 1. Proses Gambar Utama (Thumbnail Depan)
+    $nama = trim($_POST['nama']);
+    $kategori = (int) $_POST['kategori'];
+    $harga = (int) $_POST['harga'];
+    $deskripsi = trim($_POST['deskripsi']);
+
+    // Folder upload
+    $upload_dir = "../assets/images/produk/";
+
+    // Validasi ekstensi & mime
+    $allowed_ext = ['jpg', 'jpeg', 'png', 'webp'];
+    $allowed_mime = [
+        'image/jpeg',
+        'image/png',
+        'image/webp'
+    ];
+
+    // =========================
+    // VALIDASI GAMBAR UTAMA
+    // =========================
+
+    if(empty($_FILES['gambar']['name'])){
+        die("Gambar utama wajib diupload!");
+    }
+
     $gambar_utama = $_FILES['gambar']['name'];
     $tmp_utama = $_FILES['gambar']['tmp_name'];
-    $nama_utama_baru = time() . "_main_" . str_replace(' ', '_', $gambar_utama);
+    $size_utama = $_FILES['gambar']['size'];
 
-    if(move_uploaded_file($tmp_utama, "../assets/images/produk/" . $nama_utama_baru)){
-        // Masukkan data ke tabel produk
-        $query_produk = "INSERT INTO produk (nama_produk, id_kategori, harga, deskripsi, gambar) 
-                         VALUES ('$nama', '$kategori', '$harga', '$deskripsi', '$nama_utama_baru')";
-        
-        if(mysqli_query($conn, $query_produk)){
-            $id_produk_baru = mysqli_insert_id($conn);
+    // Ambil ekstensi
+    $ext_utama = strtolower(pathinfo($gambar_utama, PATHINFO_EXTENSION));
 
-            // 2. Logika Upload Banyak Gambar (Galeri Tambahan)
+    // Validasi ekstensi
+    if(!in_array($ext_utama, $allowed_ext)){
+        die("Format gambar utama tidak diizinkan!");
+    }
+
+    // Validasi ukuran (max 2MB)
+    if($size_utama > 2 * 1024 * 1024){
+        die("Ukuran gambar utama maksimal 2MB!");
+    }
+
+    // Validasi mime type
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime_utama = finfo_file($finfo, $tmp_utama);
+
+    if(!in_array($mime_utama, $allowed_mime)){
+        die("File utama bukan gambar valid!");
+    }
+
+    // Nama file aman
+    $nama_utama_baru = uniqid('produk_', true) . '.' . $ext_utama;
+
+    // Upload gambar utama
+    if(move_uploaded_file($tmp_utama, $upload_dir . $nama_utama_baru)){
+
+        // =========================
+        // INSERT PRODUK
+        // =========================
+
+        $stmt = $conn->prepare("
+            INSERT INTO produk 
+            (nama_produk, id_kategori, harga, deskripsi, gambar)
+            VALUES (?, ?, ?, ?, ?)
+        ");
+
+        $stmt->bind_param(
+            "sisss",
+            $nama,
+            $kategori,
+            $harga,
+            $deskripsi,
+            $nama_utama_baru
+        );
+
+        if($stmt->execute()){
+
+            $id_produk_baru = $stmt->insert_id;
+
+            // =========================
+            // UPLOAD GALERI TAMBAHAN
+            // =========================
+
             if(!empty($_FILES['gambar_tambahan']['name'][0])){
+
                 foreach($_FILES['gambar_tambahan']['name'] as $key => $val){
+
                     $nama_file = $_FILES['gambar_tambahan']['name'][$key];
                     $tmp_file = $_FILES['gambar_tambahan']['tmp_name'][$key];
-                    
-                    // Gunakan random number agar file tidak tertimpa jika upload di detik yang sama
-                    $nama_galeri_baru = time() . "_" . rand(10,99) . "_galeri_" . str_replace(' ', '_', $nama_file);
-                    
-                    if(move_uploaded_file($tmp_file, "../assets/images/produk/" . $nama_galeri_baru)){
-                        mysqli_query($conn, "INSERT INTO produk_gambar (id_produk, gambar_tambahan) 
-                                             VALUES ('$id_produk_baru', '$nama_galeri_baru')");
+                    $size_file = $_FILES['gambar_tambahan']['size'][$key];
+
+                    $ext = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+
+                    // Validasi ekstensi
+                    if(!in_array($ext, $allowed_ext)){
+                        continue;
+                    }
+
+                    // Validasi ukuran
+                    if($size_file > 2 * 1024 * 1024){
+                        continue;
+                    }
+
+                    // Validasi MIME
+                    $mime = finfo_file($finfo, $tmp_file);
+
+                    if(!in_array($mime, $allowed_mime)){
+                        continue;
+                    }
+
+                    // Nama file aman
+                    $nama_galeri_baru = uniqid('galeri_', true) . '.' . $ext;
+
+                    // Upload file
+                    if(move_uploaded_file($tmp_file, $upload_dir . $nama_galeri_baru)){
+
+                        $stmt_gambar = $conn->prepare("
+                            INSERT INTO produk_gambar 
+                            (id_produk, gambar_tambahan)
+                            VALUES (?, ?)
+                        ");
+
+                        $stmt_gambar->bind_param(
+                            "is",
+                            $id_produk_baru,
+                            $nama_galeri_baru
+                        );
+
+                        $stmt_gambar->execute();
                     }
                 }
             }
-            echo "<script>alert('Produk berhasil dipublish!'); window.location.href='produk.php';</script>";
+
+            echo "
+            <script>
+                alert('Produk berhasil dipublish!');
+                window.location.href='produk.php';
+            </script>
+            ";
+
+        }else{
+            echo "<script>alert('Gagal menyimpan produk!');</script>";
         }
-    } else {
-        echo "<script>alert('Gagal mengunggah gambar utama!');</script>";
+
+    }else{
+        echo "<script>alert('Gagal upload gambar utama!');</script>";
     }
-    exit;
+
+    finfo_close($finfo);
 }
 ?>
 

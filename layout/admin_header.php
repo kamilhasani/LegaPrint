@@ -42,7 +42,7 @@
             left: 0;
             top: 0;
             padding: 28px 20px;
-            z-index: 1000;
+            z-index: 1050; /* Dinaikkan sedikit agar selalu berada di paling atas */
             transition: all 0.3s ease;
             overflow-y: auto;
             box-shadow: 4px 0 20px rgba(0, 0, 0, 0.06);
@@ -141,7 +141,7 @@
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
-            z-index: 99;
+            z-index: 1000; /* SOLUSI: Menaikkan level tumpukan agar tidak tenggelam di HP */
         }
 
         .topbar-left {
@@ -156,7 +156,7 @@
             cursor: pointer;
             gap: 5px;
             background: #f1f5f9;
-            padding: 8px 12px;
+            padding: 10px 12px; /* Disesuaikan sedikit agar lebih mudah ditekan jari */
             border-radius: 12px;
             transition: 0.2s;
         }
@@ -230,7 +230,7 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(2px);
-            z-index: 998;
+            z-index: 1040; /* Disesuaikan tepat di bawah level .sidebar */
             display: none;
         }
 
@@ -258,7 +258,7 @@
                 width: 100%;
             }
             .hamburger {
-                display: flex;
+                display: flex; /* Tombol dipastikan muncul di layar di bawah 768px */
             }
             .topbar {
                 padding: 0 20px;
@@ -323,7 +323,9 @@
     <header class="topbar">
         <div class="topbar-left">
             <div class="hamburger" id="hamburgerBtn">
-
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <div class="page-info">
                 <small>Selamat Datang Kembali,</small>
@@ -336,6 +338,7 @@
             </a>
         </div>
     </header>
+</div>
 
 </div>
 

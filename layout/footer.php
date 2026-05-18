@@ -1,158 +1,398 @@
-<footer class="main-footer">
-    <div class="container footer-grid">
-        <div class="footer-col">
-            <div class="footer-logo">Lega<span>DigiPrint</span></div>
-            <p class="footer-desc">
-                Solusi percetakan digital berkualitas tinggi di Tangerang. Kami melayani cetak banner, brosur, stiker, dan media promosi lainnya dengan hasil tajam dan cepat.
-            </p>
+<?php
+?>
+<footer>
+    <div class="footer-container">
+        
+        <div class="footer-column brand-column">
+            <div class="footer-brand-wrapper">
+                <div class="footer-logo-container">
+                    <div class="footer-logo-img">
+                        <img src="assets/images/logo/logo.jpeg" alt="Digiprint" width="40" height="40">
+                    </div>
+                    <div class="footer-logo-text">
+                        <h3>Lega DigiPrint</h3>
+                        <span class="tagline-text">Solusi Cetak Modern</span>
+                    </div>
+                </div>
+                
+                <div class="footer-line"></div>
+                <p class="brand-desc">Digiprint berkomitmen memberikan layanan percetakan digital terbaik yang cepat, berkualitas tinggi, dan profesional untuk mendukung segala kebutuhan bisnis dan kreativitas Anda.</p>
+            </div>
             <div class="footer-socials">
-                <a href="https://www.instagram.com/lega.digiprint" target="_blank" class="social-icon instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/Lega_Digiprint" target="_blank" class="social-icon facebook">
+                <a href="https://facebook.com/YOUR_FB_PAGE" target="_blank" class="f-social-icon fb" title="Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://wa.me/6282117773741?text=Halo%20LegaDigiPrint%2C%0ASaya%20ingin%20tanya%20tentang%20order..." target="_blank" class="social-icon whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>  
-                <a href="https://www.tiktok.com/@legadigiprint5" target="_blank" class="social-icon tiktok">
-                    <i class="fab fa-tiktok"></i>
+                <a href="https://instagram.com/digiprint" target="_blank" class="f-social-icon ig" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/c/YOUR_CHANNEL" target="_blank" class="f-social-icon yt" title="YouTube">
+                    <i class="fab fa-youtube"></i>
                 </a>
             </div>
         </div>
 
-        <div class="footer-col">
-            <h4>Navigasi</h4>
-            <ul class="footer-links">
-                <li><a href="index.php">Beranda</a></li>
-                <li><a href="tentang.php">About Us</a></li>
-                <li><a href="produk.php">Produk</a></li>
-                <li><a href="galeri.php">Galeri</a></li>
-                <li><a href="kontak.php">Hubungi Kami</a></li>
+        <div class="footer-column links-column">
+            <h3>Tautan Cepat</h3>
+            <div class="footer-line"></div>
+            <ul class="quick-links">
+                <li><a href="index.php"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                <li><a href="tentang.php"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                <li><a href="produk.php"><i class="fas fa-chevron-right"></i> Produk</a></li>
+                <li><a href="galeri.php"><i class="fas fa-chevron-right"></i> Galeri</a></li>
+                <li><a href="kontak.php"><i class="fas fa-chevron-right"></i> Kontak</a></li>
             </ul>
         </div>
 
-        <div class="footer-col">
-            <h4>Kontak Kami</h4>
-            <ul class="footer-contact">
-                <li><i class="fas fa-phone-alt"></i> +62 821-1777-3741</li>
-                <li><i class="fas fa-envelope"></i> legadigiprint@gmail.com</li>
-                <li><i class="fas fa-map-marker-alt"></i> Pasar Senen, Jakarta, DKI Jakarta</li>
-            </ul>
+        <div class="footer-column contact-column">
+            <h3>Hubungi Kami</h3>
+            <div class="footer-line"></div>
+            <div class="footer-info">
+                <a href="https://maps.google.com" target="_blank" class="footer-link">
+                    <span class="icon-wrapper">📍</span> 
+                    <span class="text-wrapper">Jl. Cetak Digital No. 01, Jakarta</span>
+                </a>
+                <a href="tel:02112345678" class="footer-link">
+                    <span class="icon-wrapper">📞</span> 
+                    <span class="text-wrapper">(021) 1234 5678</span>
+                </a>
+                <a href="mailto:info@digiprint.co.id" class="footer-link">
+                    <span class="icon-wrapper">✉</span> 
+                    <span class="text-wrapper">info@digiprint.co.id</span>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="footer-bottom">
-        <div class="container">
-            <p>&copy; <?php echo date('Y'); ?> <strong>Lega DigiPrint</strong>. Dibuat untuk Kelancaran Bisnis Anda.</p>
+        <div class="footer-divider"></div>
+        <div class="footer-copyright">
+            © 2026 Digiprint. All Rights Reserved.
         </div>
     </div>
 </footer>
 
 <style>
-    /* CSS WAJIB ADA DI DALAM TAG STYLE */
-    .main-footer {
-        background: #0f172a;
-        color: #cbd5e1;
-        padding: 60px 0 0;
-        font-family: 'Inter', sans-serif;
-    }
-
-    .footer-grid {
-        display: flex;
-        justify-content: space-between;
-        gap: 40px;
-        flex-wrap: wrap;
+    /* Gaya untuk footer */
+    .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px 40px;
+        padding: 0 24px;
+    }
+    
+    footer {
+        /* KEMBALI KE WARNA ASLI: Biru Tua */
+        background: #0f172a; 
+        color: #f1f5f9;
+        padding: 60px 7% 25px;
+        font-size: 14px;
+        /* Mengubah warna border aksen atas menjadi biru muda cerah agar serasi */
+        border-top: 5px solid #38bdf8;
     }
 
-    .footer-col {
-        flex: 1;
-        min-width: 250px;
+    .footer-container {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr 1fr;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .footer-logo {
-        font-size: 1.6rem;
-        font-weight: 800;
+    .footer-column h3 {
         color: #ffffff;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    /* Garis dekoratif kecil di bawah setiap judul kolom */
+    .footer-line {
+        width: 40px;
+        height: 3px;
+        /* Mengubah warna aksen garis menjadi biru muda cerah */
+        background: #38bdf8;
+        border-radius: 2px;
         margin-bottom: 20px;
     }
 
-    .footer-logo span { color: #38bdf8; }
-
-    .footer-links, .footer-contact {
-        list-style: none; /* Menghilangkan titik-titik (bullet points) */
-        padding: 0;
+    .footer-brand-wrapper {
+        max-width: 400px; 
     }
 
-    .footer-links li, .footer-contact li {
-        margin-bottom: 12px;
+    /* Kontainer Utama Logo + Teks Bersanding Horizontal */
+    .footer-logo-container {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 16px;
+        margin-bottom: 15px;
     }
 
-    .footer-links a {
-        color: #cbd5e1;
-        text-decoration: none;
-        transition: 0.3s;
-    }
-
-    .footer-links a:hover { color: #38bdf8; }
-
-    .footer-socials { 
-        display: flex; 
-        gap: 15px; /* Jarak antar ikon sedikit diperlebar agar elegan */
-        margin-top: 25px; 
-    }
-
-    .social-icon {
-        width: 45px; /* Ukuran sedikit lebih besar */
-        height: 45px;
-        background: rgba(255, 255, 255, 0.08);
+    .footer-logo-img {
+        flex-shrink: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
+    }
+
+    .footer-logo-img img {
+        width: 35px;
+        height: 35px;
+        object-fit: contain;
+    }
+
+    /* Susunan Teks Vertikal di Sebelah Kiri */
+    .footer-logo-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .footer-logo-text h3 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0 !important;
+        line-height: 1.1;
+        letter-spacing: 0.5px;
+    }
+
+    /* Slogan / Tagline Baru Digiprint */
+    .footer-logo-text .tagline-text {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #38bdf8; /* Menggunakan warna aksen biru muda cerah */
+        margin-top: 4px;
+        letter-spacing: 0.2px;
+    }
+
+    /* Deskripsi Singkat */
+    .brand-desc {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #cbd5e1;
+        margin: 0 0 25px 0;
+    }
+
+    /* Penataan Grup Media Sosial */
+    .footer-socials {
+        display: flex;
+        gap: 12px;
+    }
+
+    .f-social-icon {
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.08);
         color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-decoration: none;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal saat hover */
-        font-size: 1.2rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 16px;
+        transition: all 0.3s ease;
     }
 
-    /* Efek Saat Ingin Diklik (Hover) */
+    .f-social-icon:hover {
+        transform: translateY(-4px);
+        color: white;
+    }
+    .f-social-icon.fb:hover { background: #1877F2; box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4); }
+    .f-social-icon.ig:hover { background: #E1306C; box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4); }
+    .f-social-icon.yt:hover { background: #FF0000; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4); }
 
-    /* Instagram: Gradasi Pink-Orange-Blue */
-    /* Instagram */
-    .social-icon.instagram:hover { 
-        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important; 
-        transform: translateY(-5px);
+    /* Kolom 2: Tautan Cepat */
+    .quick-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
-    /* Facebook */
-    .social-icon.facebook:hover { 
-        background: #1877F2 !important; 
-        transform: translateY(-5px);
+    .quick-links li {
+        margin-bottom: 12px;
     }
 
-    /* WhatsApp */
-    .social-icon.whatsapp:hover { 
-        background: #25D366 !important; 
-        transform: translateY(-5px);
+    .quick-links a {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
     }
 
-    /* TikTok */
-    .social-icon.tiktok:hover { 
-        background: #000000 !important; 
-        box-shadow: 2px 2px 0px #fe2c55, -2px -2px 0px #25f4ee !important;
-        transform: translateY(-5px);
+    .quick-links a i {
+        font-size: 10px;
+        color: #38bdf8; /* Panah mengikuti aksen biru muda */
+        transition: transform 0.2s;
     }
 
-    /* Efek Aktif (Saat Benar-benar diklik) */
-    .social-icon:active {
-        transform: scale(0.9); /* Mengecil sedikit saat ditekan */
+    .quick-links a:hover {
+        color: #ffffff;
+    }
+
+    .quick-links a:hover i {
+        transform: translateX(4px);
+    }
+
+    /* Kolom 3: Kontak */
+    .footer-info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .footer-link {
+        color: #cbd5e1;
+        text-decoration: none;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        transition: color 0.2s ease;
+        line-height: 1.4;
+    }
+
+    .icon-wrapper {
+        font-size: 16px;
+        flex-shrink: 0;
+    }
+
+    .footer-link:hover {
+        color: #38bdf8;
+    }
+
+    /* Area Bawah: Copyright */
+    .footer-divider {
+        grid-column: span 3;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 20px 0 5px 0;
+    }
+
+    .footer-copyright {
+        grid-column: span 3;
+        text-align: center;
+        font-size: 12px;
+        color: #94a3b8;
+    }
+
+    /* ==========================================================================
+    OPTIMASI FOOTER KHUSUS SMARTPHONE (max-width: 768px)
+    MATA LAYOUT DI-MAINTAIN TETAP 3 KOLOM KE SAMPING SEPERTI SEBELUMNYA
+    ========================================================================== */
+    @media (max-width: 768px) {
+        footer {
+            padding: 25px 3% 15px !important;
+        }
+
+        .footer-container {
+            display: grid !important;
+            grid-template-columns: 1.1fr 0.9fr 1fr !important; 
+            gap: 10px !important;
+            text-align: left !important;
+            align-items: start !important;
+        }
+
+        /* --- OVERRIDE RESET UNTUK BRANDING DI HP --- */
+        .footer-logo-container {
+            justify-content: flex-start !important;
+            gap: 8px !important;
+            margin-bottom: 0 !important;
+        }
+
+        .footer-logo-text h3 {
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+        }
+
+        .footer-logo-text .tagline-text {
+            font-size: 0.65rem !important;
+            margin-top: 2px !important;
+        }
+
+        /* Sembunyikan garis pemisah internal kolom pertama & deskripsi panjang di HP agar tidak luber */
+        .brand-column .footer-line,
+        .brand-desc {
+            display: none !important;
+        }
+
+        .footer-column {
+            display: block !important;
+            text-align: left !important;
+        }
+
+        .footer-column h3 {
+            font-size: 11px !important;
+            margin-bottom: 6px !important;
+        }
+
+        .footer-column .footer-line {
+            display: block !important;
+            width: 20px !important;
+            height: 2px !important;
+            margin-bottom: 10px !important;
+        }
+
+        /* --- KOLOM 1: SOSMED HP --- */
+        .footer-socials {
+            gap: 6px !important;
+            margin-top: 10px !important;
+        }
+
+        .f-social-icon {
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 11px !important;
+        }
+
+        /* --- KOLOM 2: TAUTAN CEPAT HP --- */
+        .quick-links {
+            width: 100% !important;
+        }
+        
+        .quick-links li {
+            margin-bottom: 6px !important;
+        }
+        
+        .quick-links a {
+            font-size: 9px !important;
+            padding: 0 !important;
+            justify-content: flex-start !important;
+            gap: 4px !important;
+        }
+        
+        .quick-links a i {
+            font-size: 7px !important;
+        }
+
+        /* --- KOLOM 3: HUBUNGI KAMI HP --- */
+        .footer-info {
+            align-items: flex-start !important;
+            width: 100% !important;
+            gap: 8px !important;
+        }
+
+        .footer-link {
+            font-size: 9px !important;
+            flex-direction: row !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+            gap: 6px !important;
+            width: 100% !important;
+        }
+
+        .icon-wrapper {
+            font-size: 10px !important;
+        }
+
+        /* --- AREA BAWAH --- */
+        .footer-divider {
+            grid-column: span 3 !important;
+            margin: 15px 0 5px 0 !important;
+        }
+
+        .footer-copyright {
+            grid-column: span 3 !important;
+            font-size: 9px !important;
+            text-align: center !important;
+        }
     }
 </style>
