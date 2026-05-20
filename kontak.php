@@ -254,7 +254,7 @@ if (isset($_POST['kirim_pesan'])) {
 <style>
     /* ==================== VARIABLES ==================== */
     :root {
-        --primary: #38bdf8;
+        --primary: #004ea2;
         --primary-dark: #0284c7;
         --primary-light: #7dd3fc;
         --dark: #0f172a;
@@ -439,7 +439,6 @@ if (isset($_POST['kirim_pesan'])) {
         gap: 40px;
     }
 
-    /* Info Cards */
     .info-cards {
         display: flex;
         flex-direction: column;
@@ -537,7 +536,7 @@ if (isset($_POST['kirim_pesan'])) {
     }
 
     .form-header {
-        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        background: #004ea2;
         padding: 25px 30px;
         text-align: center;
         color: white;

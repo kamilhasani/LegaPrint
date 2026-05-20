@@ -248,7 +248,7 @@
 <style>
     /* ==================== VARIABLES ==================== */
     :root {
-        --primary: #38bdf8;
+        --primary: #004ea2;
         --primary-dark: #0284c7;
         --primary-light: #7dd3fc;
         --dark: #0f172a;
@@ -283,16 +283,15 @@
     /* ==================== HERO SECTION ==================== */
     .about-hero {
         position: relative;
-        min-height: 450px;
+        min-height: 450px; /* Tinggi standar di desktop */
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        
-        /* 1. SETUP BACKGROUND GAMBAR DI SINI (Ganti path sesuai kebutuhan) */
-        background-image: url('assets/images/logo/logo.jpeg'); 
-        background-size: cover;
-        background-position: center;
+
+        background-image: url('assets/images/hero/profil2.png'); 
+        background-size: 100% 100%;      
+        background-position: center;  
         background-repeat: no-repeat;
         overflow: hidden;
     }
@@ -303,25 +302,25 @@
         left: 0;
         width: 100%;
         height: 100%;
-        /* 2. OVERLAY DIUBAH AGAR AGAK GELAP: Supaya teks dan badge kontras */
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.75) 100%);
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.7) 100%);
         z-index: 1;
     }
 
     .about-hero .hero-content {
         position: relative;
-        /* 3. MEMASTIKAN KONTEN DI ATAS LAPISAN OVERLAY */
         z-index: 2;
-        padding: 60px 0;
+        padding: 80px 20px 120px 20px; 
+        width: 100%;
     }
 
     .hero-badge {
         display: inline-block;
         background: rgba(56, 189, 248, 0.15);
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         padding: 6px 16px;
         border-radius: 50px;
-        color: var(--primary);
+        color: #ffffff;
         font-weight: 600;
         font-size: 0.75rem;
         letter-spacing: 1px;
@@ -341,10 +340,12 @@
     }
 
     .hero-subtitle {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
         margin-bottom: 25px;
-        padding: 0 15px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .hero-decoration {
@@ -360,35 +361,77 @@
         background: var(--primary);
         border-radius: 3px;
     }
-
     .hero-decoration span:nth-child(2) { width: 45px; }
 
-    /* 4. POSISI OMBAK DIKUNCI PAS DI DASAR BAWAH HERO */
     .hero-wave {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
         line-height: 0;
-        z-index: 3; /* Berada di atas gambar background dan overlay gelap */
+        z-index: 3;
         pointer-events: none;
     }
 
     .hero-wave svg {
         width: 100%;
-        height: 40px;
+        height: 60px;
         display: block;
     }
 
-    /* Penyesuaian Responsif Layar Smartphone */
-    @media (max-width: 768px) {
+   /* ==========================================================================
+       KHUSUS TAMPILAN LAPTOP / DESKTOP (Minimal Lebar Layar 992px)
+       ========================================================================== */
+    @media (min-width: 992px) {
         .about-hero {
-            min-height: 350px; /* Sedikit lebih pendek di HP agar tidak terlalu memakan layar */
+            justify-content: flex-end;
+            text-align: right;         
         }
-        .hero-title {
-            font-size: 2rem; /* Mengecilkan ukuran teks judul di HP */
+
+        .about-hero .hero-content {
+            margin-right: 0;           
+            margin-left: auto;         
+            padding-right: 8%;         
+            max-width: 550px;          
+        }
+
+        .hero-subtitle {
+            margin-left: auto;         
+            margin-right: 0;           
+        }
+
+        .hero-decoration {
+            justify-content: flex-end; 
         }
     }
+
+    /* ==========================================================================
+    KUNCI UTAMA: RESPONSIVE DI HP (GAMBAR & TEKS AMAN)
+    ========================================================================== */
+    @media (max-width: 768px) {
+        .about-hero {
+            min-height: 380px; 
+        }
+        
+        .about-hero .hero-content {
+            padding: 60px 15px 100px 15px;
+        }
+
+        .hero-title {
+            font-size: 2rem; 
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem; 
+        }
+    }
+
+    @media (max-width: 480px) {
+        .about-hero {
+            min-height: 320px;
+        }
+    }
+
     /* ==================== SECTION HEADER ==================== */
     .section-header {
         margin-bottom: 40px;
@@ -713,6 +756,17 @@
         height: 3px;
         background: var(--primary);
         transform: scaleX(0);
+    }
+
+    @media (min-width: 992px) {
+        .priority-grid {
+            flex-direction: row; 
+            flex-wrap: nowrap;   
+        }
+
+        .priority-card {
+            flex: 1; 
+        }
     }
 
     /* ==================== FEATURES SECTION ==================== */

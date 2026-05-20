@@ -4,12 +4,10 @@ include "../layout/admin_header.php";
 ?>
 
 <style>
-    /* ========== RESET & STABILIZER ========== */
     * {
         box-sizing: border-box;
     }
 
-    /* PASTIKAN LAYOUT STABIL TIDAK BERGESER */
     .content-wrapper {
         padding: 20px !important;
         margin-left: 0 !important;

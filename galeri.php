@@ -140,7 +140,7 @@ include "layout/header.php";
 <style>
     /* ==================== VARIABLES ==================== */
     :root {
-        --primary: #38bdf8;
+        --primary: #004ea2;
         --primary-dark: #0284c7;
         --primary-light: #7dd3fc;
         --dark: #0f172a;

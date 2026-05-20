@@ -11,8 +11,8 @@
     <style>
         /* --- RESET & VARIABLES --- */
         :root {
-            --primary: #38bdf8;
-            --primary-dark: #0284c7;
+            --primary: #004ea2;
+            --primary-dark: #004ea2;
             --dark: #0f172a;
             --text-main: #1e293b;
             --white: #ffffff;
@@ -83,7 +83,7 @@
             letter-spacing: -1px;
         }
 
-        .logo span { color: var(--primary); }
+        .logo span { color: #004ea2; }
 
         /* Nav Links (Desktop) */
         .nav-links {
@@ -166,8 +166,6 @@
         .dropdown-content li { width: 100%; }
 
         /* --- BUTTONS & TOGGLE (TAMPILAN LAPTOP / DESKTOP) --- */
-
-        /* SOLUSI: Secara default, sembunyikan titik tiga di layar laptop/desktop */
         .mobile-toggle {
             display: none;
             font-size: 1.5rem;
@@ -213,103 +211,6 @@
             .dropdown:hover .dropbtn i { transform: rotate(180deg); }
         }
 
-        /* --- RESPONSIVE MOBILE (< 992px) --- */
-        @media (max-width: 992px) {
-            /* SOLUSI: Memunculkan kembali ikon titik tiga hanya saat di layar HP */
-            .mobile-toggle { 
-                display: block; 
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background: var(--white);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start; 
-                padding: 100px 24px;
-                transition: 0.4s;
-                z-index: 999;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-                gap: 15px;
-            }
-
-            .nav-links li {
-                width: 100%;
-                text-align: left;
-            }
-
-            .nav-links li a {
-                display: block;
-                width: 100%;
-                padding: 10px 0;
-                text-align: left;
-            }
-
-            .nav-links.active { right: 0; }
-
-            .dropdown { 
-                flex-direction: column; 
-                width: 100%; 
-                align-items: flex-start; 
-            }
-            
-            .dropbtn {
-                width: 100%;
-                text-align: left;
-                display: flex;
-                justify-content: space-between; 
-                align-items: center;
-                padding: 10px 0;
-            }
-            
-            .dropdown-content {
-                position: static;
-                display: none;
-                width: 100%;
-                box-shadow: none;
-                background: #f8fafc;
-                margin-top: 5px;
-                padding-left: 15px; 
-            }
-
-            .dropdown-content a {
-                text-align: left;
-                padding: 8px 0;
-            }
-
-            .dropdown.active .dropdown-content { display: block; }
-            .dropdown.active .dropbtn i { transform: rotate(180deg); }
-
-            /* Pengaturan Tombol Login Saat Berada Di Dalam Menu HP */
-            .nav-links .login-item,
-            .nav-links li:last-child { 
-                margin-top: auto; 
-                width: 100%;
-                display: flex;
-                justify-content: center; 
-                padding-top: 20px;
-            }
-
-            .nav-links .login-item a,
-            .nav-links li:last-child a {
-                text-align: center !important;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                width: 100%;
-                padding: 14px 0;
-                background: var(--primary); 
-                color: var(--white) !important;
-                border-radius: 50px; 
-                font-weight: 700;
-                box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
-            }
-        }
 
         /* --- RESPONSIVE MOBILE (< 992px) --- */
         @media (max-width: 992px) {
@@ -394,7 +295,7 @@
             display: inline-block;
             width: 85%;
             padding: 12px 0;
-            background: #38bdf8; 
+            background: #004ea2; 
             color: #ffffff !important;
             border-radius: 25px; 
         }
