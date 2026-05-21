@@ -1,440 +1,860 @@
+<?php include "layout/header.php"; ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasa Cetak Banner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Lega DigiPrint - Jasa Cetak Banner Professional</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
 
         body {
-            background: #f4f8ff;
-            color: #222;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            color: #1e293b;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
         }
 
-        /* ==================== HERO (ANTI KEPOTONG) ==================== */
+        /* Mencegah overflow horizontal */
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* ==================== HERO SECTION MODERN ==================== */
         .hero {
-            width: 100%;
-            /* Mengunci rasio banner 16:5 agar gambar utuh dari atas sampai bawah */
-            aspect-ratio: 16 / 5; 
-            min-height: 400px; /* Batas aman tinggi di desktop */
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero img {
             width: 100%;
-            height: 100%;
-            /* Diubah ke 100% 100% agar mengikuti bingkai kontainer tanpa ter-crop */
-            object-fit: fill; 
+            min-height: 85vh;
+            background: linear-gradient(145deg, #0a0f2a 0%, #0f172a 50%, #0a0f2a 100%);
+            overflow-x: hidden;
         }
 
-        .overlay {
+        .hero-bg-shape {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-bg-shape-2 {
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.75) 0%, rgba(0, 78, 162, 0.45) 100%);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: #fff;
-            padding: 20px;
+            min-height: 85vh;
+            padding: 80px 20px;
         }
 
-        .overlay h1 {
-            font-size: 3rem;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            backdrop-filter: blur(10px);
+            padding: 8px 24px;
+            border-radius: 50px;
+            color: #38bdf8;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: fadeInUp 0.6s ease 0.1s both;
         }
 
-        .overlay p {
-            max-width: 700px;
+        .hero h1 span {
+            color: #38bdf8;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #0284c7, transparent);
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
             line-height: 1.8;
-            font-size: 1.1rem;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            margin-bottom: 35px;
+            animation: fadeInUp 0.6s ease 0.2s both;
         }
 
-        /* CONTAINER UTAMA */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #38bdf8;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+            transform: translateY(-3px);
+            gap: 15px;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+        }
+
+        .hero-wave svg {
+            width: 100%;
+            height: 50px;
+        }
+
+        /* ==================== TRUST BADGES ==================== */
+        .trust-section {
+            padding: 30px 0;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .trust-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .trust-item i {
+            font-size: 1.3rem;
+            color: #38bdf8;
+        }
+
+        /* ==================== MAIN CONTAINER ==================== */
         .container {
             max-width: 1200px;
-            margin: auto;
-            padding: 60px 20px;
-        }
-
-        /* ==================== SECTION WRAPPER (FITUR) ==================== */
-        .section-wrapper {
-            display: flex;
-            flex-direction: column; /* Default HP: menumpuk vertikal */
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .section-title {
-            text-align: center; /* Default HP: tengah */
+            margin: 0 auto;
+            padding: 0 20px;
             width: 100%;
         }
 
-        .badge {
-            display: inline-block;
-            background: #004ea2; /* Biru Persib */
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 14px;
-            margin-bottom: 18px;
-            font-weight: bold;
+        /* ==================== ABOUT SECTION ==================== */
+        .about-section {
+            padding: 80px 0;
+            background: white;
         }
 
-        .section-title h2 {
-            font-size: 32px;
-            color: #004ea2;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-image .floating-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .floating-badge i {
+            font-size: 1.5rem;
+            color: #38bdf8;
+        }
+
+        .floating-badge span {
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .about-content .badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: #0284c7;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
             margin-bottom: 20px;
             line-height: 1.3;
         }
 
-        .section-title p {
-            color: #555;
-            line-height: 1.9;
-            font-size: 16px;
+        .about-content h2 span {
+            color: #38bdf8;
         }
 
-        /* GRID FITUR */
-        .fitur-grid {
-            width: 100%;
+        .about-content p {
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .feature-list {
             display: grid;
-            grid-template-columns: 1fr; /* Default HP: 1 Kolom vertikal */
-            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
         }
 
-        .fitur-item {
-            background: #fff;
-            padding: 25px 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
-            font-weight: 600;
+        .feature-list-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #1e293b;
+        }
+
+        .feature-list-item i {
+            color: #38bdf8;
+            font-size: 1rem;
+        }
+
+        /* ==================== SERVICES GRID ==================== */
+        .services-section {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .section-header {
             text-align: center;
-            border: 1px solid #e2e8f0;
-            transition: transform 0.3s ease;
-        }
-        
-        .fitur-item:hover {
-            transform: translateY(-3px);
+            margin-bottom: 50px;
         }
 
-        /* ==================== SECTION PRODUK ==================== */
-        /* ==================== SECTION PRODUK ==================== */
-        .produk-title {
-            text-align: center;
-            margin: 60px 0 40px;
+        .section-header .tag {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: #0284c7;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
         }
 
-        .produk-title h2 {
-            color: #004ea2;
-            font-size: 32px;
-            margin-bottom: 10px;
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 15px;
         }
 
-        .produk-grid {
+        .section-header h2 span {
+            color: #38bdf8;
+        }
+
+        .section-header p {
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Default HP: 1 Kolom vertikal */
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
         }
 
-        .produk-card {
-            background: #fff;
-            border-radius: 18px;
-            overflow: hidden; /* KUNCI: Memotong luapan gambar saat membesar (zoom) */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        .service-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
             border: 1px solid #e2e8f0;
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Efek kartu terangkat saat di-hover */
-        .produk-card:hover {
+        .service-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0,78,162,0.1);
+            border-color: #38bdf8;
+            box-shadow: 0 20px 35px rgba(56, 189, 248, 0.08);
         }
 
-        .produk-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            cursor: zoom-in; /* Mengubah kursor jadi lambang kaca pembesar */
-            transition: transform 0.5s ease; /* Transisi animasi zoom agar smooth */
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
         }
 
-        /* KUNCI EFEK ZOOM: Gambar membesar sedikit ke dalam saat kartu di-hover */
-        .produk-card:hover img {
-            transform: scale(1.08); 
+        .service-icon i {
+            font-size: 2rem;
+            color: #38bdf8;
         }
 
-        .produk-content {
-            padding: 20px;
+        .service-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .service-card p {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ==================== PRODUCT GALLERY ==================== */
+        .product-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
             position: relative;
-            background: #fff; /* Menutupi luapan gambar jika melar ke bawah */
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+
+        .view-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0284c7;
+            font-size: 1.2rem;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .product-info p {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            padding: 70px 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            text-align: center;
+            position: relative;
             z-index: 2;
         }
 
-        .produk-content h3 {
-            margin-bottom: 10px;
-            color: #004ea2;
-            font-size: 18px;
+        .cta-content h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 15px;
         }
 
-        .produk-content p {
-            color: #555;
-            line-height: 1.6;
-            font-size: 14px;
+        .cta-content p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* ==================== BUTTON CALL TO ACTION ==================== */
-        .btn-wrapper {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 35px;
-            background: #004ea2;
-            color: #fff;
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            padding: 14px 40px;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 78, 162, 0.2);
+            font-weight: 700;
             transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
         }
 
-        .btn:hover {
-            background: #003772;
-            transform: translateY(-2px);
+        .cta-btn:hover {
+            background: #1eb954;
+            transform: translateY(-3px);
+            gap: 18px;
         }
 
-        /* ==================== LIGHTBOX GALERI FULLSCREEN ==================== */
-        /* Wadah background hitam fullscreen */
-        .gallery-modal {
-            display: none; /* Tersembunyi secara default */
+        /* ==================== LIGHTBOX ==================== */
+        .lightbox-modal {
+            display: none;
             position: fixed;
-            z-index: 9999; /* Di atas elemen apa pun termasuk navbar */
-            padding-top: 50px;
-            left: 0;
+            z-index: 9999;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(15, 23, 42, 0.95); /* Warna dongker-hitam pekat */
-            backdrop-filter: blur(5px); /* Efek blur estetik latar belakang */
-        }
-
-        /* Elemen Gambar di dalam Pop-up */
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 80vh; /* Batas tinggi di layar monitor/PC */
-            object-fit: contain; /* Gambar utuh tidak terpotong */
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            
-            /* Animasi muncul halus */
-            animation-name: zoom;
-            animation-duration: 0.3s;
-        }
-
-        @keyframes zoom {
-            from { transform: scale(0.85); opacity: 0; } 
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 25px;
-            left: 25px;   /* Mengunci jarak 25px dari dinding kiri modal */
-            right: auto;  /* Mematikan paksa perintah kanan */
-            
-            /* SOLUSI KUNCI: Mematikan efek text-align center dari pembungkusnya */
-            display: block !important;
-            text-align: left !important;
-            width: auto !important;
-            
-            color: #ffffff;
-            font-size: 45px; /* Sedikit diperbesar agar mudah di-klik */
-            font-weight: bold;
-            line-height: 1;
-            transition: 0.3s;
+            background-color: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(8px);
             cursor: pointer;
-            user-select: none;
-            z-index: 10005; /* Menjamin posisi layer berada di paling depan */
         }
 
-        .close-btn:hover {
-            color: #38bdf8; 
-            transform: scale(1.15);
+        .lightbox-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 12px;
+            animation: zoomIn 0.3s ease;
         }
 
-        /* ==================== RESPONSIVE LAYOUT (LAPTOP & HP) ==================== */
-
-        /* Layar Laptop / Monitor Desktop */
-        @media (min-width: 992px) {
-            .produk-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 Kolom sejajar ke samping */
-                gap: 25px;
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
             }
         }
 
-        /* Layar Tablet */
-        @media (max-width: 991px) and (min-width: 769px) {
-            .produk-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 Kolom di tablet */
+        .lightbox-close {
+            position: fixed;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            color: #38bdf8;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* Layar Smartphone & Responsif Lightbox HP */
+        /* ==================== RESPONSIVE HP (TIDAK BISA ZOOM OUT) ==================== */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .hero h1 { font-size: 2.8rem; }
+        }
+
         @media (max-width: 768px) {
-            .produk-grid {
-                grid-template-columns: 1fr; /* Kembali 1 kolom lurus ke bawah di HP */
-                gap: 15px;
+            body, html {
+                overflow-x: hidden;
+                width: 100%;
+                position: relative;
             }
+            
+            .hero { min-height: 70vh; }
+            .hero-content { min-height: 70vh; padding: 60px 16px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 0.9rem; padding: 0 5px; }
+            .hero-buttons { flex-direction: column; gap: 12px; align-items: center; width: 100%; }
+            .btn-primary, .btn-outline { width: 90%; justify-content: center; padding: 12px 20px; }
+            
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-content h2 { font-size: 1.6rem; }
+            .feature-list { grid-template-columns: 1fr; gap: 12px; }
+            
+            .services-grid { grid-template-columns: 1fr; gap: 15px; }
+            .product-grid { grid-template-columns: 1fr; gap: 20px; }
+            
+            .section-header h2 { font-size: 1.6rem; }
+            .cta-content h2 { font-size: 1.4rem; }
+            .cta-btn { padding: 12px 30px; font-size: 0.9rem; }
+            
+            .trust-grid { gap: 20px; }
+            .trust-item { font-size: 0.75rem; }
+            
+            .lightbox-close { top: 20px; right: 25px; font-size: 35px; }
+            
+            .container { padding: 0 16px; }
+            .hero-wave svg { height: 35px; }
+            .service-card { padding: 20px 15px; }
+            .product-info { padding: 15px; }
+            
+            /* Mencegah overflow pada gambar */
+            img { max-width: 100%; height: auto; }
+            .about-image .floating-badge { padding: 8px 15px; }
+            .floating-badge i { font-size: 1.2rem; }
+            .floating-badge span { font-size: 0.8rem; }
+        }
 
-            .modal-content {
-                max-width: 95%;
-                margin-top: 80px; 
-            }
-
-            .close-btn {
-                top: 20px;
-                left: 20px;   /* Menjaga kerapatan di layar HP */
-                right: auto !important;
-                font-size: 38px;
-            }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.5rem; }
+            .hero-badge { font-size: 0.7rem; padding: 6px 16px; }
+            .hero p { font-size: 0.85rem; }
+            .btn-primary, .btn-outline { font-size: 0.85rem; padding: 10px 16px; }
+            .section-header h2 { font-size: 1.4rem; }
+            .service-icon { width: 55px; height: 55px; }
+            .service-icon i { font-size: 1.5rem; }
+            .service-card h3 { font-size: 1rem; }
+            .product-image { height: 200px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HERO -->
+    <!-- HERO SECTION MODERN -->
     <section class="hero">
-        <img src="assets/images/iklan/iklan2.png" alt="Banner">
+        <div class="hero-bg-shape"></div>
+        <div class="hero-bg-shape-2"></div>
+        <div class="hero-content">
+            <span class="hero-badge">✦ CETAK BANNER PROFESIONAL</span>
+            <h1>Solusi Banner <span>Untuk Bisnis Anda</span></h1>
+            <p>Cetak banner indoor & outdoor dengan kualitas premium, warna tajam, dan material tahan lama untuk promosi maksimal</p>
+            <div class="hero-buttons">
+                <a href="kontak.php" class="btn-primary"><i class="fab fa-whatsapp"></i> Konsultasi Gratis</a>
+                <a href="#produk" class="btn-outline"><i class="fas fa-images"></i> Lihat Portofolio</a>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#ffffff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,208C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
     </section>
 
-    <!-- CONTENT -->
-    <section class="container">
-
-        <!-- TENTANG -->
-        <div class="section-title">
-
-            <span class="badge">Layanan Profesional</span>
-
-            <h2>Banner Promosi Berkualitas Premium</h2>
-
-            <p>
-                Kami melayani pembuatan banner indoor dan outdoor untuk
-                kebutuhan promosi usaha, event, toko, hingga branding bisnis.
-                Menggunakan material premium dengan hasil cetak tajam,
-                tahan lama, dan desain menarik yang mampu meningkatkan
-                daya tarik pelanggan.
-            </p>
-
-            <div class="fitur-grid">
-
-                <div class="fitur-item">
-                    ✔ Desain Modern & Elegan
-                </div>
-
-                <div class="fitur-item">
-                    ✔ Warna Tajam & Berkualitas
-                </div>
-
-                <div class="fitur-item">
-                    ✔ Tahan Air & Tahan Cuaca
-                </div>
-
-                <div class="fitur-item">
-                    ✔ Cocok Untuk Semua Promosi
-                </div>
-
+    <!-- TRUST BADGES -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item"><i class="fas fa-check-circle"></i> 500+ Klien Puas</div>
+                <div class="trust-item"><i class="fas fa-clock"></i> Pengerjaan 1-2 Hari</div>
+                <div class="trust-item"><i class="fas fa-shield-alt"></i> Garansi Kualitas</div>
+                <div class="trust-item"><i class="fas fa-truck"></i> Pengiriman Cepat</div>
             </div>
-
         </div>
-
-        <!-- PRODUK -->
-        <div class="produk-title">
-            <h2>Display Produk Banner</h2>
-
-            <p>
-                Berbagai jenis banner berkualitas untuk kebutuhan bisnis dan promosi.
-            </p>
-        </div>
-
-        <div class="produk-grid">
-
-            <div class="produk-card">
-                <img src="assets/images/display/bannerrjualrumah.jpeg" alt="Banner Outdoor" onclick="openLightbox(this)">
-                <div class="produk-content">
-                    <h3>Banner Jual Rumah</h3>
-                    <p>Banner tahan cuaca dengan kualitas cetak premium untuk promosi luar ruangan.</p>
-                </div>
-            </div>
-
-            <div class="produk-card">
-                <img src="assets/images/display/bannerstand.jpeg" alt="Banner Event" onclick="openLightbox(this)">
-                <div class="produk-content">
-                    <h3>Banner Stand/Event</h3>
-                    <p>Cocok untuk acara seminar, event, promosi produk, dan kegiatan bisnis lainnya.</p>
-                </div>
-            </div>
-
-            <div class="produk-card">
-                <img src="assets/images/iklan/iklan2.png" alt="Banner Toko" onclick="openLightbox(this)">
-                <div class="produk-content">
-                    <h3>Banner Toko</h3>
-                    <p>Banner promosi usaha dengan desain menarik untuk meningkatkan branding toko Anda.</p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- BUTTON -->
-        <div class="btn-wrapper">
-            <a href="index.php" class="btn">Kembali ke Beranda</a>
-        </div>
-
     </section>
 
-<script>
-// Fungsi untuk membuka gambar full screen
-function openLightbox(element) {
-    var modal = document.getElementById("galleryModal");
-    var modalImg = document.getElementById("modalImage");
-    
-    modal.style.display = "block"; // Munculkan modal
-    modalImg.src = element.src;    // Ambil link gambar yang di-klik dan masukkan ke modal
-}
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="assets/images/iklan/iklan2.png" alt="Cetak Banner Lega DigiPrint">
+                    <div class="floating-badge">
+                        <i class="fas fa-award"></i>
+                        <span>Best Quality Printing</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="badge">Tentang Kami</span>
+                    <h2>Cetak Banner <span>Berkualitas</span> untuk Promosi Anda</h2>
+                    <p>Lega DigiPrint menyediakan layanan cetak banner profesional untuk berbagai kebutuhan promosi bisnis, event, toko, hingga branding perusahaan. Kami menggunakan mesin cetak resolusi tinggi dengan material premium yang tahan cuaca dan warna tajam.</p>
+                    <div class="feature-list">
+                        <div class="feature-list-item"><i class="fas fa-check"></i> Bahan Berkualitas</div>
+                        <div class="feature-list-item"><i class="fas fa-check"></i> Warna Tajam & Tahan Lama</div>
+                        <div class="feature-list-item"><i class="fas fa-check"></i> Harga Kompetitif</div>
+                        <div class="feature-list-item"><i class="fas fa-check"></i> Pengerjaan Cepat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Fungsi untuk menutup geleri full screen saat tombol X atau background di-klik
-function closeLightbox() {
-    var modal = document.getElementById("galleryModal");
-    modal.style.display = "none"; // Sembunyikan kembali modal
-}
-</script>
-<div id="galleryModal" class="gallery-modal" onclick="closeLightbox()">
-    <span class="close-btn">&times;</span>
-    <img class="modal-content" id="modalImage">
-</div>
-    
+    <!-- SERVICES SECTION -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Keunggulan Kami</span>
+                <h2>Mengapa Memilih <span>Lega DigiPrint</span>?</h2>
+                <p>Kami memberikan layanan terbaik untuk setiap proyek cetak banner Anda</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Desain Menarik</h3>
+                    <p>Tim desainer profesional siap membantu membuat banner yang menarik dan efektif</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-fill-drip"></i></div>
+                    <h3>Warna Akurat</h3>
+                    <p>Hasil cetak dengan warna tajam dan akurat sesuai desain yang diinginkan</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-water"></i></div>
+                    <h3>Tahan Cuaca</h3>
+                    <p>Material premium yang tahan terhadap panas matahari dan hujan</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Proses Cepat</h3>
+                    <p>Pengerjaan cepat tanpa mengurangi kualitas hasil cetak banner</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<?php include "layout/footer.php"; ?>
+    <!-- PRODUCT GALLERY SECTION -->
+    <section id="produk" class="product-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Portofolio</span>
+                <h2>Hasil <span>Cetak Banner</span> Terbaik</h2>
+                <p>Beberapa contoh hasil cetak banner berkualitas dari Lega DigiPrint</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image" onclick="openLightbox(this)">
+                        <img src="assets/images/display/bannerrjualrumah.jpeg" alt="Banner Jual Rumah">
+                        <div class="product-overlay">
+                            <div class="view-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Banner Jual Rumah</h3>
+                        <p>Banner properti dengan desain profesional untuk menarik pembeli</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" onclick="openLightbox(this)">
+                        <img src="assets/images/display/bannerstand.jpeg" alt="Banner Stand Event">
+                        <div class="product-overlay">
+                            <div class="view-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Banner Event/Stand</h3>
+                        <p>Cocok untuk pameran, seminar, dan berbagai event bisnis</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" onclick="openLightbox(this)">
+                        <img src="assets/images/display/BANNER.jpeg" alt="Banner Promosi">
+                        <div class="product-overlay">
+                            <div class="view-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Banner Promosi Toko</h3>
+                        <p>Banner promosi usaha dengan desain menarik dan harga terjangkau</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Butuh Banner untuk Promosi Usaha?</h2>
+                <p>Konsultasikan kebutuhan cetak banner Anda dengan tim profesional kami</p>
+                <a href="https://wa.me/6282117773741" target="_blank" class="cta-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightboxImage">
+    </div>
+
+    <?php include "layout/footer.php"; ?>
+
+    <script>
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            if (!img) return;
+            
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxImage');
+            
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>

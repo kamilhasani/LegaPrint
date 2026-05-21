@@ -25,8 +25,11 @@
                 <a href="https://instagram.com/digiprint" target="_blank" class="f-social-icon ig" title="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://youtube.com/c/YOUR_CHANNEL" target="_blank" class="f-social-icon yt" title="YouTube">
-                    <i class="fab fa-youtube"></i>
+                <a href="https://www.tiktok.com/@YOUR_USERNAME" target="_blank" class="f-social-icon tiktok" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://shopee.co.id/YOUR_SHOP_ID" target="_blank" class="f-social-icon shopee" title="Shopee">
+                    <i class="fas fa-store"></i>
                 </a>
             </div>
         </div>
@@ -49,7 +52,7 @@
             <div class="footer-info">
                 <a href="https://maps.google.com" target="_blank" class="footer-link">
                     <span class="icon-wrapper">📍</span> 
-                    <span class="text-wrapper">Jl. Cetak Digital No. 01, Jakarta</span>
+                    <span class="text-wrapper">Jln. Kalibaru Timur III. Ruko Yon Angmor, Senen, Kota Jakarta Pusat 10460</span>
                 </a>
                 <a href="tel:02112345678" class="footer-link">
                     <span class="icon-wrapper">📞</span> 
@@ -57,7 +60,7 @@
                 </a>
                 <a href="mailto:info@digiprint.co.id" class="footer-link">
                     <span class="icon-wrapper">✉</span> 
-                    <span class="text-wrapper">info@digiprint.co.id</span>
+                    <span class="text-wrapper">digiprint@gmail.com</span>
                 </a>
             </div>
         </div>
@@ -178,8 +181,8 @@
     }
 
     .f-social-icon {
-        width: 38px;
-        height: 38px;
+        width: 42px; 
+        height: 42px;
         background: rgba(255, 255, 255, 0.08);
         color: white;
         border-radius: 50%;
@@ -187,17 +190,39 @@
         justify-content: center;
         align-items: center;
         text-decoration: none;
-        font-size: 16px;
-        transition: all 0.3s ease;
+        font-size: 18px; 
+
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                    background 0.3s ease, 
+                    box-shadow 0.4s ease;
     }
 
     .f-social-icon:hover {
-        transform: translateY(-4px);
+        transform: translateY(-6px) scale(1.1); 
         color: white;
     }
-    .f-social-icon.fb:hover { background: #1877F2; box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4); }
-    .f-social-icon.ig:hover { background: #E1306C; box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4); }
-    .f-social-icon.yt:hover { background: #FF0000; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4); }
+
+    .f-social-icon.fb:hover { 
+        background: #1877F2; 
+        box-shadow: 0 10px 20px rgba(24, 119, 242, 0.45); 
+    }
+
+    .f-social-icon.ig:hover { 
+        background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); 
+        box-shadow: 0 10px 20px rgba(238, 42, 123, 0.45); 
+    }
+
+    .f-social-icon.tiktok:hover { 
+        background: #010101; 
+        box-shadow: -3px 3px 0px rgba(254, 44, 85, 0.6), 
+                    3px -3px 0px rgba(37, 244, 238, 0.6), 
+                    0 10px 20px rgba(0, 0, 0, 0.5); 
+    }
+
+    .f-social-icon.shopee:hover { 
+        background: #EE4D2D; 
+        box-shadow: 0 10px 20px rgba(238, 77, 45, 0.45); 
+    }
 
     /* Kolom 2: Tautan Cepat */
     .quick-links {

@@ -21,12 +21,11 @@ include "../layout/admin_header.php";
         padding: 30px;
         border-radius: 15px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        /* HAPUS TRANSITION - INI PENYEBAB GERAK */
         transition: none;
         width: auto;
     }
 
-    /* Header Section - TANPA TRANSISI */
+    /* Header Section */
     .galeri-header {
         display: flex;
         justify-content: space-between;
@@ -48,7 +47,6 @@ include "../layout/admin_header.php";
         margin-top: 6px;
     }
 
-    /* BUTTON - TRANSISI HALUS TAPI TIDAK MENGGERAKKAN LAYOUT */
     .btn-tambah {
         background: #0ea5e9;
         color: #fff;
@@ -70,7 +68,6 @@ include "../layout/admin_header.php";
         transform: translateY(-2px);
     }
 
-    /* Table Responsive Wrapper - TIDAK BERUBAH LEBAR */
     .table-responsive {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -108,19 +105,75 @@ include "../layout/admin_header.php";
         border-bottom: none;
     }
 
-    /* HOVER ROW - TANPA TRANSISI YANG BERLEBIHAN */
     .galeri-table tbody tr:hover {
         background-color: #fafcff;
     }
 
-    /* Image Preview - TANPA TRANSISI */
-    .galeri-img {
+    /* ========== MEDIA PREVIEW (GAMBAR & VIDEO) ========== */
+    .media-preview {
         width: 100px;
         height: 70px;
         object-fit: cover;
         border-radius: 10px;
         border: 2px solid #e2e8f0;
         display: block;
+        background: #f1f5f9;
+    }
+
+    .video-preview {
+        position: relative;
+        width: 100px;
+        height: 70px;
+        border-radius: 10px;
+        border: 2px solid #e2e8f0;
+        overflow: hidden;
+        background: #0f172a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .video-preview video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-preview .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 1.5rem;
+        background: rgba(0, 0, 0, 0.6);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+    }
+
+    .media-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        margin-left: 8px;
+    }
+
+    .badge-image {
+        background: #38bdf8;
+        color: white;
+    }
+
+    .badge-video {
+        background: #ef4444;
+        color: white;
     }
 
     /* File Name */
@@ -136,7 +189,7 @@ include "../layout/admin_header.php";
         max-width: 220px;
     }
 
-    /* Action Button - TRANSISI HALUS */
+    /* Action Button */
     .btn-hapus {
         color: #ef4444;
         background: #fee2e2;
@@ -175,7 +228,6 @@ include "../layout/admin_header.php";
         display: block;
     }
 
-    /* Footer Info */
     .galeri-footer {
         margin-top: 20px;
         padding-top: 15px;
@@ -185,16 +237,55 @@ include "../layout/admin_header.php";
         color: #94a3b8;
     }
 
-    /* ========== RESPONSIVE BREAKPOINTS ========== */
-    
-    /* Tablet & Laptop Kecil - TANPA PERUBAHAN MENDADAK */
+    /* Lightbox untuk Preview Video */
+    .lightbox-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(8px);
+        cursor: pointer;
+    }
+
+    .lightbox-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90%;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 12px;
+    }
+
+    .lightbox-close {
+        position: fixed;
+        top: 30px;
+        right: 40px;
+        color: white;
+        font-size: 45px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+        z-index: 10000;
+    }
+
+    .lightbox-close:hover {
+        color: #38bdf8;
+    }
+
+    /* ========== RESPONSIVE ========== */
     @media (max-width: 1024px) {
         .admin-card {
             margin: 20px 24px 20px 290px;
             padding: 24px 28px;
         }
         
-        .galeri-img {
+        .media-preview, .video-preview {
             width: 85px;
             height: 60px;
         }
@@ -209,7 +300,6 @@ include "../layout/admin_header.php";
         }
     }
 
-    /* Mobile (768px ke bawah) - SIDEBAR BIASANYA HILANG */
     @media (max-width: 768px) {
         .admin-card {
             margin: 12px 16px;
@@ -246,7 +336,7 @@ include "../layout/admin_header.php";
             font-size: 0.7rem;
         }
         
-        .galeri-img {
+        .media-preview, .video-preview {
             width: 70px;
             height: 55px;
         }
@@ -272,14 +362,13 @@ include "../layout/admin_header.php";
         }
     }
     
-    /* Mobile Kecil (480px ke bawah) */
     @media (max-width: 480px) {
         .admin-card {
             margin: 8px 12px;
             padding: 14px 16px;
         }
         
-        .galeri-img {
+        .media-preview, .video-preview {
             width: 55px;
             height: 45px;
         }
@@ -303,7 +392,6 @@ include "../layout/admin_header.php";
         }
     }
 
-    /* Scrollbar styling */
     .table-responsive::-webkit-scrollbar {
         height: 5px;
     }
@@ -324,11 +412,11 @@ include "../layout/admin_header.php";
         <div class="galeri-header">
             <div>
                 <h2><i class="fas fa-images"></i> Kelola Galeri Produk</h2>
-                <p><i class="fas fa-info-circle" style="font-size:0.75rem;"></i> Daftar foto hasil cetakan Lega DigiPrint</p>
+                <p><i class="fas fa-info-circle" style="font-size:0.75rem;"></i> Daftar foto/video hasil cetakan Lega DigiPrint</p>
             </div>
             <a href="tambah_galeri.php" class="btn-tambah">
                 <i class="fas fa-plus"></i> 
-                <span>Tambah Foto</span>
+                <span>Tambah Media</span>
             </a>
         </div>
 
@@ -337,7 +425,7 @@ include "../layout/admin_header.php";
                 <thead>
                     <tr>
                         <th width="50">No</th>
-                        <th width="100">Pratinjau</th>
+                        <th width="120">Pratinjau</th>
                         <th>Nama File</th>
                         <th width="100" style="text-align:center;">Aksi</th>
                     </tr>
@@ -348,23 +436,42 @@ include "../layout/admin_header.php";
                     $query = mysqli_query($conn, "SELECT * FROM galeri ORDER BY id DESC");
                     if(mysqli_num_rows($query) > 0) {
                         while($row = mysqli_fetch_array($query)) {
+                            $file_name = $row['gambar'];
+                            $ekstensi = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+                            $video_ext = array('mp4', 'mov', 'webm', 'avi', 'mkv', '3gp');
+                            $is_video = in_array($ekstensi, $video_ext);
                     ?>
                     <tr>
                         <td style="font-weight: 600;"><?= $no++; ?></td>
                         <td>
-                            <img src="../assets/images/galeri/<?= $row['gambar']; ?>" 
-                                 class="galeri-img" 
+                            <?php if($is_video): ?>
+                            <div class="video-preview" onclick="openVideoLightbox('../assets/images/galeri/<?= $file_name; ?>')">
+                                <video src="../assets/images/galeri/<?= $file_name; ?>" muted preload="metadata"></video>
+                                <div class="play-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <?php else: ?>
+                            <img src="../assets/images/galeri/<?= $file_name; ?>" 
+                                 class="media-preview" 
                                  alt="Galeri"
                                  loading="lazy"
-                                 onerror="this.src='../assets/images/no-image.png'">
+                                 onerror="this.src='../assets/images/no-image.png'"
+                                 onclick="openImageLightbox('../assets/images/galeri/<?= $file_name; ?>')">
+                            <?php endif; ?>
                         </td>
                         <td>
-                            <code class="file-name"><?= htmlspecialchars($row['gambar']); ?></code>
+                            <code class="file-name"><?= htmlspecialchars($file_name); ?></code>
+                            <?php if($is_video): ?>
+                                <span class="media-badge badge-video"><i class="fas fa-video"></i> Video</span>
+                            <?php else: ?>
+                                <span class="media-badge badge-image"><i class="fas fa-image"></i> Gambar</span>
+                            <?php endif; ?>
                         </td>
                         <td style="text-align:center;">
                             <a href="hapus_galeri.php?id=<?= $row['id']; ?>" 
                                class="btn-hapus" 
-                               onclick="return confirm('Yakin ingin menghapus foto <?= htmlspecialchars($row['gambar']); ?>?')">
+                               onclick="return confirm('Yakin ingin menghapus <?= htmlspecialchars($file_name); ?>?')">
                                 <i class="fas fa-trash-alt"></i> 
                                 <span>Hapus</span>
                             </a>
@@ -377,9 +484,9 @@ include "../layout/admin_header.php";
                     <tr>
                         <td colspan="4" class="empty-state">
                             <i class="fas fa-folder-open"></i>
-                            <p>Belum ada foto galeri.</p>
+                            <p>Belum ada foto/video galeri.</p>
                             <a href="tambah_galeri.php" class="btn-tambah" style="display: inline-flex; width: auto;">
-                                <i class="fas fa-plus"></i> Tambah Foto Sekarang
+                                <i class="fas fa-plus"></i> Tambah Media Sekarang
                             </a>
                         </td>
                     </tr>
@@ -390,20 +497,24 @@ include "../layout/admin_header.php";
         
         <?php if(mysqli_num_rows($query) > 0): ?>
         <div class="galeri-footer">
-            <i class="fas fa-chart-line"></i> Total <?= mysqli_num_rows($query); ?> foto dalam galeri
+            <i class="fas fa-chart-line"></i> Total <?= mysqli_num_rows($query); ?> media dalam galeri
         </div>
         <?php endif; ?>
     </div>
 </div>
 
+<!-- LIGHTBOX MODAL UNTUK PREVIEW -->
+<div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightboxImage" style="display:none;">
+    <video class="lightbox-content" id="lightboxVideo" controls style="display:none;"></video>
+</div>
+
 <script>
     // PASTIKAN TIDAK ADA SCRIPT YANG MEMBUAT LAYOUT BERUBAH
-    // Tambahan untuk mencegah sidebar toggle mempengaruhi margin
     (function() {
-        // Cek apakah ada sidebar toggle yang mengubah margin
         const style = document.createElement('style');
         style.textContent = `
-            /* MEMAKSA LAYOUT STABIL */
             .content-wrapper {
                 margin-left: 0 !important;
                 transition: none !important;
@@ -414,4 +525,59 @@ include "../layout/admin_header.php";
         `;
         document.head.appendChild(style);
     })();
+
+    // Fungsi untuk membuka gambar di lightbox
+    function openImageLightbox(src) {
+        const modal = document.getElementById('lightboxModal');
+        const img = document.getElementById('lightboxImage');
+        const video = document.getElementById('lightboxVideo');
+        
+        img.style.display = 'none';
+        video.style.display = 'none';
+        if(video.pause) video.pause();
+        
+        img.src = src;
+        img.style.display = 'block';
+        
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Fungsi untuk membuka video di lightbox
+    function openVideoLightbox(src) {
+        const modal = document.getElementById('lightboxModal');
+        const img = document.getElementById('lightboxImage');
+        const video = document.getElementById('lightboxVideo');
+        
+        img.style.display = 'none';
+        video.style.display = 'none';
+        if(video.pause) video.pause();
+        
+        video.src = src;
+        video.style.display = 'block';
+        video.load();
+        video.play();
+        
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Fungsi tutup lightbox
+    function closeLightbox() {
+        const modal = document.getElementById('lightboxModal');
+        const video = document.getElementById('lightboxVideo');
+        
+        if(video.pause) video.pause();
+        video.src = '';
+        
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Tutup dengan tombol ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
 </script>
