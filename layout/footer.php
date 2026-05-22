@@ -28,7 +28,7 @@
                 <a href="https://www.tiktok.com/@YOUR_USERNAME" target="_blank" class="f-social-icon tiktok" title="TikTok">
                     <i class="fab fa-tiktok"></i>
                 </a>
-                <a href="https://shopee.co.id/YOUR_SHOP_ID" target="_blank" class="f-social-icon shopee" title="Shopee">
+                <a href="https://shopee.co.id/legadigiprint" target="_blank" class="f-social-icon shopee" title="Shopee">
                     <i class="fas fa-store"></i>
                 </a>
             </div>

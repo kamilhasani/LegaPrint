@@ -59,14 +59,14 @@ if (isset($_POST['kirim_pesan'])) {
                     </div>
 
                     <div class="info-cards">
-                        <a href="https://www.google.com/maps/search/?api=1&query=Pasar+Senen+Jakarta+Pusat" target="_blank" class="info-card-link">
+                        <a href="https://www.google.com/maps/search/?api=1&query=PJln. Kalibaru Timur III. Ruko Yon Angmor, Senen, Kota Jakarta Pusat 10460" target="_blank" class="info-card-link">
                             <div class="info-card">
                                 <div class="icon-box">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div class="text-box">
                                     <h4>Alamat Workshop</h4>
-                                    <p>Pasar Senen, Jakarta Pusat, DKI Jakarta</p>
+                                    <p>Jln. Kalibaru Timur III. Ruko Yon Angmor, Senen, Kota Jakarta Pusat 10460</p>
                                     <span class="card-link">Lihat di Google Maps →</span>
                                 </div>
                             </div>
@@ -228,15 +228,15 @@ if (isset($_POST['kirim_pesan'])) {
                         <p>Datang langsung untuk konsultasi atau mengambil pesanan Anda</p>
                         <div class="map-address">
                             <i class="fas fa-location-dot"></i>
-                            <span>Pasar Senen, Jakarta Pusat, DKI Jakarta</span>
+                            <span>Jln. Kalibaru Timur III. Ruko Yon Angmor, Senen, Kota Jakarta Pusat 10460</span>
                         </div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Pasar+Senen+Jakarta+Pusat" target="_blank" class="map-btn">
-                            <i class="fas fa-map"></i> Buka Google Maps
+                        <a href="https://maps.app.goo.gl/dGzCDTbjhYNSM6wy7" target="_blank" class="map-btn">
+                        <i class="fas fa-map"></i> Buka Google Maps
                         </a>
                     </div>
                     <div class="map-preview">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.174!2d106.8415!3d-6.1754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x8c0b7c2f0e8b5a0!2sPasar%20Senen!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15866.665480183023!2d106.8415!3d-6.1754!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5c81f45368d%3A0xaed8ccc16621d000!2sLega%20Digiprint!5e0!3m2!1sid!2sid!4v1779432654668!5m2!1sid!2sid" 
                             width="100%" 
                             height="200" 
                             style="border:0; border-radius: 15px;" 
