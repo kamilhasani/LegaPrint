@@ -20,27 +20,101 @@ if (isset($_POST['kirim_pesan'])) {
 ?>
 
 <main class="contact-page">
-    <!-- Hero Section -->
+    <!-- Professional Hero Section with Rich Visuals -->
     <section class="contact-hero">
-        <div class="hero-overlay"></div>
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-bg-gradient"></div>
+        <div class="hero-illustration">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+            <div class="hero-shape shape-4"></div>
+        </div>
+        
         <div class="container hero-content">
-            <div class="hero-badge">Hubungi Kami</div>
-            <h1 class="hero-title">Konsultasi <span>Gratis</span></h1>
-            <p class="hero-subtitle">Tim profesional kami siap membantu kebutuhan cetak digital Anda</p>
-            <div class="hero-contact-info">
-                <div class="hero-contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>+62 821 1777 3741</span>
+            <div class="hero-grid">
+                <div class="hero-text animate-fade-up">
+                    <div class="hero-badge">
+                        <i class="fas fa-headset"></i>
+                        <span>Layanan Konsultasi 24/7</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Konsultasi <span class="gradient-text">Gratis</span>
+                        <br>Cetak Digital
+                    </h1>
+                    <p class="hero-subtitle">
+                        Tim profesional kami siap membantu mewujudkan kebutuhan cetak digital Anda 
+                        dengan hasil terbaik dan harga kompetitif.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Klien Puas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1500+</div>
+                            <div class="stat-label">Proyek Selesai</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24hr</div>
+                            <div class="stat-label">Respon Cepat</div>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/6282117773741?text=Halo%20Lega%20DigiPrint,%20saya%20ingin%20konsultasi" 
+                           target="_blank" class="btn-primary">
+                            <i class="fab fa-whatsapp"></i>
+                            Konsultasi Sekarang
+                        </a>
+                        <a href="#contact-form" class="btn-outline">
+                            <i class="fas fa-envelope"></i>
+                            Kirim Pesan
+                        </a>
+                    </div>
                 </div>
-                <div class="hero-contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>legadigiprint@gmail.com</span>
+                
+                <div class="hero-visual animate-fade-up delay-1">
+                    <div class="hero-card floating">
+                        <div class="card-header">
+                            <div class="card-avatar">
+                                <i class="fas fa-print"></i>
+                            </div>
+                            <div class="card-info">
+                                <h4>Lega DigiPrint</h4>
+                                <p>Online • Aktif</p>
+                            </div>
+                            <div class="card-status">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                        </div>
+                        <div class="card-message">
+                            <div class="message-bubble">
+                                <p>Halo! Ada yang bisa kami bantu untuk kebutuhan cetak Anda?</p>
+                                <span class="message-time">Balas dalam < 1 menit</span>
+                            </div>
+                        </div>
+                        <div class="card-features">
+                            <div class="feature-chip">
+                                <i class="fas fa-truck-fast"></i>
+                                <span>Gratis Ongkir JKT</span>
+                            </div>
+                            <div class="feature-chip">
+                                <i class="fas fa-palette"></i>
+                                <span>Desain Gratis</span>
+                            </div>
+                            <div class="feature-chip">
+                                <i class="fas fa-clock"></i>
+                                <span>Cepat Jadi</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hero-wave">
+        
+        <div class="hero-wave-bottom">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path fill="#f8fafc" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,208C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                <path fill="#ffffff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,208C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
         </div>
     </section>
@@ -52,7 +126,7 @@ if (isset($_POST['kirim_pesan'])) {
                 <!-- Left Side - Info Cards -->
                 <div class="contact-info">
                     <div class="section-header">
-                        <span class="section-tag">Informasi</span>
+                        <span class="section-tag">Informasi Kontak</span>
                         <h2 class="section-title">Hubungi <span>Kami</span></h2>
                         <div class="section-divider"></div>
                         <p class="section-desc">Siap membantu Anda 24/7 untuk konsultasi dan pemesanan</p>
@@ -110,7 +184,7 @@ if (isset($_POST['kirim_pesan'])) {
                 </div>
 
                 <!-- Right Side - Form -->
-                <div class="contact-form-wrapper">
+                <div class="contact-form-wrapper" id="contact-form">
                     <div class="form-card">
                         <div class="form-header">
                             <i class="fas fa-paper-plane"></i>
@@ -255,8 +329,9 @@ if (isset($_POST['kirim_pesan'])) {
     /* ==================== VARIABLES ==================== */
     :root {
         --primary: #004ea2;
-        --primary-dark: #0284c7;
-        --primary-light: #7dd3fc;
+        --primary-dark: #003d82;
+        --primary-light: #3b82f6;
+        --primary-gradient: linear-gradient(135deg, #004ea2 0%, #3b82f6 100%);
         --dark: #0f172a;
         --dark-soft: #1e293b;
         --gray: #64748b;
@@ -285,87 +360,305 @@ if (isset($_POST['kirim_pesan'])) {
         width: 100%;
     }
 
-    /* ==================== HERO SECTION ==================== */
+    /* ==================== PROFESSIONAL HERO SECTION ==================== */
     .contact-hero {
         position: relative;
-        background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
+        background: linear-gradient(135deg, #0a0f2a 0%, #0f172a 50%, #1e1b4b 100%);
         overflow: hidden;
-        padding: 60px 0 80px;
+        min-height: 650px;
+        display: flex;
+        align-items: center;
     }
 
-    .contact-hero .hero-overlay {
+    .hero-bg-pattern {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: radial-gradient(circle at 70% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="rgba(59,130,246,0.03)" d="M0 0h200v200H0z"/><path fill="rgba(59,130,246,0.05)" d="M100 20L120 60H80zM20 100L60 120 60 80zM180 100L140 120 140 80zM100 180L80 140H120z"/></svg>');
+        background-repeat: repeat;
+        opacity: 0.5;
     }
 
-    .hero-content {
+    .hero-bg-gradient {
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 80%;
+        height: 150%;
+        background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .hero-illustration {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+    }
+
+    .hero-shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+    }
+
+    .shape-1 {
+        top: 10%;
+        left: -10%;
+        width: 300px;
+        height: 300px;
+        background: rgba(59,130,246,0.2);
+    }
+
+    .shape-2 {
+        bottom: -20%;
+        right: -5%;
+        width: 400px;
+        height: 400px;
+        background: rgba(37,211,102,0.1);
+    }
+
+    .shape-3 {
+        top: 40%;
+        left: 30%;
+        width: 200px;
+        height: 200px;
+        background: rgba(139,92,246,0.15);
+    }
+
+    .shape-4 {
+        bottom: 30%;
+        right: 20%;
+        width: 250px;
+        height: 250px;
+        background: rgba(59,130,246,0.12);
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
         position: relative;
-        z-index: 2;
-        text-align: center;
+        z-index: 10;
+        padding: 60px 0;
+    }
+
+    .hero-text {
+        color: white;
     }
 
     .hero-badge {
-        display: inline-block;
-        background: rgba(56, 189, 248, 0.15);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255,255,255,0.1);
         backdrop-filter: blur(10px);
-        padding: 6px 16px;
+        padding: 8px 18px;
         border-radius: 50px;
-        color: var(--primary);
-        font-weight: 600;
-        font-size: 0.75rem;
-        letter-spacing: 1px;
-        margin-bottom: 20px;
-        border: 1px solid rgba(56, 189, 248, 0.3);
+        margin-bottom: 25px;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-badge i {
+        color: #3b82f6;
+        font-size: 0.9rem;
+    }
+
+    .hero-badge span {
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 800;
-        color: var(--white);
-        margin-bottom: 15px;
+        line-height: 1.2;
+        margin-bottom: 20px;
     }
 
-    .hero-title span {
-        color: var(--primary);
+    .gradient-text {
+        background: linear-gradient(135deg, #60a5fa, #a78bfa);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
     }
 
     .hero-subtitle {
         font-size: 1rem;
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255,255,255,0.7);
+        line-height: 1.6;
         margin-bottom: 30px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
+        max-width: 500px;
     }
 
-    .hero-contact-info {
+    .hero-stats {
         display: flex;
-        justify-content: center;
         gap: 30px;
+        margin-bottom: 35px;
+    }
+
+    .stat-item {
+        text-align: left;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: white;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.6);
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 15px;
         flex-wrap: wrap;
     }
 
-    .hero-contact-item {
-        display: flex;
+    .btn-primary, .btn-outline {
+        display: inline-flex;
         align-items: center;
         gap: 10px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 10px 20px;
+        padding: 12px 28px;
         border-radius: 50px;
-        color: white;
+        font-weight: 600;
         font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
     }
 
-    .hero-contact-item i {
-        color: var(--primary);
+    .btn-primary {
+        background: #25D366;
+        color: white;
+        border: none;
     }
 
-    .hero-wave {
+    .btn-primary:hover {
+        background: #1eb954;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(37,211,102,0.3);
+    }
+
+    .btn-outline {
+        background: transparent;
+        color: white;
+        border: 1.5px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-outline:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: white;
+        transform: translateY(-2px);
+    }
+
+    /* Hero Visual Card */
+    .hero-visual {
+        position: relative;
+    }
+
+    .hero-card {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(20px);
+        border-radius: 32px;
+        padding: 24px;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+    }
+
+    .floating {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .card-avatar {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-gradient);
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+    }
+
+    .card-info h4 {
+        font-size: 1rem;
+        color: white;
+        margin-bottom: 2px;
+    }
+
+    .card-info p {
+        font-size: 0.7rem;
+        color: #10b981;
+    }
+
+    .card-status i {
+        font-size: 0.6rem;
+        color: #10b981;
+    }
+
+    .card-message {
+        margin-bottom: 20px;
+    }
+
+    .message-bubble {
+        background: rgba(255,255,255,0.1);
+        padding: 15px 18px;
+        border-radius: 20px;
+        border-top-left-radius: 5px;
+    }
+
+    .message-bubble p {
+        color: white;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+
+    .message-time {
+        font-size: 0.65rem;
+        color: rgba(255,255,255,0.5);
+    }
+
+    .card-features {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .feature-chip {
+        background: rgba(255,255,255,0.08);
+        padding: 6px 12px;
+        border-radius: 30px;
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.8);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .feature-chip i {
+        font-size: 0.7rem;
+    }
+
+    .hero-wave-bottom {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -373,9 +666,30 @@ if (isset($_POST['kirim_pesan'])) {
         line-height: 0;
     }
 
-    .hero-wave svg {
+    .hero-wave-bottom svg {
         width: 100%;
-        height: 40px;
+        height: 50px;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-up {
+        animation: fadeUp 0.8s ease forwards;
+    }
+
+    .delay-1 {
+        animation-delay: 0.2s;
+        opacity: 0;
     }
 
     /* ==================== SECTION HEADER ==================== */
@@ -536,7 +850,7 @@ if (isset($_POST['kirim_pesan'])) {
     }
 
     .form-header {
-        background: #004ea2;
+        background: var(--primary-gradient);
         padding: 25px 30px;
         text-align: center;
         color: white;
@@ -790,6 +1104,33 @@ if (isset($_POST['kirim_pesan'])) {
 
     /* ==================== RESPONSIVE ==================== */
     @media (max-width: 992px) {
+        .hero-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .hero-text {
+            text-align: center;
+        }
+        
+        .hero-subtitle {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-stats {
+            justify-content: center;
+        }
+        
+        .hero-buttons {
+            justify-content: center;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
         .contact-wrapper {
             grid-template-columns: 1fr;
             gap: 30px;
@@ -811,23 +1152,22 @@ if (isset($_POST['kirim_pesan'])) {
 
     @media (max-width: 768px) {
         .hero-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
         
         .hero-subtitle {
             font-size: 0.85rem;
         }
         
-        .hero-contact-info {
-            gap: 15px;
+        .hero-stats {
+            gap: 20px;
         }
         
-        .hero-contact-item {
-            font-size: 0.75rem;
-            padding: 6px 12px;
+        .stat-number {
+            font-size: 1.2rem;
         }
         
-        .hero-wave svg {
+        .hero-wave-bottom svg {
             height: 30px;
         }
         
@@ -880,6 +1220,11 @@ if (isset($_POST['kirim_pesan'])) {
         .map-content {
             padding: 20px;
         }
+        
+        .hero-card {
+            max-width: 400px;
+            margin: 0 auto;
+        }
     }
 
     @media (max-width: 480px) {
@@ -888,16 +1233,33 @@ if (isset($_POST['kirim_pesan'])) {
         }
         
         .hero-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         
-        .hero-contact-item {
-            font-size: 0.7rem;
-            padding: 5px 10px;
+        .hero-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .btn-primary, .btn-outline {
+            width: 100%;
+            justify-content: center;
         }
         
         .btn-send {
             font-size: 0.85rem;
+        }
+        
+        .hero-card {
+            padding: 18px;
+        }
+        
+        .message-bubble p {
+            font-size: 0.75rem;
+        }
+        
+        .feature-chip {
+            font-size: 0.65rem;
         }
     }
 </style>

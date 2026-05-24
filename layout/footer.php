@@ -56,7 +56,7 @@
                 </a>
                 <a href="tel:02112345678" class="footer-link">
                     <span class="icon-wrapper">📞</span> 
-                    <span class="text-wrapper">(021) 1234 5678</span>
+                    <span class="text-wrapper">(+62) 821-1777-3741</span>
                 </a>
                 <a href="mailto:info@digiprint.co.id" class="footer-link">
                     <span class="icon-wrapper">✉</span> 

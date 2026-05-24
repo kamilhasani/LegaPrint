@@ -791,7 +791,7 @@ if (!$query) {
             display: flex;
             justify-content: center;
             gap: 60px;
-            background: linear-gradient(135deg, var(--dark), var(--dark-soft));
+            background: linear-gradient(135deg, var(--dark), #1e293b);
             padding: 35px 40px;
             border-radius: 25px;
             text-align: center;
@@ -810,7 +810,7 @@ if (!$query) {
 
         .testimonial-stats .stat-label {
             font-size: 0.85rem;
-            color: rgba(0, 0, 0, 0.8);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         /* ==================== RESPONSIVE TESTIMONIAL ==================== */
@@ -822,7 +822,6 @@ if (!$query) {
         }
 
         @media (max-width: 768px) {
-            /* TESTIMONIAL STATS - MENJADI SATU BARIS (HORIZONTAL SCROLL) */
             .testimonial-stats {
                 display: flex;
                 flex-direction: row;
@@ -884,7 +883,7 @@ if (!$query) {
                 font-size: 0.85rem;
             }
             
-            /* TESTIMONIAL STATS - SATU BARIS DI HP KECIL */
+            /* TESTIMONIAL STATS */
             .testimonial-stats {
                 gap: 15px;
                 padding: 15px 12px;
@@ -926,11 +925,14 @@ if (!$query) {
             
             .testimonial-stats .stat-label {
                 font-size: 0.6rem;
-                color: rgba(0, 0, 0, 0.9);
             }
         }
 
-        /*CLIENT*/
+        /* ==================== CLIENT SECTION ==================== */
+        .client-section {
+            padding: 60px 0 80px;
+        }
+        
         .client-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -951,13 +953,12 @@ if (!$query) {
             justify-content: center;
             transition: 0.3s;
             border: 1px solid #f1f5f9;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
         }
 
-        .client-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
+        /* WARNA ASLI TETAP PERTAHANKAN */
         .client-card img {
             max-width: 100%;
             max-height: 60px;
@@ -969,11 +970,55 @@ if (!$query) {
 
         .client-card:hover img {
             transform: scale(1.05);
-            opacity: 1;
         }
 
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* TOOLTIP NAMA CLIENT */
+        .client-hover {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: bottom 0.3s ease;
+            z-index: 10;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .client-card:hover .client-hover {
+            bottom: 0;
+        }
+
+        /* ==================== ANIMASI SCROLL ==================== */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+
         /* ==================== RESPONSIVE CLIENT GRID ==================== */
-        /* Tablet */
         @media (max-width: 992px) {
             .client-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -990,7 +1035,6 @@ if (!$query) {
             }
         }
 
-        /* HP (768px ke bawah) */
         @media (max-width: 768px) {
             .client-grid { 
                 grid-template-columns: repeat(3, 1fr);
@@ -1006,9 +1050,14 @@ if (!$query) {
             .client-card img {
                 max-height: 45px;
             }
+            
+            .client-hover {
+                font-size: 0.65rem;
+                padding: 6px;
+                white-space: normal;
+            }
         }
 
-        /* HP Kecil (480px ke bawah) */
         @media (max-width: 480px) {
             .client-grid { 
                 grid-template-columns: repeat(3, 1fr);
@@ -1024,9 +1073,13 @@ if (!$query) {
             .client-card img {
                 max-height: 38px;
             }
+            
+            .client-hover {
+                font-size: 0.6rem;
+                padding: 5px;
+            }
         }
 
-        /* HP sangat kecil (380px ke bawah) */
         @media (max-width: 380px) {
             .client-grid { 
                 grid-template-columns: repeat(3, 1fr);
@@ -1044,7 +1097,6 @@ if (!$query) {
         }
 
         /* ==================== FOOTER RESPONSIVE ==================== */
-        /* Tablet & Desktop */
         @media (min-width: 768px) {
             footer {
                 padding: 60px 0 30px;
@@ -1062,7 +1114,6 @@ if (!$query) {
             }
         }
 
-        /* HP */
         @media (max-width: 767px) {
             footer {
                 padding: 40px 0 20px;
@@ -1082,7 +1133,6 @@ if (!$query) {
             }
         }
 
-        /* Utility */
         button, a {
             -webkit-tap-highlight-color: transparent;
         }
@@ -1090,122 +1140,75 @@ if (!$query) {
 </head>
 <body>
 <?php include "layout/header.php"; ?>
-                <?php
-                $no = 1;
-                $data = mysqli_query($conn, "SELECT * FROM hero ORDER BY id DESC");
+<?php
+$no = 1;
+$data = mysqli_query($conn, "SELECT * FROM hero ORDER BY id DESC");
+$heroData = [];
+while($row = mysqli_fetch_assoc($data)){
+    $heroData[] = $row;
+}
+?>
 
-                $heroData = [];
-                while($row = mysqli_fetch_assoc($data)){
-                    $heroData[] = $row;
-                }
-                ?>
-
-<section class="banner-slider">
+<section class="banner-slider scroll-animate">
     <div class="slider-container">
-
         <div class="slider-wrapper" id="sliderWrapper">
-
             <?php foreach($heroData as $d): ?>
                 <div class="slide">
-                    <img src="assets/images/hero/<?php echo $d['gambar']; ?>"
-                         alt="Hero Image">
+                    <img src="assets/images/hero/<?php echo $d['gambar']; ?>" alt="Hero Image">
                 </div>
             <?php endforeach; ?>
-
         </div>
-
         <button class="slider-btn prev-btn" id="prevBtn">
             <i class="fas fa-chevron-left"></i>
         </button>
-
         <button class="slider-btn next-btn" id="nextBtn">
             <i class="fas fa-chevron-right"></i>
         </button>
-
         <div class="slider-dots">
-
             <?php foreach($heroData as $index => $d): ?>
                 <span class="dot <?php echo $index == 0 ? 'active' : ''; ?>"></span>
             <?php endforeach; ?>
-
         </div>
-
     </div>
 </section>
 
-
-<section class="iklan-section">
+<section class="iklan-section scroll-animate">
     <div class="container">
         <div class="iklan-grid">
-
-            <!-- IKLAN 1 -->
             <a href="cutting-sticker.php" class="iklan-card">
                 <img src="assets/images/iklan/iklan1.png" alt="Cutting Sticker">
             </a>
-
-            <!-- IKLAN 2 -->
             <a href="cetak-banner.php" class="iklan-card">
                 <img src="assets/images/iklan/iklan2.png" alt="Cetak Banner">
             </a>
-
-            <!-- IKLAN 3 -->
             <a href="jasa-plakat.php" class="iklan-card">
                 <img src="assets/images/iklan/iklan3.png" alt="Jasa Plakat">
             </a>
-
         </div>
     </div>
 </section>
 
-
-<section class="product-section section-padding">
+<section class="product-section section-padding scroll-animate">
     <div class="container">
         <div class="produk-grid">
             <?php if(mysqli_num_rows($query) > 0): ?>
-                <?php while($p = mysqli_fetch_assoc($query)): ?>
-                    <div class="produk-card">
-                        <a href="detail_produk.php?id=<?php echo $p['id']; ?>" 
-                           class="produk-img-link">
+                <?php $productIndex = 0; while($p = mysqli_fetch_assoc($query)): $productIndex++; ?>
+                    <div class="produk-card scroll-animate delay-<?php echo min($productIndex % 5 + 1, 5); ?>">
+                        <a href="detail_produk.php?id=<?php echo $p['id']; ?>" class="produk-img-link">
                             <div class="produk-img">
-                                <img 
-                                    src="assets/images/produk/<?php echo $p['gambar']; ?>" 
-                                    alt="<?php echo $p['nama_produk']; ?>">
+                                <img src="assets/images/produk/<?php echo $p['gambar']; ?>" alt="<?php echo $p['nama_produk']; ?>">
                                 <div class="produk-overlay">
-                                    <span class="view-text">
-                                        Lihat Detail
-                                    </span>
+                                    <span class="view-text">Lihat Detail</span>
                                 </div>
                             </div>
                         </a>
                         <div class="produk-info">
-                            <div class="category-tag">
-                                <?php echo $p['nama_kategori']; ?>
-                            </div>
-                            <h3>
-                                <a href="detail_produk.php?id=<?php echo $p['id']; ?>"
-                                   style="text-decoration:none;color:inherit;">
-                                    <?php echo $p['nama_produk']; ?>
-                                </a>
-                            </h3>
-                            <p class="produk-desc">
-                                <?php
-                                echo (strlen($p['deskripsi']) > 80)
-                                    ? substr($p['deskripsi'], 0, 80) . "..."
-                                    : $p['deskripsi'];
-                                ?>
-                            </p>
+                            <div class="category-tag"><?php echo $p['nama_kategori']; ?></div>
+                            <h3><a href="detail_produk.php?id=<?php echo $p['id']; ?>" style="text-decoration:none;color:inherit;"><?php echo $p['nama_produk']; ?></a></h3>
+                            <p class="produk-desc"><?php echo (strlen($p['deskripsi']) > 80) ? substr($p['deskripsi'], 0, 80) . "..." : $p['deskripsi']; ?></p>
                             <div class="price-action">
-                                <div class="price-tag">
-                                    <?php
-                                    echo "Rp " . number_format((int)$p['harga'], 0, ',', '.');
-                                    ?>
-                                </div>
-                                <a href="https://wa.me/628123456789?text=Halo saya ingin pesan <?php echo urlencode($p['nama_produk']); ?>" 
-                                   class="btn-wa"
-                                   target="_blank">
-                                    <i class="fab fa-whatsapp"></i>
-                                    Pesan
-                                </a>
+                                <div class="price-tag">Rp <?php echo number_format((int)$p['harga'], 0, ',', '.'); ?></div>
+                                <a href="https://wa.me/628123456789?text=Halo saya ingin pesan <?php echo urlencode($p['nama_produk']); ?>" class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> Pesan</a>
                             </div>
                         </div>
                     </div>
@@ -1217,215 +1220,160 @@ if (!$query) {
     </div>
 </section>
 
-<section class="commitment-section">
+<section class="commitment-section scroll-animate">
     <div class="container">
         <div class="commitment-header">
             <span class="badge">Komitmen Kami</span>
             <h2>Kenapa <span>Pelanggan Percaya</span> kepada Kami?</h2>
             <p>Bukan hanya sekadar cetak, tapi solusi percetakan yang tepat untuk bisnis Anda</p>
         </div>
-
         <div class="commitment-grid">
-            <div class="commitment-card">
-                <div class="commitment-icon">
-                    <i class="fas fa-handshake"></i>
-                </div>
+            <div class="commitment-card scroll-animate delay-1">
+                <div class="commitment-icon"><i class="fas fa-handshake"></i></div>
                 <div class="commitment-content">
                     <h3>Garansi Kepuasan</h3>
                     <p>Hasil cetak tidak sesuai? Kami perbaiki GRATIS atau refund 100% uang Anda.</p>
                 </div>
             </div>
-            <div class="commitment-card">
-                <div class="commitment-icon">
-                    <i class="fas fa-tachometer-alt"></i>
-                </div>
+            <div class="commitment-card scroll-animate delay-2">
+                <div class="commitment-icon"><i class="fas fa-tachometer-alt"></i></div>
                 <div class="commitment-content">
                     <h3>Prioritaskan Deadline</h3>
                     <p>Kami paham waktu adalah uang. Pengerjaan tepat waktu, bahkan untuk pesanan dadakan.</p>
                 </div>
             </div>
-            <div class="commitment-card">
-                <div class="commitment-icon">
-                    <i class="fas fa-microphone-alt"></i>
-                </div>
+            <div class="commitment-card scroll-animate delay-3">
+                <div class="commitment-icon"><i class="fas fa-microphone-alt"></i></div>
                 <div class="commitment-content">
                     <h3>Konsultasi Langsung</h3>
                     <p>Diskusikan kebutuhan cetak Anda langsung dengan tim expert kami, gratis!</p>
                 </div>
             </div>
-            <div class="commitment-card">
-                <div class="commitment-icon">
-                    <i class="fas fa-truck"></i>
-                </div>
+            <div class="commitment-card scroll-animate delay-4">
+                <div class="commitment-icon"><i class="fas fa-truck"></i></div>
                 <div class="commitment-content">
                     <h3>Pengiriman Terjamin</h3>
                     <p>Packing aman & ekspedisi terpercaya untuk memastikan pesanan sampai utuh.</p>
                 </div>
             </div>
         </div>
-
         <div class="commitment-cta">
-            <a href="https://wa.me/6282117773741" target="_blank" class="commitment-btn">
-                <i class="fab fa-whatsapp"></i> Konsultasi Sekarang
-            </a>
+            <a href="https://wa.me/6282117773741" target="_blank" class="commitment-btn"><i class="fab fa-whatsapp"></i> Konsultasi Sekarang</a>
         </div>
     </div>
 </section>
 
-<!-- Testimonial Section -->
-<section class="testimonial-section">
+<section class="testimonial-section scroll-animate">
     <div class="container">
         <div class="testimonial-header">
             <span class="badge">Testimonial</span>
             <h2>Apa Kata <span>Pelanggan</span>?</h2>
             <p>Lebih dari 500+ pelanggan telah mempercayakan kebutuhan cetaknya kepada Lega DigiPrint</p>
         </div>
-
         <div class="testimonial-grid">
-            <div class="testimonial-card">
+            <div class="testimonial-card scroll-animate delay-1">
                 <div class="testimonial-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
                 <p class="testimonial-text">"Hasil cetak sangat memuaskan, warna tajam dan proses cepat. Recommended banget untuk kebutuhan banner dan stiker!"</p>
                 <div class="testimonial-user">
-                    <div class="user-avatar">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="user-info">
-                        <h4>Andi Wijaya</h4>
-                        <span>Owner Cafe Kopi Senja</span>
-                    </div>
+                    <div class="user-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="user-info"><h4>Andi Wijaya</h4><span>Owner Cafe Kopi Senja</span></div>
                 </div>
             </div>
-
-            <div class="testimonial-card">
+            <div class="testimonial-card scroll-animate delay-2">
                 <div class="testimonial-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
                 <p class="testimonial-text">"Pelayanan ramah, harga bersaing, dan hasil cetak premium. Sudah 3x pesan di sini, selalu memuaskan!"</p>
                 <div class="testimonial-user">
-                    <div class="user-avatar">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="user-info">
-                        <h4>Siti Nurhaliza</h4>
-                        <span>Marketing Event Organizer</span>
-                    </div>
+                    <div class="user-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="user-info"><h4>Siti Nurhaliza</h4><span>Marketing Event Organizer</span></div>
                 </div>
             </div>
-
-            <div class="testimonial-card">
+            <div class="testimonial-card scroll-animate delay-3">
                 <div class="testimonial-rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
                 <p class="testimonial-text">"Desain kami dikerjakan dengan detail, tepat waktu, dan komunikasinya sangat baik. Terima kasih Lega DigiPrint!"</p>
                 <div class="testimonial-user">
-                    <div class="user-avatar">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="user-info">
-                        <h4>Budi Santoso</h4>
-                        <span>Digital Agency Owner</span>
-                    </div>
+                    <div class="user-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="user-info"><h4>Budi Santoso</h4><span>Digital Agency Owner</span></div>
                 </div>
             </div>
         </div>
-
-        <div class="testimonial-stats">
-            <div class="stat">
-                <span class="stat-number">500+</span>
-                <span class="stat-label">Pelanggan Puas</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">1000+</span>
-                <span class="stat-label">Proyek Selesai</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">99%</span>
-                <span class="stat-label">Ulasan Positif</span>
-            </div>
+        <div class="testimonial-stats scroll-animate delay-4">
+            <div class="stat"><span class="stat-number">500+</span><span class="stat-label">Pelanggan Puas</span></div>
+            <div class="stat"><span class="stat-number">1000+</span><span class="stat-label">Proyek Selesai</span></div>
+            <div class="stat"><span class="stat-number">99%</span><span class="stat-label">Ulasan Positif</span></div>
         </div>
     </div>
 </section>
 
+<!-- CLIENT SECTION DENGAN TOOLTIP NAMA -->
+<section class="client-section scroll-animate">
     <div class="container">
         <h2 style="text-align: center; margin-bottom: 40px; font-weight: 800; color: #0f172a; font-size: 2rem;">Our Client</h2>
-        
         <div class="client-grid">
             <?php
-            include "config/koneksi.php";
             $clients = mysqli_query($conn, "SELECT * FROM clients");
+            $clientIndex = 0;
             while($cl = mysqli_fetch_array($clients)){
+                $clientIndex++;
             ?>
-            <div class="client-card">
-                <img src="assets/images/clients/<?php echo $cl['logo']; ?>" alt="<?php echo $cl['nama_client']; ?>">
+            <div class="client-card scroll-animate delay-<?php echo min($clientIndex % 5 + 1, 5); ?>">
+                <img src="assets/images/clients/<?php echo $cl['logo']; ?>" alt="<?php echo htmlspecialchars($cl['nama_client']); ?>">
+                <div class="client-hover">
+                    <span><?php echo htmlspecialchars($cl['nama_client']); ?></span>
+                </div>
             </div>
             <?php } ?>
         </div>
     </div>
 </section>
 
-
-
 <script>
-
+// ==================== ANIMASI SCROLL ====================
+document.addEventListener('DOMContentLoaded', function() {
+    // Animasi scroll dengan Intersection Observer
+    const animatedElements = document.querySelectorAll('.scroll-animate');
     
-    // Cek jika elemen menu ada sebelum menjalankan event listener
-    const menuToggle = document.querySelector('.menu-toggle');
-    if (menuToggle && navMenu) {
-        const icon = menuToggle.querySelector('i');
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            
-            // Ganti icon bars jadi X saat terbuka
-            if (navMenu.classList.contains('active')) {
-                icon.classList.replace('fa-bars', 'fa-times');
-            } else {
-                icon.classList.replace('fa-times', 'fa-bars');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
-    }
-
-    // ==================== BANNER SLIDER JAVASCRIPT ====================
-    document.addEventListener('DOMContentLoaded', function() {
-        const sliderWrapper = document.getElementById('sliderWrapper');
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const dots = document.querySelectorAll('.dot');
-        const sliderContainer = document.querySelector('.slider-container');
-        
-        // Proteksi: Cek apakah elemen slider ada di halaman
-        if (!sliderWrapper || slides.length === 0) return;
-        
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+    
+    // ==================== BANNER SLIDER ====================
+    const sliderWrapper = document.getElementById('sliderWrapper');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dots = document.querySelectorAll('.dot');
+    const sliderContainer = document.querySelector('.slider-container');
+    
+    if (sliderWrapper && slides.length > 0) {
         let currentIndex = 0;
         const totalSlides = slides.length;
         let autoSlideInterval;
         
-        // Update slider position & UI
         function updateSlider() {
-            console.log(currentIndex);
             sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // Update active dot
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentIndex);
             });
         }
         
-        // Fungsi Navigasi
         function nextSlide() {
             currentIndex = (currentIndex + 1) % totalSlides;
             updateSlider();
@@ -1444,7 +1392,6 @@ if (!$query) {
             resetAutoSlide();
         }
         
-        // Logic Autoplay
         function startAutoSlide() {
             if (autoSlideInterval) clearInterval(autoSlideInterval);
             autoSlideInterval = setInterval(nextSlide, 5000);
@@ -1455,54 +1402,40 @@ if (!$query) {
             startAutoSlide();
         }
         
-        // Fitur Tambahan: Stop auto slide saat kursor di atas banner
-        if (sliderContainer) {
-            sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-            sliderContainer.addEventListener('mouseleave', () => startAutoSlide());
-        }
-        
-        // Event Listeners Tombol
         if (nextBtn) nextBtn.addEventListener('click', nextSlide);
         if (prevBtn) prevBtn.addEventListener('click', prevSlide);
         
-        // Event Listeners Dots
         if (dots.length > 0) {
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => goToSlide(index));
             });
         }
         
-        // ==================== TOUCH/SWIPE SUPPORT ====================
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+            sliderContainer.addEventListener('mouseleave', () => startAutoSlide());
+        }
+        
+        // Touch swipe support
         let touchStartX = 0;
         let touchEndX = 0;
         
-        if (sliderContainer) {
-            sliderContainer.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, {passive: true});
-            
-            sliderContainer.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, {passive: true});
-        }
+        sliderContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
         
-        function handleSwipe() {
-            const swipeThreshold = 50; // Jarak minimal geser
+        sliderContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
             const diff = touchEndX - touchStartX;
-            
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    prevSlide(); // Geser kanan (prev)
-                } else {
-                    nextSlide(); // Geser kiri (next)
-                }
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) prevSlide();
+                else nextSlide();
             }
-        }
+        }, {passive: true});
         
-        // Jalankan Autoplay pertama kali
         startAutoSlide();
-    });
+    }
+});
 </script>
 
 <?php include "layout/footer.php"; ?>
