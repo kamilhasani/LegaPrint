@@ -66,15 +66,6 @@
                                 <p>Pengalaman & Dedikasi</p>
                             </div>
                         </div>
-                        <div class="floating-card second">
-                            <div class="floating-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="floating-text">
-                                <h4>500+</h4>
-                                <p>Klien Puas</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="story-content">
@@ -327,19 +318,20 @@
     /* ==================== HERO SECTION DENGAN ANIMASI ==================== */
     .about-hero {
         position: relative;
-        min-height: 600px;
+        min-height: 150px; 
+        height: 600px;     
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         background-image: url('assets/images/hero/profil2.png');
-        background-size: 100% 100%;
+        background-size: cover; 
         background-position: center;
         background-repeat: no-repeat;
         overflow: hidden;
+        padding: 40px 20px;
     }
 
-    /* Animated Background Gradients */
     .hero-bg-animation {
         position: absolute;
         inset: 0;
@@ -378,7 +370,6 @@
         100% { transform: rotate(-360deg) scale(1); }
     }
 
-    /* Floating Particles */
     .hero-particles {
         position: absolute;
         inset: 0;
@@ -671,6 +662,68 @@
         margin-right: auto;
     }
 
+    @media (max-width: 768px) {
+    .about-hero {
+        height: auto !important;
+        min-height: 320px !important;
+        padding: 30px 15px !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .about-hero .hero-content {
+        margin: 0 auto !important;
+        padding: 20px 10px 30px 10px !important;
+        max-width: 100% !important;
+    }
+    }
+
+    .hero-title {
+        font-size: 2.2rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .hero-title-glow {
+        right: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem !important;
+        margin-bottom: 30px !important;
+        line-height: 1.5 !important;
+    }
+
+    .hero-badge {
+        padding: 6px 16px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .hero-wave svg {
+        height: 35px !important;
+    }
+
+    .hero-scroll {
+        align-items: center !important;
+    }
+
+    .section-title {
+        font-size: 1.6rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .section-desc {
+        font-size: 0.85rem !important;
+        padding: 0 5px !important;
+    }
+    
+    .section-divider {
+        margin: 0 auto !important;
+    }
+    }
+
     /* ==================== STORY SECTION ==================== */
     .story-section {
         padding: 80px 0;
@@ -678,27 +731,34 @@
     }
 
     .story-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 60px;
+        align-items: center;
     }
 
     .story-image {
         position: relative;
         width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
     }
 
     .image-frame {
         position: relative;
         border-radius: 24px;
-        overflow: hidden;
+        overflow: visible; 
         box-shadow: var(--shadow-lg);
+        width: 100%;
     }
 
     .image-frame img {
         width: 100%;
         height: auto;
+        max-height: 450px;
+        object-fit: cover; 
         display: block;
+        border-radius: 24px; 
         transition: transform 0.5s ease;
     }
 
@@ -724,17 +784,12 @@
         50% { transform: translateY(-8px); }
     }
 
-    .floating-card:first-child {
+    .floating-card:first-of-type {
         bottom: 20px;
-        left: 20px;
+        left: -30px; 
         animation-delay: 0s;
     }
 
-    .floating-card.second {
-        top: 20px;
-        right: 20px;
-        animation-delay: 1.5s;
-    }
 
     .floating-icon {
         width: 40px;
@@ -826,6 +881,41 @@
     .stat-label {
         font-size: 0.75rem;
         color: var(--gray);
+    }
+
+    /* ==================== RESPONSIVE KHUSUS LAYAR HP ==================== */
+    @media (max-width: 768px) {
+        .story-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .story-image {
+            max-width: 250px; 
+        }
+
+        .floating-card:first-of-type {
+            left: -15px;
+            bottom: 10px;
+        }
+
+        .floating-card.second {
+            right: -15px;
+            top: 10px;
+        }
+
+        .story-content {
+            text-align: center; 
+        }
+
+        .founder-quote p {
+            padding-left: 0;
+            padding-top: 25px;
+        }
+
+        .story-stats {
+            justify-content: center;
+        }
     }
 
     /* ==================== VISI MISI SECTION ==================== */

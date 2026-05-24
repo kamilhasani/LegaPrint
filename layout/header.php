@@ -75,15 +75,41 @@
             width: 100%;
         }
 
+        /* Mengatur kontainer utama logo agar gambar dan teks sejajar horizontal */
         .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--dark);
+            display: inline-flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: -1px;
         }
 
-        .logo span { color: #004ea2; }
+        /* Membuat teks judul dan subtitle menyusun ke bawah (vertikal) */
+        .logo-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left; /* Memastikan teks rata kiri */
+        }
+
+        /* Ukuran dan gaya teks utama (sesuaikan dengan css lamo kamu jika ada) */
+        .logo-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1e293b; /* Warna gelap utama, sesuaikan sendiri */
+            line-height: 1.1; /* Merapatkan jarak bawah sedikit */
+        }
+
+        .logo-title span {
+            color: var(--primary); /* Mengikuti warna biru/warna tema utama */
+        }
+
+        /* Ukuran dan gaya tulisan di bawahnya (Digital Printing) */
+        .logo-subtitle {
+            font-size: 0.75rem; /* Ukuran lebih kecil */
+            font-weight: 500;
+            color: #64748b; /* Warna abu-abu elegan */
+            letter-spacing: 1px; /* Memberikan sedikit jarak antar huruf agar rapi */
+            margin-top: 2px; /* Jarak halus dari tulisan utama di atasnya */
+        }
 
         /* Nav Links (Desktop) */
         .nav-links {
@@ -310,7 +336,10 @@
         <nav class="container">
             <a href="index.php" class="logo">
                 <img src="assets/images/logo/logo.jpeg" alt="Logo LegaDigiPrint" style="height: 40px; vertical-align: middle; margin-right: 8px;">
-                Lega<span>DigiPrint</span>
+                <div class="logo-text-wrapper">
+                    <span class="logo-title">Lega<span>DigiPrint</span></span>
+                    <span class="logo-subtitle">Digital Printing</span>
+                </div>
             </a>
 
             <ul class="nav-links" id="nav-menu">

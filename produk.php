@@ -1264,41 +1264,48 @@ if (!$data) {
         gap: 20px;
     }
 }
-
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2rem;
+        margin-bottom: 8px !important;
     }
     
     .hero-subtitle {
         font-size: 0.9rem;
+        margin-bottom: 20px !important;
     }
     
     .hero-features {
-        gap: 20px;
+        gap: 12px !important;
+        margin-bottom: 20px !important;
     }
     
     .hero-feature {
         flex-direction: column;
         text-align: center;
+        padding: 5px 0 !important;
     }
     
     .hero-cta {
         flex-direction: column;
         align-items: stretch;
+        gap: 10px !important;
     }
     
     .btn-primary, .btn-secondary {
         justify-content: center;
+        padding: 10px 20px !important;
     }
     
     .stats-card {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px !important;
+        padding: 15px !important;
+        margin-bottom: 20px !important;
     }
     
     .hero-wave svg {
-        height: 30px;
+        height: 25px !important;
     }
     
     .filter-header {
@@ -1398,11 +1405,18 @@ if (!$data) {
     
     .hero-title {
         font-size: 1.6rem;
+        margin-bottom: 6px !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 15px !important;
     }
     
     .hero-features {
         flex-direction: column;
         align-items: center;
+        gap: 8px !important;
     }
     
     .hero-feature {
@@ -1410,9 +1424,9 @@ if (!$data) {
         flex-direction: row;
         text-align: left;
         justify-content: center;
+        margin: 0 !important;
     }
     
-    /* Search bar fix untuk mobile */
     .search-input-group {
         display: flex;
         flex-direction: row;

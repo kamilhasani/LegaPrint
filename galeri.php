@@ -1085,114 +1085,142 @@ include "layout/header.php";
     }
 
     @media (max-width: 768px) {
-        .gallery-hero {
-            min-height: 550px;
-        }
-        
-        .hero-title {
-            font-size: 2rem;
-        }
-        
-        .hero-stats {
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .stat-divider {
-            display: none;
-        }
-        
-        .filter-wrapper {
-            flex-direction: column;
-            align-items: stretch;
-        }
-        
-        .filter-buttons {
-            justify-content: center;
-        }
-        
-        .search-box input {
-            width: 100%;
-        }
-        
-        .search-box input:focus {
-            width: 100%;
-        }
-        
-        .gallery-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-        
-        .gallery-img-wrapper {
-            height: 180px;
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-        }
-        
-        .cta-content h3 {
-            font-size: 1.3rem;
-        }
-        
-        .hero-wave-container svg {
-            height: 40px;
-        }
+    .gallery-hero {
+        height: auto !important;
+        min-height: 380px !important;
+        padding: 40px 15px 20px 15px !important;
+    }
+    
+    .gallery-hero .hero-content {
+        padding: 10px 0 !important;
     }
 
-    @media (max-width: 480px) {
-        .hero-title {
-            font-size: 1.6rem;
-        }
-        
-        .hero-subtitle {
-            font-size: 0.85rem;
-        }
-        
-        .hero-stats .stat {
-            min-width: 80px;
-        }
-        
-        .stat-number {
-            font-size: 1.5rem;
-        }
-        
-        .gallery-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-        
-        .gallery-img-wrapper {
-            height: 140px;
-        }
-        
-        .gallery-info {
-            padding: 10px 12px 12px;
-        }
-        
-        .gallery-info h4 {
-            font-size: 0.85rem;
-        }
-        
-        .gallery-info p {
-            font-size: 0.7rem;
-            display: none;
-        }
-        
-        .filter-btn span {
-            display: inline;
-        }
-        
-        .filter-btn {
-            padding: 6px 14px;
-            font-size: 0.75rem;
-        }
-        
-        .hero-wave-container svg {
-            height: 30px;
-        }
+    .hero-badge {
+        margin-bottom: 15px !important;
     }
+
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: 10px !important;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 25px !important;
+    }
+
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 25px !important;
+    }
+    
+    .stat-divider {
+        display: none;
+    }
+    
+    .filter-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+    }
+    
+    .search-box input {
+        width: 100%;
+    }
+    
+    .search-box input:focus {
+        width: 100%;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .gallery-img-wrapper {
+        height: 180px;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .cta-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .hero-wave-container svg {
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-hero {
+        min-height: 320px !important;
+        padding: 30px 15px 15px 15px !important;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+        margin-bottom: 8px !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 20px !important;
+    }
+
+    .hero-stats {
+        gap: 15px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .hero-stats .stat {
+        min-width: 80px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .gallery-img-wrapper {
+        height: 140px;
+    }
+    
+    .gallery-info {
+        padding: 10px 12px 12px;
+    }
+    
+    .gallery-info h4 {
+        font-size: 0.85rem;
+    }
+    
+    .gallery-info p {
+        font-size: 0.7rem;
+        display: none;
+    }
+    
+    .filter-btn span {
+        display: inline;
+    }
+    
+    .filter-btn {
+        padding: 6px 14px;
+        font-size: 0.75rem;
+    }
+    
+    .hero-wave-container svg {
+        height: 30px;
+    }
+}
 </style>
 
 <script>
