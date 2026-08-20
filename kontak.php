@@ -48,7 +48,7 @@ if (isset($_POST['kirim_pesan'])) {
                     </p>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <div class="stat-number">500+</div>
+                            <div class="stat-number">400+</div>
                             <div class="stat-label">Klien Puas</div>
                         </div>
                         <div class="stat-item">
