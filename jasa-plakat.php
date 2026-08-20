@@ -8,6 +8,32 @@
     <title>Lega DigiPrint - Jasa Pembuatan Plakat Professional</title>
 
     <style>
+        /* ============================================================
+                   VARIABLES
+                   ============================================================ */
+        :root {
+            --primary: #004ea2;
+            --primary-dark: #003d82;
+            --primary-light: #3b82f6;
+            --primary-gradient: linear-gradient(135deg, #004ea2 0%, #3b82f6 100%);
+            --gold: #c9a84c;
+            --gold-light: #f5e6b8;
+            --secondary: #38bdf8;
+            --dark: #0f172a;
+            --dark-soft: #1e293b;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 16px;
+        }
+
+        /* ============================================================
+                   RESET
+                   ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -16,8 +42,8 @@
 
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: #ffffff;
-            color: #1e293b;
+            background: var(--white);
+            color: var(--dark-soft);
             overflow-x: hidden;
             width: 100%;
             max-width: 100vw;
@@ -27,132 +53,12 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
-            position: relative;
         }
 
-        /* ==================== HERO SECTION MODERN ==================== */
-        .hero {
-            position: relative;
-            width: 100%;
-            min-height: 80vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            overflow: hidden;
-        }
-
-        .hero-bg-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="none" d="M10,10 L90,10 M10,20 L90,20 M10,30 L90,30 M10,40 L90,40 M10,50 L90,50 M10,60 L90,60 M10,70 L90,70 M10,80 L90,80 M10,90 L90,90 M20,10 L20,90 M30,10 L30,90 M40,10 L40,90 M50,10 L50,90 M60,10 L60,90 M70,10 L70,90 M80,10 L80,90 M90,10 L90,90" stroke="white" stroke-width="0.5"/></svg>');
-            background-repeat: repeat;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 80vh;
-            padding: 80px 20px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(56, 189, 248, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 8px 24px;
-            border-radius: 50px;
-            color: #38bdf8;
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            animation: fadeInUp 0.6s ease;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            animation: fadeInUp 0.6s ease 0.1s both;
-        }
-
-        .hero h1 span {
-            color: #38bdf8;
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #38bdf8, transparent);
-        }
-
-        .hero p {
-            max-width: 700px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 35px;
-            animation: fadeInUp 0.6s ease 0.2s both;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            animation: fadeInUp 0.6s ease 0.3s both;
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat .number {
+        img {
+            max-width: 100%;
+            height: auto;
             display: block;
-            font-size: 2rem;
-            font-weight: 800;
-            color: #38bdf8;
-        }
-
-        .hero-stat .label {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .hero-wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            line-height: 0;
-        }
-
-        .hero-wave svg {
-            width: 100%;
-            height: 60px;
-        }
-
-        /* ==================== FEATURE CARDS ==================== */
-        .feature-section {
-            padding: 80px 0;
-            background: #f8fafc;
         }
 
         .container {
@@ -162,6 +68,9 @@
             width: 100%;
         }
 
+        /* ============================================================
+                   SECTION HEADER
+                   ============================================================ */
         .section-header {
             text-align: center;
             margin-bottom: 50px;
@@ -169,188 +78,590 @@
 
         .section-tag {
             display: inline-block;
-            background: rgba(56, 189, 248, 0.1);
-            color: #0284c7;
-            padding: 5px 15px;
+            background: rgba(0, 78, 162, 0.1);
+            color: var(--primary);
+            padding: 5px 18px;
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             margin-bottom: 15px;
+            border: 1px solid rgba(0, 78, 162, 0.1);
         }
 
         .section-header h2 {
             font-size: 2.2rem;
             font-weight: 800;
-            color: #0f172a;
+            color: var(--dark);
             margin-bottom: 15px;
+            line-height: 1.3;
         }
 
         .section-header h2 span {
-            color: #38bdf8;
+            color: var(--primary);
         }
 
         .section-header p {
-            color: #64748b;
+            color: var(--gray);
             max-width: 600px;
             margin: 0 auto;
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        .feature-grid {
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 3px;
+            margin: 0 auto 20px;
+        }
+
+        /* ============================================================
+                   HERO SECTION
+                   ============================================================ */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 80vh;
+            background: linear-gradient(135deg, #0a0f2a 0%, #0f172a 50%, #1a1a3e 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(201, 168, 76, 0.05) 0%, transparent 30%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 40px 0;
+            width: 100%;
+        }
+
+        .hero-text {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(201, 168, 76, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            margin-bottom: 25px;
+        }
+
+        .hero-badge .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+
+        .hero-badge span {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 520px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-gradient);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 78, 162, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 78, 162, 0.4);
+        }
+
+        .btn-primary i {
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover i {
+            transform: translateX(5px);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .hero-image .image-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-image .image-wrapper img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .hero-image .floating-badge {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: floatBadge 3s ease-in-out infinite;
+        }
+
+        .floating-badge-1 {
+            bottom: -15px;
+            left: -20px;
+            animation-delay: 0s;
+        }
+
+        .floating-badge-2 {
+            top: -15px;
+            right: -20px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-badge .fb-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 168, 76, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-badge .fb-icon i {
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .floating-badge .fb-text {
+            color: var(--white);
+        }
+
+        .floating-badge .fb-text strong {
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .floating-badge .fb-text span {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .hero-wave svg {
+            width: 100%;
+            height: 60px;
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================================
+                   STATS SECTION
+                   ============================================================ */
+        .stats-section {
+            padding: 60px 0;
+            background: var(--white);
+            border-bottom: 1px solid #e8e4dc;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-card {
+            padding: 20px;
+        }
+
+        .stat-card .number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 8px;
+            display: block;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 50px;
+            background: #e2e8f0;
+        }
+
+        /* ============================================================
+                   ABOUT SECTION
+                   ============================================================ */
+        .about-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .about-image .floating-badge-about {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--white);
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .floating-badge-about i {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .floating-badge-about span {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .about-content .about-tag {
+            display: inline-block;
+            background: rgba(0, 78, 162, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .about-content h2 span {
+            color: var(--primary);
+        }
+
+        .about-content p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .about-features .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--dark-soft);
+        }
+
+        .about-features .feature-item i {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        /* ============================================================
+                   SERVICES SECTION
+                   ============================================================ */
+        .services-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 25px;
         }
 
-        .feature-card {
-            background: white;
-            padding: 30px 20px;
-            border-radius: 20px;
+        .service-card {
+            background: var(--white);
+            padding: 30px 25px;
+            border-radius: var(--radius);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             border: 1px solid #e2e8f0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
         }
 
-        .feature-card:hover {
+        .service-card:hover {
             transform: translateY(-8px);
-            border-color: #38bdf8;
-            box-shadow: 0 20px 35px rgba(56, 189, 248, 0.1);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-hover);
         }
 
-        .feature-icon {
+        .service-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(56, 189, 248, 0.05));
+            background: rgba(201, 168, 76, 0.1);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
+            transition: var(--transition);
         }
 
-        .feature-icon i {
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--gold), #dbb95e);
+        }
+
+        .service-card:hover .service-icon i {
+            color: var(--white);
+        }
+
+        .service-icon i {
             font-size: 2rem;
-            color: #38bdf8;
+            color: var(--gold);
+            transition: var(--transition);
         }
 
-        .feature-card h3 {
+        .service-card h3 {
             font-size: 1.1rem;
             margin-bottom: 10px;
-            color: #0f172a;
+            color: var(--dark);
         }
 
-        .feature-card p {
+        .service-card p {
             font-size: 0.85rem;
-            color: #64748b;
+            color: var(--gray);
             line-height: 1.6;
         }
 
-        /* ==================== PRODUCT SHOWCASE ==================== */
-        .product-section {
+        /* ============================================================
+                   GALLERY SECTION
+                   ============================================================ */
+        .gallery-section {
             padding: 80px 0;
-            background: white;
+            background: var(--white);
         }
 
-        .product-grid {
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2e8f0;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
+        .gallery-item {
             position: relative;
+            border-radius: var(--radius);
             overflow: hidden;
-            aspect-ratio: 1 / 1;
             cursor: pointer;
+            aspect-ratio: 4/3;
         }
 
-        .product-image img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .product-card:hover .product-image img {
+        .gallery-item:hover img {
             transform: scale(1.08);
         }
 
-        .product-overlay {
+        .gallery-item .gallery-overlay {
             position: absolute;
             inset: 0;
             background: rgba(15, 23, 42, 0.7);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: 0.3s;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
         }
 
-        .product-card:hover .product-overlay {
+        .gallery-item:hover .gallery-overlay {
             opacity: 1;
         }
 
-        .view-icon {
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0284c7;
-            font-size: 1.2rem;
-            transition: 0.3s;
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-category {
-            display: inline-block;
-            background: rgba(56, 189, 248, 0.1);
-            color: #0284c7;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
+        .gallery-overlay i {
+            font-size: 2.5rem;
+            color: var(--gold);
             margin-bottom: 10px;
         }
 
-        .product-info h3 {
+        .gallery-overlay h4 {
+            color: var(--white);
             font-size: 1rem;
-            margin-bottom: 8px;
-            color: #0f172a;
+            margin-bottom: 5px;
         }
 
-        .product-info p {
+        .gallery-overlay p {
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.8rem;
-            color: #64748b;
-            line-height: 1.5;
         }
 
-        /* ==================== CTA SECTION ==================== */
+        /* ============================================================
+                   CTA SECTION
+                   ============================================================ */
         .cta-section {
             padding: 70px 0;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: var(--primary-gradient);
             position: relative;
             overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
         }
 
         .cta-content {
@@ -360,36 +671,42 @@
         }
 
         .cta-content h2 {
-            font-size: 2rem;
-            color: white;
+            font-size: 2.5rem;
+            color: var(--white);
             margin-bottom: 15px;
+            font-weight: 800;
         }
 
         .cta-content p {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
             margin-bottom: 30px;
         }
 
         .cta-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: #38bdf8;
-            color: white;
-            padding: 14px 35px;
+            gap: 12px;
+            background: #25D366;
+            color: var(--white);
+            padding: 16px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            transition: 0.3s;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
         }
 
         .cta-btn:hover {
-            background: #0284c7;
             transform: translateY(-3px);
-            gap: 15px;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            gap: 18px;
         }
 
-        /* ==================== LIGHTBOX ==================== */
+        /* ============================================================
+                   LIGHTBOX
+                   ============================================================ */
         .lightbox-modal {
             display: none;
             position: fixed;
@@ -398,7 +715,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(8px);
             cursor: pointer;
         }
@@ -439,146 +756,417 @@
         }
 
         .lightbox-close:hover {
-            color: #38bdf8;
+            color: var(--gold);
             transform: scale(1.1);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 1024px) {
-            .feature-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero-stats { gap: 25px; }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-image .image-wrapper img {
+                height: 300px;
+            }
+
+            .floating-badge-1 {
+                left: 10px;
+                bottom: -10px;
+            }
+
+            .floating-badge-2 {
+                right: 10px;
+                top: -10px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image img {
+                height: 280px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .stat-divider {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
         }
 
         @media (max-width: 768px) {
-            body, html {
-                overflow-x: hidden;
-                width: 100%;
-                position: relative;
+            .hero {
+                min-height: auto;
+                padding: 40px 0;
             }
-            
-            .hero { min-height: 70vh; }
-            .hero-content { min-height: 70vh; padding: 60px 16px; }
-            .hero h1 { font-size: 1.8rem; }
-            .hero p { font-size: 0.9rem; padding: 0 5px; }
-            .hero-stats { flex-wrap: wrap; gap: 15px; }
-            .hero-stat .number { font-size: 1.3rem; }
-            .hero-stat .label { font-size: 0.7rem; }
-            
-            .feature-grid { grid-template-columns: 1fr; gap: 15px; }
-            .product-grid { grid-template-columns: 1fr; gap: 20px; }
-            
-            .section-header h2 { font-size: 1.6rem; }
-            .cta-content h2 { font-size: 1.4rem; }
-            .cta-btn { padding: 12px 25px; font-size: 0.9rem; }
-            
-            .lightbox-close { top: 20px; right: 25px; font-size: 35px; }
-            
-            .container { padding: 0 16px; }
-            .hero-wave svg { height: 35px; }
-            .feature-card { padding: 20px 15px; }
-            .product-info { padding: 15px; }
-            
-            img { max-width: 100%; height: auto; }
-            
-            .feature-icon { width: 55px; height: 55px; }
-            .feature-icon i { font-size: 1.5rem; }
-            .feature-card h3 { font-size: 1rem; }
-            .feature-card p { font-size: 0.8rem; }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .hero-image .image-wrapper img {
+                height: 220px;
+            }
+
+            .floating-badge {
+                padding: 8px 12px;
+            }
+
+            .floating-badge .fb-icon {
+                width: 30px;
+                height: 30px;
+            }
+
+            .floating-badge .fb-icon i {
+                font-size: 0.9rem;
+            }
+
+            .floating-badge .fb-text strong {
+                font-size: 0.8rem;
+            }
+
+            .floating-badge .fb-text span {
+                font-size: 0.6rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .about-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .stat-card .number {
+                font-size: 1.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .gallery-item {
+                aspect-ratio: 4/3;
+            }
+
+            .cta-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-btn {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
+
+            .hero-wave svg {
+                height: 35px;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
         }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: 1.5rem; }
-            .hero-badge { font-size: 0.7rem; padding: 6px 16px; }
-            .hero p { font-size: 0.85rem; }
-            .hero-stat .number { font-size: 1.1rem; }
-            .hero-stat .label { font-size: 0.65rem; }
-            .section-header h2 { font-size: 1.4rem; }
-            .product-info h3 { font-size: 0.9rem; }
-            .product-info p { font-size: 0.75rem; }
-            .cta-btn { padding: 10px 20px; font-size: 0.85rem; }
-        }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
 
-        @media (max-width: 380px) {
-            .hero h1 { font-size: 1.3rem; }
-            .hero-badge { font-size: 0.65rem; }
-            .hero p { font-size: 0.8rem; }
-            .hero-stats { gap: 10px; }
-            .hero-stat .number { font-size: 1rem; }
-            .hero-stat .label { font-size: 0.6rem; }
-            .section-header h2 { font-size: 1.3rem; }
+            .hero-badge {
+                padding: 6px 14px;
+                font-size: 0.7rem;
+            }
+
+            .hero-badge span {
+                font-size: 0.7rem;
+            }
+
+            .hero p {
+                font-size: 0.85rem;
+            }
+
+            .btn-primary, .btn-outline {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-image .image-wrapper img {
+                height: 180px;
+            }
+
+            .floating-badge-1 {
+                left: 5px;
+                bottom: -5px;
+            }
+
+            .floating-badge-2 {
+                right: 5px;
+                top: -5px;
+            }
+
+            .floating-badge .fb-text strong {
+                font-size: 0.7rem;
+            }
+
+            .floating-badge .fb-text span {
+                font-size: 0.55rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .about-image img {
+                height: 200px;
+            }
+
+            .about-content h2 {
+                font-size: 1.3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 10px;
+            }
+
+            .stat-card .number {
+                font-size: 1.4rem;
+            }
+
+            .stat-card .label {
+                font-size: 0.7rem;
+            }
+
+            .cta-content h2 {
+                font-size: 1.3rem;
+            }
+
+            .cta-content p {
+                font-size: 0.85rem;
+            }
+
+            .cta-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .service-card {
+                padding: 20px 15px;
+            }
+
+            .service-icon {
+                width: 55px;
+                height: 55px;
+            }
+
+            .service-icon i {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- HERO SECTION MODERN -->
+    <!-- ============================================================
+    HERO SECTION
+    ============================================================ -->
     <section class="hero">
         <div class="hero-bg-pattern"></div>
-        <div class="hero-content">
-            <span class="hero-badge">✦ Plakat Eksklusif & Elegan</span>
-            <h1>Plakat Berkualitas <span>Untuk Momen Spesial</span></h1>
-            <p>Hadirkan penghargaan eksklusif dengan desain elegan, material premium, dan kualitas terbaik untuk setiap momen spesial Anda.</p>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="number">500+</span>
-                    <span class="label">Proyek Selesai</span>
+
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left Content -->
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span>Plakat Eksklusif & Elegan</span>
+                    </div>
+                    <h1>Plakat Berkualitas <span>Untuk Momen Spesial</span></h1>
+                    <p>Hadirkan penghargaan eksklusif dengan desain elegan, material premium, dan kualitas terbaik untuk setiap momen spesial Anda.</p>
+                    <div class="hero-actions">
+                        <a href="#gallery" class="btn-primary">
+                            Lihat Portofolio <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="kontak.php" class="btn-outline">
+                            <i class="fab fa-whatsapp"></i> Konsultasi
+                        </a>
+                    </div>
                 </div>
-                <div class="hero-stat">
-                    <span class="number">1000+</span>
-                    <span class="label">Pelanggan Puas</span>
-                </div>
-                <div class="hero-stat">
-                    <span class="number">3 Hari</span>
-                    <span class="label">Pengerjaan Cepat</span>
+
+                <!-- Right Image -->
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="assets/images/display/plakatakrilik.jpeg" alt="Plakat Eksklusif Lega DigiPrint">
+                    </div>
+                    <div class="floating-badge floating-badge-1">
+                        <div class="fb-icon"><i class="fas fa-crown"></i></div>
+                        <div class="fb-text">
+                            <strong>Premium Quality</strong>
+                            <span>Material terbaik</span>
+                        </div>
+                    </div>
+                    <div class="floating-badge floating-badge-2">
+                        <div class="fb-icon"><i class="fas fa-clock"></i></div>
+                        <div class="fb-text">
+                            <strong>3 Hari</strong>
+                            <span>Pengerjaan cepat</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="hero-wave">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path fill="#f8fafc" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,208C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                <path fill="#f8fafc" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,208C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
         </div>
     </section>
 
-    <!-- FEATURE SECTION -->
-    <section class="feature-section">
+    <!-- ============================================================
+    STATS SECTION
+    ============================================================ -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="number">500+</span>
+                    <span class="label">Proyek Selesai</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-card">
+                    <span class="number">1000+</span>
+                    <span class="label">Pelanggan Puas</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-card">
+                    <span class="number">3 Hari</span>
+                    <span class="label">Pengerjaan Cepat</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-card">
+                    <span class="number">100%</span>
+                    <span class="label">Kualitas Terjamin</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT SECTION
+    ============================================================ -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="assets/images/display/plakatwisuda.png" alt="Plakat Wisuda Lega DigiPrint">
+                    <div class="floating-badge-about">
+                        <i class="fas fa-award"></i>
+                        <span>Best Quality Plakat</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="about-tag">Tentang Kami</span>
+                    <h2>Plakat <span>Eksklusif</span> untuk Setiap Momen</h2>
+                    <p>Lega DigiPrint menyediakan layanan pembuatan plakat berkualitas tinggi untuk berbagai kebutuhan acara. Mulai dari wisuda, seminar, penghargaan karyawan, hingga kenang-kenangan eksklusif dengan desain elegan dan material premium.</p>
+                    <div class="about-features">
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> Material Premium</div>
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> Desain Elegan</div>
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> Custom Sesuai Keinginan</div>
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> Cocok Untuk Semua Acara</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    SERVICES SECTION
+    ============================================================ -->
+    <section class="services-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Keunggulan Kami</span>
                 <h2>Kenapa Pilih <span>Layanan Kami</span>?</h2>
+                <div class="section-divider"></div>
                 <p>Kami memberikan yang terbaik untuk setiap pembuatan plakat Anda</p>
             </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-gem"></i></div>
                     <h3>Material Premium</h3>
                     <p>Menggunakan bahan berkualitas tinggi untuk hasil yang mewah dan tahan lama</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-palette"></i></div>
                     <h3>Desain Elegan</h3>
                     <p>Desain modern dan elegan sesuai dengan tema acara Anda</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-pen-ruler"></i></div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-pen-ruler"></i></div>
                     <h3>Custom Sesuai Keinginan</h3>
                     <p>Bebas menentukan desain, ukuran, dan bahan plakat</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-trophy"></i></div>
                     <h3>Cocok Untuk Semua Acara</h3>
                     <p>Wisuda, seminar, penghargaan karyawan, hingga kenang-kenangan</p>
                 </div>
@@ -586,65 +1174,58 @@
         </div>
     </section>
 
-    <!-- PRODUCT SHOWCASE -->
-    <section class="product-section">
+    <!-- ============================================================
+    GALLERY SECTION
+    ============================================================ -->
+    <section class="gallery-section" id="gallery">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Portofolio</span>
                 <h2>Hasil <span>Plakat</span> Terbaik</h2>
+                <div class="section-divider"></div>
                 <p>Berbagai jenis plakat eksklusif dengan desain premium dan elegan</p>
             </div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image" onclick="openLightbox(this)">
-                        <img src="assets/images/display/plakatakrilik.jpeg" alt="Plakat Akrilik">
-                        <div class="product-overlay">
-                            <div class="view-icon"><i class="fas fa-search-plus"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Akrilik Premium</span>
-                        <h3>Plakat Akrilik</h3>
-                        <p>Plakat modern dengan bahan akrilik premium, cocok untuk penghargaan dan seminar</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="assets/images/display/plakatakrilik.jpeg" alt="Plakat Akrilik Premium">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Plakat Akrilik</h4>
+                        <p>Plakat modern dengan bahan akrilik premium</p>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image" onclick="openLightbox(this)">
-                        <img src="assets/images/display/plakatwisuda.png" alt="Plakat Wisuda">
-                        <div class="product-overlay">
-                            <div class="view-icon"><i class="fas fa-search-plus"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Wisuda</span>
-                        <h3>Plakat Wisuda</h3>
-                        <p>Desain elegan dan mewah untuk kenang-kenangan wisuda maupun acara spesial lainnya</p>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="assets/images/display/plakatwisuda.png" alt="Plakat Wisuda Elegan">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Plakat Wisuda</h4>
+                        <p>Desain elegan untuk kenang-kenangan wisuda</p>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image" onclick="openLightbox(this)">
-                        <img src="assets/images/display/plakatcustom.png" alt="Plakat Custom">
-                        <div class="product-overlay">
-                            <div class="view-icon"><i class="fas fa-search-plus"></i></div>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category">Custom</span>
-                        <h3>Plakat Custom</h3>
-                        <p>Melayani pembuatan plakat custom sesuai desain, logo, dan kebutuhan acara Anda</p>
+
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="assets/images/display/plakatcustom.png" alt="Plakat Custom">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <h4>Plakat Custom</h4>
+                        <p>Melayani pembuatan plakat custom sesuai keinginan</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA SECTION -->
+    <!-- ============================================================
+    CTA SECTION
+    ============================================================ -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
                 <h2>Butuh Plakat untuk Acara Spesial?</h2>
                 <p>Konsultasikan kebutuhan plakat Anda dengan tim profesional kami secara gratis</p>
-                <a href="kontak.php" class="cta-btn">
+                <a href="https://wa.me/6282117773741" target="_blank" class="cta-btn">
                     <i class="fab fa-whatsapp"></i> Konsultasi Sekarang
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -652,10 +1233,12 @@
         </div>
     </section>
 
-    <!-- LIGHTBOX MODAL -->
+    <!-- ============================================================
+    LIGHTBOX MODAL
+    ============================================================ -->
     <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img class="lightbox-content" id="lightboxImage">
+        <img class="lightbox-content" id="lightboxImage" alt="Preview">
     </div>
 
     <?php include "layout/footer.php"; ?>
@@ -664,10 +1247,10 @@
         function openLightbox(element) {
             const img = element.querySelector('img');
             if (!img) return;
-            
+
             const modal = document.getElementById('lightboxModal');
             const modalImg = document.getElementById('lightboxImage');
-            
+
             modal.style.display = 'block';
             modalImg.src = img.src;
             document.body.style.overflow = 'hidden';
@@ -685,5 +1268,6 @@
             }
         });
     </script>
+
 </body>
 </html>

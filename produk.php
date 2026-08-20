@@ -53,97 +53,10 @@ if (!$data) {
 ?>
 
 <main class="product-page">
-    <!-- Professional Hero Section -->
+    <!-- HERO SECTION - ONLY BACKGROUND IMAGE FULL -->
     <section class="product-hero">
-        <div class="hero-bg"></div>
-        <div class="hero-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        
-        <div class="container hero-container">
-            <div class="hero-content-wrapper">
-                <div class="hero-badge">
-                    <i class="fas fa-crown"></i>
-                    <span>Premium Digital Printing</span>
-                </div>
-                <h1 class="hero-title">
-                    Layanan <span class="gradient-text">Digital Printing</span>
-                    <br>Profesional & Berkualitas
-                </h1>
-                <p class="hero-subtitle">
-                    Solusi percetakan digital terpercaya untuk bisnis dan personal Anda. 
-                    Hasil cetak berkualitas tinggi dengan teknologi modern.
-                </p>
-                <div class="hero-features">
-                    <div class="hero-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <div class="feature-text">
-                            <span class="feature-title">Kualitas Premium</span>
-                            <span class="feature-desc">Hasil cetak terbaik</span>
-                        </div>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="feature-text">
-                            <span class="feature-title">Cepat & Tepat</span>
-                            <span class="feature-desc">Tepat waktu</span>
-                        </div>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-tag"></i>
-                        </div>
-                        <div class="feature-text">
-                            <span class="feature-title">Harga Kompetitif</span>
-                            <span class="feature-desc">Terjangkau</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-cta">
-                    <a href="#products" class="btn-primary">
-                        <i class="fas fa-store"></i>
-                        Lihat Produk
-                        <i class="fas fa-arrow-down"></i>
-                    </a>
-                    <a href="https://wa.me/6282117773741" target="_blank" class="btn-secondary">
-                        <i class="fab fa-whatsapp"></i>
-                        Konsultasi Gratis
-                    </a>
-                </div>
-            </div>
-            <div class="hero-stats-wrapper">
-                <div class="stats-card">
-                    <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Klien Puas</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">1500+</div>
-                        <div class="stat-label">Proyek Selesai</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Kualitas Terjamin</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="hero-wave">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path fill="#f8fafc" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,208C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
+        <div class="hero-bg-image">
+            <img src="assets/images/bgproduk.jpg" alt="Digital Printing Background">
         </div>
     </section>
 
@@ -371,15 +284,17 @@ if (!$data) {
     --primary-dark: #003d82;
     --primary-light: #3b82f6;
     --primary-gradient: linear-gradient(135deg, #004ea2 0%, #3b82f6 100%);
-    --dark: #0f172a;
-    --dark-soft: #1e293b;
-    --gray: #64748b;
-    --gray-light: #94a3b8;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --dark: #0a0a1a;
+    --dark-soft: #1a1a2e;
+    --gray: #6b6b7b;
+    --gray-light: #a0a0b0;
     --bg-light: #f8fafc;
     --white: #ffffff;
     --whatsapp: #25D366;
-    --whatsapp-dark: #128C7E;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-premium: 0 20px 60px rgba(0, 0, 0, 0.3);
+    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 * {
@@ -399,254 +314,28 @@ if (!$data) {
     width: 100%;
 }
 
-/* ==================== PROFESSIONAL HERO SECTION ==================== */
+/* ==================== HERO SECTION - FULL IMAGE ==================== */
 .product-hero {
     position: relative;
-    background: linear-gradient(135deg, #0a0f2a 0%, #0f172a 50%, #1e1b4b 100%);
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="rgba(59,130,246,0.03)" d="M0 0h200v200H0z"/><path fill="rgba(59,130,246,0.05)" d="M100 20L120 60H80zM20 100L60 120 60 80zM180 100L140 120 140 80zM100 180L80 140H120z"/></svg>');
-    background-repeat: repeat;
-    opacity: 0.5;
-}
-
-.hero-particles {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
-
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(59,130,246,0.6);
-    border-radius: 50%;
-    animation: float 20s infinite linear;
-}
-
-.particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; width: 3px; height: 3px; }
-.particle:nth-child(2) { top: 60%; left: 85%; animation-delay: 2s; width: 5px; height: 5px; }
-.particle:nth-child(3) { top: 70%; left: 20%; animation-delay: 4s; width: 4px; height: 4px; }
-.particle:nth-child(4) { top: 30%; left: 75%; animation-delay: 6s; width: 6px; height: 6px; }
-.particle:nth-child(5) { top: 80%; left: 50%; animation-delay: 8s; width: 3px; height: 3px; }
-.particle:nth-child(6) { top: 15%; left: 45%; animation-delay: 10s; width: 5px; height: 5px; }
-.particle:nth-child(7) { top: 50%; left: 15%; animation-delay: 12s; width: 4px; height: 4px; }
-.particle:nth-child(8) { top: 85%; left: 70%; animation-delay: 14s; width: 5px; height: 5px; }
-
-@keyframes float {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100vh) translateX(20px);
-        opacity: 0;
-    }
-}
-
-.hero-container {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 60px;
-    align-items: center;
-    padding: 80px 20px;
-}
-
-.hero-content-wrapper {
-    max-width: 600px;
-}
-
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    padding: 8px 20px;
-    border-radius: 50px;
-    margin-bottom: 30px;
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-.hero-badge i {
-    color: #3b82f6;
-    font-size: 0.9rem;
-}
-
-.hero-badge span {
-    color: white;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.hero-title {
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: white;
-}
-
-.gradient-text {
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.hero-subtitle {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.6;
-    margin-bottom: 35px;
-}
-
-.hero-features {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-}
-
-.hero-feature {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.feature-icon {
-    width: 45px;
-    height: 45px;
-    background: rgba(59,130,246,0.15);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.feature-icon i {
-    font-size: 1.2rem;
-    color: #60a5fa;
-}
-
-.feature-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.feature-title {
-    font-weight: 700;
-    color: white;
-    font-size: 0.9rem;
-    margin-bottom: 2px;
-}
-
-.feature-desc {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.6);
-}
-
-.hero-cta {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.btn-primary, .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    color: white;
-    border: none;
-    box-shadow: 0 4px 15px rgba(59,130,246,0.3);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(59,130,246,0.4);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: white;
-    border: 1.5px solid rgba(255,255,255,0.3);
-}
-
-.btn-secondary:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: white;
-    transform: translateY(-2px);
-}
-
-.hero-stats-wrapper {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(20px);
-    border-radius: 30px;
-    padding: 30px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.stats-card {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.stat-item {
-    text-align: left;
-}
-
-.stat-number {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #60a5fa;
-    margin-bottom: 5px;
-}
-
-.stat-label {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.7);
-}
-
-.hero-wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    line-height: 0;
-    z-index: 3;
-    pointer-events: none;
-}
-
-.hero-wave svg {
-    width: 100%;
-    height: 50px;
+    height: auto;
+    min-height: 300px;
+    overflow: hidden;
     display: block;
+    line-height: 0;
+}
+
+.hero-bg-image {
+    width: 100%;
+    display: block;
+    line-height: 0;
+}
+
+.hero-bg-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
 /* ==================== FILTER SECTION ==================== */
@@ -843,7 +532,7 @@ if (!$data) {
     color: var(--primary);
 }
 
-/* ==================== PRODUCT GRID - 4 KOLOM DI LAPTOP ==================== */
+/* ==================== PRODUCT GRID ==================== */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1226,86 +915,15 @@ if (!$data) {
 }
 
 @media (max-width: 992px) {
-    .hero-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 60px 20px;
-    }
-    
-    .hero-content-wrapper {
-        max-width: 100%;
-        text-align: center;
-    }
-    
-    .hero-features {
-        justify-content: center;
-    }
-    
-    .hero-cta {
-        justify-content: center;
-    }
-    
-    .hero-stats-wrapper {
-        max-width: 500px;
-        margin: 0 auto;
-    }
-    
-    .stats-card {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-    
-    .stat-item {
-        text-align: center;
-    }
-    
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 }
+
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem;
-        margin-bottom: 8px !important;
-    }
-    
-    .hero-subtitle {
-        font-size: 0.9rem;
-        margin-bottom: 20px !important;
-    }
-    
-    .hero-features {
-        gap: 12px !important;
-        margin-bottom: 20px !important;
-    }
-    
-    .hero-feature {
-        flex-direction: column;
-        text-align: center;
-        padding: 5px 0 !important;
-    }
-    
-    .hero-cta {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px !important;
-    }
-    
-    .btn-primary, .btn-secondary {
-        justify-content: center;
-        padding: 10px 20px !important;
-    }
-    
-    .stats-card {
-        flex-direction: column;
-        gap: 15px !important;
-        padding: 15px !important;
-        margin-bottom: 20px !important;
-    }
-    
-    .hero-wave svg {
-        height: 25px !important;
+    .product-hero {
+        min-height: auto;
     }
     
     .filter-header {
@@ -1403,76 +1021,26 @@ if (!$data) {
         padding: 0 15px;
     }
     
-    .hero-title {
-        font-size: 1.6rem;
-        margin-bottom: 6px !important;
-    }
-
-    .hero-subtitle {
-        font-size: 0.85rem;
-        margin-bottom: 15px !important;
-    }
-    
-    .hero-features {
-        flex-direction: column;
-        align-items: center;
-        gap: 8px !important;
-    }
-    
-    .hero-feature {
-        width: 100%;
-        flex-direction: row;
-        text-align: left;
-        justify-content: center;
-        margin: 0 !important;
-    }
-    
     .search-input-group {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 4px 6px;
-        border-radius: 40px;
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
+        padding: 4px 4px 4px 14px;
     }
     
     .search-input-group input {
-        flex: 1;
-        min-width: 0;
-        padding: 8px 10px;
-        font-size: 0.85rem;
-        border: none;
-        background: transparent;
+        padding: 10px 8px;
+        font-size: 0.8rem;
     }
     
     .search-input-group button {
-        width: 38px;
-        height: 38px;
-        min-width: 38px;
-        padding: 0;
-        border-radius: 50%;
-        flex-shrink: 0;
-        background-color: var(--primary);
-        overflow: hidden;
-        position: relative;
+        padding: 8px 14px;
+        font-size: 0.75rem;
     }
     
     .search-input-group button span {
         display: none;
     }
     
-    .search-input-group button i {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        font-size: 0.9rem;
-    }
-    
     .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
         gap: 12px;
     }
     
@@ -1501,6 +1069,10 @@ if (!$data) {
     .order-btn i:last-child {
         display: none;
     }
+    
+    .price-value {
+        font-size: 0.8rem;
+    }
 }
 </style>
 
@@ -1519,12 +1091,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
+// Add animation on scroll for product cards
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1532,7 +1099,7 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.style.transform = 'translateY(0)';
         }
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.product-card, .benefit-card').forEach(el => {
     el.style.opacity = '0';

@@ -680,6 +680,91 @@ if (!$query) {
             }
         }
 
+        /* Styling Section Template */
+        .template-section {
+            background-color: #ffffff;
+            padding: 60px 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Flexbox Laying out Left & Right Side-by-Side */
+        .template-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex; /* Memaksa tampilan ke samping */
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        /* Width Distribution */
+        .template-col-text {
+            flex: 1; /* Lebar 50% untuk teks */
+            max-width: 500px;
+        }
+
+        .template-col-image {
+            flex: 1; /* Lebar 50% untuk gambar */
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Indicator Titik Hijau */
+        .dot-indicator {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #2ed573;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        /* Typography */
+        .template-section .section-title {
+            color: #1e293b;
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            text-transform: lowercase;
+        }
+
+        .template-section .section-description {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Button */
+        .btn-template {
+            display: inline-block;
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        /* Image Responsive */
+        .mockup-img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        /* Responsif untuk Layar HP (Otomatis Tumpuk Bawah Saat di Ponsel) */
+        @media (max-width: 768px) {
+            .template-container {
+                flex-direction: column;
+                text-align: left;
+            }
+            .template-col-text, .template-col-image {
+                max-width: 100%;
+            }
+        }
         /* ==================== TESTIMONIAL SECTION ==================== */
         .testimonial-section {
             padding: 80px 0;
@@ -1260,6 +1345,32 @@ while($row = mysqli_fetch_assoc($data)){
         <div class="commitment-cta">
             <a href="https://wa.me/6282117773741" target="_blank" class="commitment-btn"><i class="fab fa-whatsapp"></i> Konsultasi Sekarang</a>
         </div>
+    </div>
+</section>
+
+<!-- Section Template yang Kami Berikan -->
+<section class="template-section">
+    <div class="template-container">
+        
+        <!-- Kolom Teks (Kiri) -->
+        <div class="template-col-text">
+            <div class="template-badge">
+                <span class="dot-indicator"></span>
+            </div>
+            <h2 class="section-title">
+                template yang <br>kami berikan
+            </h2>
+            <p class="section-description">
+                Kami telah menyediakan lebih dari 300+ template yang bisa langsung customer Anda gunakan dalam waktu singkat, dan sangat mudah digunakan hanya dengan drag and drop.
+            </p>
+            <a href="galeri.php" class="btn-template">Jelajahi Template</a>
+        </div>
+
+        <!-- Kolom Gambar Mockup (Kanan) -->
+        <div class="template-col-image">
+            <img src="assets/images/Lega.jpg" alt="Template Mockup Design LegaPrint" class="mockup-img">
+        </div>
+
     </div>
 </section>
 

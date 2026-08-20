@@ -4,101 +4,20 @@ include "layout/header.php";
 ?>
 
 <main class="gallery-page">
-    <!-- Hero Section Galeri yang Lebih Hidup -->
+    <!-- ============================================================
+    HERO SECTION - FULL BACKGROUND
+    ============================================================ -->
     <section class="gallery-hero">
-        <div class="hero-bg-animation">
-            <div class="bg-gradient-1"></div>
-            <div class="bg-gradient-2"></div>
-            <div class="bg-gradient-3"></div>
-        </div>
-        
-        <!-- Animated Shapes -->
-        <div class="hero-shapes">
-            <div class="shape shape-1">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="rgba(59,130,246,0.1)" d="M47.5,-63.2C60.9,-54.3,70.3,-36.8,74.1,-17.8C77.9,1.2,76.1,21.7,66.9,38.1C57.7,54.5,41.1,66.8,22.2,72.1C3.3,77.4,-17.9,75.7,-36.9,67.1C-55.9,58.5,-72.7,43.1,-79.2,24.3C-85.7,5.5,-81.9,-16.7,-71.1,-34.3C-60.3,-51.9,-42.5,-64.9,-24.1,-69.7C-5.7,-74.5,13.2,-71,34.1,-72.1C55,-73.2,58.9,-72.1,47.5,-63.2Z" transform="translate(100 100)" />
-                </svg>
-            </div>
-            <div class="shape shape-2">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="rgba(139,92,246,0.08)" d="M53.3,-65.5C66.7,-52.5,73.5,-32.2,77.2,-10.9C80.9,10.4,81.5,32.7,72.5,50.1C63.5,67.5,44.9,80,25.4,84.2C5.9,88.4,-14.5,84.3,-32.7,74.9C-50.9,65.5,-66.9,50.8,-74.5,32.1C-82.1,13.4,-81.3,-9.3,-72.1,-27.8C-62.9,-46.3,-45.3,-60.6,-27.8,-68.8C-10.3,-77,7.2,-79.1,24.6,-74.9C42,-70.7,59.2,-60.2,53.3,-65.5Z" transform="translate(100 100)" />
-                </svg>
-            </div>
-            <div class="shape shape-3">
-                <div class="pulse-ring"></div>
-            </div>
-        </div>
-        
-        <!-- Floating Particles -->
-        <div class="hero-particles">
-            <div class="particle particle-1"></div>
-            <div class="particle particle-2"></div>
-            <div class="particle particle-3"></div>
-            <div class="particle particle-4"></div>
-            <div class="particle particle-5"></div>
-            <div class="particle particle-6"></div>
-            <div class="particle particle-7"></div>
-            <div class="particle particle-8"></div>
-            <div class="particle particle-9"></div>
-            <div class="particle particle-10"></div>
-        </div>
-        
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-camera-retro"></i>
-                <span>Portofolio Kreatif</span>
-            </div>
-            <h1 class="hero-title">
-                Galeri <span class="gradient-text">Karya</span>
-                <div class="hero-title-glow"></div>
-            </h1>
-            <p class="hero-subtitle">
-                Hasil cetakan terbaik dari berbagai project yang telah kami kerjakan 
-                untuk pelanggan setia Lega DigiPrint
-            </p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-icon">
-                        <i class="fas fa-print"></i>
-                    </div>
-                    <span class="stat-number" id="totalCount">0</span>
-                    <span class="stat-label">Karya Terbaik</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <div class="stat-icon">
-                        <i class="fas fa-smile"></i>
-                    </div>
-                    <span class="stat-number">500+</span>
-                    <span class="stat-label">Klien Puas</span>
-                </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <div class="stat-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Kualitas</span>
-                </div>
-            </div>
-            <div class="hero-scroll">
-                <span class="scroll-text">Scroll untuk lihat karya</span>
-                <div class="scroll-mouse">
-                    <div class="scroll-wheel"></div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-wave">
-            <div class="hero-wave-container">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                    <path fill="#f8fafc" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,208C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-                </svg>
+        <div class="hero-background">
+            <div class="hero-bg-image">
+                <img src="assets/images/bggaleri.jpg" alt="Galeri Background">
             </div>
         </div>
     </section>
 
-    <!-- Filter Section -->
+    <!-- ============================================================
+    FILTER SECTION
+    ============================================================ -->
     <section class="filter-section">
         <div class="container">
             <div class="filter-wrapper">
@@ -127,8 +46,10 @@ include "layout/header.php";
         </div>
     </section>
 
-    <!-- Gallery Grid Section -->
-    <section class="gallery-section section-padding">
+    <!-- ============================================================
+    GALLERY GRID SECTION
+    ============================================================ -->
+    <section class="gallery-section" id="gallery">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Koleksi Kami</span>
@@ -194,7 +115,9 @@ include "layout/header.php";
         </div>
     </section>
 
-    <!-- Call to Action Section -->
+    <!-- ============================================================
+    CTA SECTION
+    ============================================================ -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
@@ -209,7 +132,9 @@ include "layout/header.php";
     </section>
 </main>
 
-<!-- Lightbox Modal -->
+<!-- ============================================================
+LIGHTBOX MODAL
+============================================================ -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <span class="close-btn">&times;</span>
     <div class="lightbox-content" onclick="event.stopPropagation()">
@@ -220,20 +145,32 @@ include "layout/header.php";
 </div>
 
 <style>
-    /* ==================== VARIABLES ==================== */
+    /* ============================================================
+               VARIABLES
+               ============================================================ */
     :root {
-        --primary: #004ea2;
-        --primary-dark: #003d82;
-        --primary-light: #3b82f6;
-        --primary-glow: rgba(59, 130, 246, 0.5);
-        --dark: #0f172a;
-        --dark-soft: #1e293b;
-        --gray: #64748b;
-        --light-gray: #f1f5f9;
+        --primary: #1a3a5c;
+        --primary-dark: #0f2640;
+        --primary-light: #2d6a9f;
+        --primary-blue: #004ea2;
+        --primary-blue-light: #3b82f6;
+        --primary-blue-dark: #003d82;
+        --dark: #1a1a2e;
+        --dark-soft: #2d2d44;
+        --gray: #6b6b7b;
+        --gray-light: #94a3b8;
+        --light-gray: #f0ece4;
         --white: #ffffff;
-        --transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        --bg-light: #f8f6f3;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.15);
+        --radius: 12px;
     }
 
+    /* ============================================================
+               RESET
+               ============================================================ */
     * {
         margin: 0;
         padding: 0;
@@ -251,388 +188,60 @@ include "layout/header.php";
         width: 100%;
     }
 
-    /* ==================== HERO SECTION YANG LEBIH HIDUP ==================== */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* ============================================================
+               HERO SECTION - FULL BACKGROUND (TIDAK TERPOTONG)
+               ============================================================ */
     .gallery-hero {
         position: relative;
-        min-height: 650px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        width: 100%;
+        height: 0;
+        padding-bottom: 30%;
+        min-height: 350px;
+        max-height: 500px;
         overflow: hidden;
-        background: linear-gradient(135deg, #0a0f2a 0%, #0f172a 50%, #1e1b4b 100%);
+        background: #0f172a;
     }
 
-    /* Animated Background Gradients */
-    .hero-bg-animation {
+    .hero-background {
         position: absolute;
         inset: 0;
-        overflow: hidden;
-    }
-
-    .bg-gradient-1 {
-        position: absolute;
-        top: -50%;
-        left: -20%;
-        width: 80%;
-        height: 150%;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-        animation: rotateGradient 20s linear infinite;
-    }
-
-    .bg-gradient-2 {
-        position: absolute;
-        bottom: -50%;
-        right: -20%;
-        width: 80%;
-        height: 150%;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
-        animation: rotateGradientReverse 25s linear infinite;
-    }
-
-    .bg-gradient-3 {
-        position: absolute;
-        top: 30%;
-        left: 30%;
-        width: 60%;
-        height: 60%;
-        background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
-        animation: pulse 8s ease-in-out infinite;
-    }
-
-    @keyframes rotateGradient {
-        0% { transform: rotate(0deg) scale(1); }
-        50% { transform: rotate(180deg) scale(1.2); }
-        100% { transform: rotate(360deg) scale(1); }
-    }
-
-    @keyframes rotateGradientReverse {
-        0% { transform: rotate(0deg) scale(1); }
-        50% { transform: rotate(-180deg) scale(1.3); }
-        100% { transform: rotate(-360deg) scale(1); }
-    }
-
-    @keyframes pulse {
-        0%, 100% { opacity: 0.5; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    /* Animated Shapes */
-    .hero-shapes {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-    }
-
-    .shape {
-        position: absolute;
-        opacity: 0.6;
-    }
-
-    .shape-1 {
-        top: 10%;
-        left: -5%;
-        width: 250px;
-        height: 250px;
-        animation: floatShape 15s ease-in-out infinite;
-    }
-
-    .shape-2 {
-        bottom: 5%;
-        right: -5%;
-        width: 300px;
-        height: 300px;
-        animation: floatShape 18s ease-in-out infinite reverse;
-    }
-
-    .shape-3 {
-        top: 40%;
-        left: 30%;
-        width: 100px;
-        height: 100px;
-    }
-
-    .pulse-ring {
-        width: 100px;
-        height: 100px;
-        background: rgba(59, 130, 246, 0.15);
-        border-radius: 50%;
-        animation: pulseRing 3s ease-in-out infinite;
-    }
-
-    @keyframes floatShape {
-        0%, 100% { transform: translate(0, 0) rotate(0deg); }
-        33% { transform: translate(30px, -50px) rotate(120deg); }
-        66% { transform: translate(-20px, 30px) rotate(240deg); }
-    }
-
-    @keyframes pulseRing {
-        0% { transform: scale(0.8); opacity: 0.5; }
-        50% { transform: scale(1.2); opacity: 0.2; }
-        100% { transform: scale(0.8); opacity: 0.5; }
-    }
-
-    /* Floating Particles */
-    .hero-particles {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-    }
-
-    .particle {
-        position: absolute;
-        border-radius: 50%;
-        animation: floatParticle linear infinite;
-    }
-
-    .particle-1 { width: 4px; height: 4px; background: rgba(59, 130, 246, 0.8); top: 20%; left: 10%; animation-duration: 12s; }
-    .particle-2 { width: 6px; height: 6px; background: rgba(139, 92, 246, 0.8); top: 60%; left: 85%; animation-duration: 15s; animation-delay: 2s; }
-    .particle-3 { width: 3px; height: 3px; background: rgba(236, 72, 153, 0.8); top: 70%; left: 20%; animation-duration: 10s; animation-delay: 4s; }
-    .particle-4 { width: 5px; height: 5px; background: rgba(59, 130, 246, 0.8); top: 30%; left: 75%; animation-duration: 14s; animation-delay: 6s; }
-    .particle-5 { width: 4px; height: 4px; background: rgba(139, 92, 246, 0.8); top: 80%; left: 50%; animation-duration: 11s; animation-delay: 1s; }
-    .particle-6 { width: 6px; height: 6px; background: rgba(236, 72, 153, 0.8); top: 15%; left: 45%; animation-duration: 13s; animation-delay: 3s; }
-    .particle-7 { width: 3px; height: 3px; background: rgba(59, 130, 246, 0.8); top: 50%; left: 15%; animation-duration: 16s; animation-delay: 5s; }
-    .particle-8 { width: 5px; height: 5px; background: rgba(139, 92, 246, 0.8); top: 85%; left: 70%; animation-duration: 9s; animation-delay: 7s; }
-    .particle-9 { width: 4px; height: 4px; background: rgba(236, 72, 153, 0.8); top: 45%; left: 60%; animation-duration: 17s; animation-delay: 2.5s; }
-    .particle-10 { width: 6px; height: 6px; background: rgba(59, 130, 246, 0.8); top: 75%; left: 35%; animation-duration: 12s; animation-delay: 4.5s; }
-
-    @keyframes floatParticle {
-        0% {
-            transform: translateY(0) translateX(0);
-            opacity: 0;
-        }
-        50% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100vh) translateX(50px);
-            opacity: 0;
-        }
-    }
-
-    .hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
+        z-index: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(30, 41, 59, 0.6) 100%);
-        z-index: 1;
     }
 
-    .gallery-hero .hero-content {
-        position: relative;
-        z-index: 2;
-        padding: 60px 0;
-    }
-
-    .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 8px 20px;
-        border-radius: 50px;
-        margin-bottom: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        animation: fadeInUp 0.8s ease;
-    }
-
-    .hero-badge i {
-        color: var(--primary-light);
-        font-size: 0.9rem;
-    }
-
-    .hero-badge span {
-        color: white;
-        font-size: 0.8rem;
-        font-weight: 500;
-        letter-spacing: 0.5px;
-    }
-
-    .hero-title {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: var(--white);
-        margin-bottom: 20px;
-        position: relative;
-        animation: fadeInUp 0.8s ease 0.1s backwards;
-    }
-
-    .gradient-text {
-        background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: gradientShift 3s ease infinite;
-        background-size: 200% 200%;
-    }
-
-    @keyframes gradientShift {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-    }
-
-    .hero-title-glow {
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 3px;
-        background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
-        animation: glowPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes glowPulse {
-        0%, 100% { width: 80px; opacity: 0.5; }
-        50% { width: 150px; opacity: 1; }
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.8);
-        margin-bottom: 40px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 15px;
-        animation: fadeInUp 0.8s ease 0.2s backwards;
-        line-height: 1.6;
-    }
-
-    .hero-stats {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-        margin-bottom: 50px;
-        animation: fadeInUp 0.8s ease 0.3s backwards;
-    }
-
-    .hero-stats .stat {
-        text-align: center;
-    }
-
-    .stat-icon {
-        width: 45px;
-        height: 45px;
-        background: rgba(59, 130, 246, 0.15);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 10px;
-        transition: var(--transition);
-    }
-
-    .stat-icon i {
-        font-size: 1.2rem;
-        color: var(--primary-light);
-    }
-
-    .stat:hover .stat-icon {
-        transform: translateY(-5px);
-        background: rgba(59, 130, 246, 0.3);
-    }
-
-    .stat-number {
-        display: block;
-        font-size: 2rem;
-        font-weight: 800;
-        color: white;
-        line-height: 1;
-    }
-
-    .stat-label {
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.7);
-    }
-
-    .stat-divider {
-        width: 1px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .hero-scroll {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        animation: fadeInUp 0.8s ease 0.4s backwards;
-    }
-
-    .scroll-text {
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.6);
-        letter-spacing: 2px;
-    }
-
-    .scroll-mouse {
-        width: 26px;
-        height: 40px;
-        border: 2px solid rgba(255, 255, 255, 0.4);
-        border-radius: 20px;
-        position: relative;
-    }
-
-    .scroll-wheel {
-        width: 4px;
-        height: 8px;
-        background: white;
-        border-radius: 2px;
-        position: absolute;
-        top: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: scrollWheel 2s ease infinite;
-    }
-
-    @keyframes scrollWheel {
-        0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        80% { opacity: 0; transform: translateX(-50%) translateY(15px); }
-        100% { opacity: 0; transform: translateX(-50%) translateY(0); }
-    }
-
-    .hero-wave {
-        position: absolute;
-        bottom: 0;
-        left: 0;
+    .hero-bg-image {
         width: 100%;
-        z-index: 3;
-        pointer-events: none;
+        height: 100%;
+        position: relative;
     }
 
-    .hero-wave-container svg {
+    .hero-bg-image img {
         width: 100%;
-        height: 60px;
+        height: 100%;
+        object-fit: cover;
         display: block;
+        object-position: center;
     }
 
-    /* ==================== FILTER SECTION ==================== */
+    /* ============================================================
+               FILTER SECTION
+               ============================================================ */
     .filter-section {
-        padding: 25px 0;
+        position: relative;
+        margin-top: -30px;
+        padding: 20px 0;
         background: var(--white);
-        border-bottom: 1px solid var(--light-gray);
-        position: sticky;
-        top: 0;
-        z-index: 99;
+        border-bottom: 1px solid #e8e4dc;
+        z-index: 10;
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
     }
 
     .filter-wrapper {
@@ -640,12 +249,12 @@ include "layout/header.php";
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        gap: 20px;
+        gap: 15px;
     }
 
     .filter-buttons {
         display: flex;
-        gap: 12px;
+        gap: 8px;
         flex-wrap: wrap;
     }
 
@@ -654,10 +263,10 @@ include "layout/header.php";
         align-items: center;
         gap: 8px;
         background: transparent;
-        border: 2px solid var(--light-gray);
+        border: 1px solid #e8e4dc;
         padding: 8px 20px;
-        border-radius: 40px;
-        font-weight: 600;
+        border-radius: 4px;
+        font-weight: 500;
         font-size: 0.85rem;
         color: var(--gray);
         cursor: pointer;
@@ -665,15 +274,14 @@ include "layout/header.php";
     }
 
     .filter-btn i {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .filter-btn.active,
     .filter-btn:hover {
-        background: var(--primary);
-        border-color: var(--primary);
+        background: var(--primary-blue);
+        border-color: var(--primary-blue);
         color: var(--white);
-        transform: translateY(-2px);
     }
 
     .search-box {
@@ -684,25 +292,27 @@ include "layout/header.php";
 
     .search-box i {
         position: absolute;
-        left: 15px;
+        left: 14px;
         color: var(--gray);
+        font-size: 0.8rem;
         z-index: 1;
     }
 
     .search-box input {
-        padding: 10px 15px 10px 40px;
-        border: 2px solid var(--light-gray);
-        border-radius: 40px;
-        width: 260px;
+        padding: 9px 15px 9px 38px;
+        border: 1px solid #e8e4dc;
+        border-radius: 4px;
+        width: 240px;
         font-size: 0.85rem;
         transition: var(--transition);
+        background: var(--white);
     }
 
     .search-box input:focus {
         outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
-        width: 300px;
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 3px rgba(0, 78, 162, 0.08);
+        width: 280px;
     }
 
     .search-clear {
@@ -712,77 +322,81 @@ include "layout/header.php";
         border: none;
         color: var(--gray);
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 0.9rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: var(--transition);
+        padding: 4px;
     }
 
     .search-clear:hover {
-        color: var(--primary);
+        color: var(--primary-blue);
     }
 
-    /* ==================== SECTION HEADER ==================== */
+    /* ============================================================
+               SECTION HEADER
+               ============================================================ */
     .section-header {
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 45px;
     }
 
     .section-tag {
         display: inline-block;
-        background: linear-gradient(135deg, rgba(0,78,162,0.1) 0%, rgba(59,130,246,0.1) 100%);
-        color: var(--primary);
-        padding: 5px 15px;
-        border-radius: 30px;
-        font-size: 0.75rem;
+        color: var(--primary-blue);
+        font-size: 0.7rem;
         font-weight: 700;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        border-left: 3px solid var(--primary-blue);
+        padding-left: 12px;
     }
 
     .section-title {
         font-size: 2rem;
         font-weight: 800;
         color: var(--dark);
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .section-title span {
-        color: var(--primary);
+        color: var(--primary-blue);
     }
 
     .section-divider {
-        width: 60px;
+        width: 50px;
         height: 3px;
-        background: linear-gradient(90deg, var(--primary), var(--primary-light));
-        border-radius: 3px;
+        background: var(--primary-blue);
+        border-radius: 2px;
         margin: 0 auto 15px;
     }
 
     .section-desc {
         color: var(--gray);
         font-size: 0.9rem;
-        max-width: 600px;
+        max-width: 550px;
         margin: 0 auto;
     }
 
-    /* ==================== GALLERY GRID ==================== */
+    /* ============================================================
+               GALLERY GRID
+               ============================================================ */
     .gallery-section {
-        padding: 60px 0;
-        background: var(--light-gray);
+        padding: 60px 0 80px;
+        background: var(--bg-light);
     }
 
     .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 30px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
     }
 
     .gallery-item {
         opacity: 1;
         transform: scale(1);
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
     }
 
     .gallery-item.hide {
@@ -791,21 +405,23 @@ include "layout/header.php";
 
     .gallery-card {
         background: var(--white);
-        border-radius: 20px;
+        border-radius: var(--radius);
         overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        box-shadow: var(--shadow);
         transition: var(--transition);
+        border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
     .gallery-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-hover);
     }
 
     .gallery-img-wrapper {
         position: relative;
         height: 260px;
         overflow: hidden;
+        background: #e8e4dc;
     }
 
     .gallery-img-wrapper img,
@@ -813,47 +429,50 @@ include "layout/header.php";
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s ease;
+        transition: transform 0.6s ease;
     }
 
     .gallery-card:hover .gallery-img-wrapper img,
     .gallery-card:hover .gallery-img-wrapper video {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     .media-badge {
         position: absolute;
-        top: 15px;
-        right: 15px;
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.7rem;
+        top: 14px;
+        right: 14px;
+        padding: 4px 14px;
+        border-radius: 3px;
+        font-size: 0.6rem;
         font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
         z-index: 2;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(8px);
     }
 
     .video-badge {
-        background: rgba(239, 68, 68, 0.95);
-        color: white;
+        background: rgba(0, 78, 162, 0.9);
+        color: var(--white);
     }
 
     .image-badge {
-        background: rgba(56, 189, 248, 0.95);
-        color: white;
+        background: rgba(26, 58, 92, 0.9);
+        color: var(--white);
     }
 
     .gallery-overlay {
         position: absolute;
         inset: 0;
-        background: rgba(15, 23, 42, 0.9);
+        background: rgba(0, 61, 130, 0.8);
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 0;
-        transition: 0.3s;
+        transition: all 0.35s ease;
         cursor: pointer;
         z-index: 3;
+        backdrop-filter: blur(3px);
     }
 
     .gallery-card:hover .gallery-overlay {
@@ -861,10 +480,10 @@ include "layout/header.php";
     }
 
     .overlay-content {
-        color: white;
+        color: var(--white);
         text-align: center;
-        transform: translateY(20px);
-        transition: transform 0.3s ease;
+        transform: translateY(15px);
+        transition: all 0.4s ease;
     }
 
     .gallery-card:hover .overlay-content {
@@ -872,25 +491,29 @@ include "layout/header.php";
     }
 
     .overlay-content i {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
+        font-size: 2.4rem;
+        margin-bottom: 8px;
         display: block;
+        color: var(--primary-blue-light);
     }
 
     .overlay-content span {
         display: block;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
     }
 
     .gallery-info {
-        padding: 18px 20px 20px;
+        padding: 18px 22px 22px;
+        border-top: 1px solid #f0ece4;
     }
 
     .gallery-info h4 {
         font-size: 1rem;
         font-weight: 700;
         color: var(--dark);
-        margin-bottom: 6px;
+        margin-bottom: 3px;
     }
 
     .gallery-info p {
@@ -899,34 +522,40 @@ include "layout/header.php";
         line-height: 1.5;
     }
 
-    /* ==================== EMPTY STATE ==================== */
+    /* ============================================================
+               EMPTY STATE
+               ============================================================ */
     .empty-gallery {
         text-align: center;
-        padding: 80px 20px;
+        padding: 60px 20px;
         background: var(--white);
-        border-radius: 20px;
+        border-radius: var(--radius);
+        border: 1px solid #e8e4dc;
     }
 
     .empty-gallery i {
-        font-size: 4rem;
-        color: var(--gray);
-        margin-bottom: 20px;
+        font-size: 3.5rem;
+        color: #d0ccc4;
+        margin-bottom: 15px;
     }
 
     .empty-gallery h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: var(--dark);
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .empty-gallery p {
         color: var(--gray);
+        font-size: 0.9rem;
     }
 
-    /* ==================== CTA SECTION ==================== */
+    /* ============================================================
+               CTA SECTION
+               ============================================================ */
     .cta-section {
-        padding: 70px 0;
-        background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+        padding: 60px 0;
+        background: var(--primary-blue-dark);
         position: relative;
         overflow: hidden;
     }
@@ -934,17 +563,8 @@ include "layout/header.php";
     .cta-section::before {
         content: '';
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
-        animation: rotateBg 20s linear infinite;
-    }
-
-    @keyframes rotateBg {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+        inset: 0;
+        background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
     }
 
     .cta-content {
@@ -955,59 +575,58 @@ include "layout/header.php";
     }
 
     .cta-icon {
-        width: 80px;
-        height: 80px;
-        background: rgba(56, 189, 248, 0.15);
+        width: 70px;
+        height: 70px;
+        background: rgba(59, 130, 246, 0.15);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 20px;
-        transition: var(--transition);
-        animation: pulseIcon 2s ease-in-out infinite;
-    }
-
-    @keyframes pulseIcon {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); background: rgba(56, 189, 248, 0.25); }
+        margin: 0 auto 18px;
+        border: 1px solid rgba(59, 130, 246, 0.2);
     }
 
     .cta-icon i {
-        font-size: 2.5rem;
-        color: var(--primary-light);
+        font-size: 2rem;
+        color: var(--primary-blue-light);
     }
 
     .cta-content h3 {
-        font-size: 2rem;
-        margin-bottom: 15px;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        font-weight: 700;
     }
 
     .cta-content p {
         color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 30px;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
     }
 
     .cta-btn {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        background: var(--primary);
+        background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
         color: var(--white);
-        padding: 14px 35px;
-        border-radius: 50px;
+        padding: 12px 32px;
+        border-radius: 4px;
         text-decoration: none;
         font-weight: 600;
         transition: var(--transition);
+        font-size: 0.9rem;
     }
 
     .cta-btn:hover {
-        background: var(--primary-dark);
-        transform: translateY(-3px);
+        background: linear-gradient(135deg, var(--primary-blue-dark), #002a5e);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 78, 162, 0.3);
         gap: 15px;
-        box-shadow: 0 10px 25px rgba(0,78,162,0.3);
     }
 
-    /* ==================== LIGHTBOX ==================== */
+    /* ============================================================
+               LIGHTBOX
+               ============================================================ */
     .lightbox {
         display: none;
         position: fixed;
@@ -1016,7 +635,7 @@ include "layout/header.php";
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
+        background-color: rgba(0, 0, 0, 0.92);
         justify-content: center;
         align-items: center;
         animation: fadeIn 0.3s;
@@ -1035,31 +654,32 @@ include "layout/header.php";
     .lightbox img {
         max-width: 100%;
         max-height: 80vh;
-        border-radius: 10px;
-        box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        border-radius: 4px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     }
 
     .lightbox-caption {
         text-align: center;
-        color: white;
-        margin-top: 15px;
-        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 12px;
+        font-size: 0.85rem;
     }
 
     .close-btn {
         position: absolute;
         top: 20px;
         right: 30px;
-        color: white;
-        font-size: 40px;
-        font-weight: bold;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 36px;
+        font-weight: 300;
         cursor: pointer;
         z-index: 10000;
-        transition: 0.3s;
+        transition: var(--transition);
+        line-height: 1;
     }
 
     .close-btn:hover {
-        color: var(--primary);
+        color: var(--white);
         transform: rotate(90deg);
     }
 
@@ -1068,159 +688,195 @@ include "layout/header.php";
         to { opacity: 1; }
     }
 
-    /* ==================== RESPONSIVE ==================== */
+    /* ============================================================
+               RESPONSIVE
+               ============================================================ */
+
+    /* Desktop Laptop - Tampilkan Gambar Hero Utuh */
+    @media (min-width: 993px) {
+        .gallery-hero {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            padding-bottom: 0;
+            min-height: 0;
+            max-height: none;
+            overflow: hidden;
+        }
+
+        .hero-background,
+        .hero-bg-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-bg-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+            background: #0f172a;
+        }
+    }
+
+    /* Tablet */
     @media (max-width: 992px) {
-        .hero-title {
-            font-size: 2.5rem;
+        .gallery-hero {
+            height: 0;
+            padding-bottom: 30%;
+            min-height: 250px;
+            max-height: 350px;
         }
-        
-        .hero-stats {
-            gap: 25px;
-        }
-        
+
         .gallery-grid {
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
     }
 
+    /* Mobile - Tetap Seperti Awal */
     @media (max-width: 768px) {
-    .gallery-hero {
-        height: auto !important;
-        min-height: 380px !important;
-        padding: 40px 15px 20px 15px !important;
-    }
-    
-    .gallery-hero .hero-content {
-        padding: 10px 0 !important;
+        .gallery-hero {
+            height: auto;
+            padding-bottom: 0;
+            min-height: 200px;
+            max-height: none;
+        }
+
+        .filter-section {
+            margin-top: 0;
+            padding: 15px 0;
+        }
+
+        .filter-wrapper {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .filter-buttons {
+            justify-content: center;
+        }
+
+        .search-box input {
+            width: 100%;
+        }
+
+        .search-box input:focus {
+            width: 100%;
+        }
+
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-img-wrapper {
+            height: 180px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .cta-content h3 {
+            font-size: 1.3rem;
+        }
     }
 
-    .hero-badge {
-        margin-bottom: 15px !important;
+    /* Mobile Kecil */
+    @media (max-width: 480px) {
+        .gallery-hero {
+            min-height: 150px;
+        }
+
+        .container {
+            padding: 0 15px;
+        }
+
+        .filter-btn {
+            padding: 6px 14px;
+            font-size: 0.75rem;
+        }
+
+        .filter-btn span {
+            display: inline;
+        }
+
+        .search-box input {
+            padding: 8px 12px 8px 32px;
+            font-size: 0.8rem;
+        }
+
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .gallery-img-wrapper {
+            height: 150px;
+        }
+
+        .gallery-info {
+            padding: 12px 14px 14px;
+        }
+
+        .gallery-info h4 {
+            font-size: 0.8rem;
+        }
+
+        .gallery-info p {
+            font-size: 0.7rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .overlay-content i {
+            font-size: 1.8rem;
+        }
+
+        .overlay-content span {
+            font-size: 0.65rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+        }
+
+        .section-desc {
+            font-size: 0.8rem;
+            padding: 0 10px;
+        }
     }
 
-    .hero-title {
-        font-size: 2rem;
-        margin-bottom: 10px !important;
-    }
+    /* HP Sangat Kecil */
+    @media (max-width: 380px) {
+        .gallery-hero {
+            min-height: 120px;
+        }
 
-    .hero-subtitle {
-        margin-bottom: 25px !important;
-    }
+        .gallery-grid {
+            gap: 10px;
+        }
 
-    .hero-stats {
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-bottom: 25px !important;
-    }
-    
-    .stat-divider {
-        display: none;
-    }
-    
-    .filter-wrapper {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .filter-buttons {
-        justify-content: center;
-    }
-    
-    .search-box input {
-        width: 100%;
-    }
-    
-    .search-box input:focus {
-        width: 100%;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-    
-    .gallery-img-wrapper {
-        height: 180px;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .cta-content h3 {
-        font-size: 1.3rem;
-    }
-    
-    .hero-wave-container svg {
-        height: 40px;
-    }
-}
+        .gallery-img-wrapper {
+            height: 120px;
+        }
 
-@media (max-width: 480px) {
-    .gallery-hero {
-        min-height: 320px !important;
-        padding: 30px 15px 15px 15px !important;
-    }
+        .gallery-info h4 {
+            font-size: 0.7rem;
+        }
 
-    .hero-title {
-        font-size: 1.6rem;
-        margin-bottom: 8px !important;
-    }
-    
-    .hero-subtitle {
-        font-size: 0.85rem;
-        margin-bottom: 20px !important;
-    }
+        .gallery-info p {
+            font-size: 0.6rem;
+        }
 
-    .hero-stats {
-        gap: 15px !important;
-        margin-bottom: 15px !important;
+        .filter-btn {
+            padding: 4px 10px;
+            font-size: 0.65rem;
+        }
     }
-    
-    .hero-stats .stat {
-        min-width: 80px;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    
-    .gallery-img-wrapper {
-        height: 140px;
-    }
-    
-    .gallery-info {
-        padding: 10px 12px 12px;
-    }
-    
-    .gallery-info h4 {
-        font-size: 0.85rem;
-    }
-    
-    .gallery-info p {
-        font-size: 0.7rem;
-        display: none;
-    }
-    
-    .filter-btn span {
-        display: inline;
-    }
-    
-    .filter-btn {
-        padding: 6px 14px;
-        font-size: 0.75rem;
-    }
-    
-    .hero-wave-container svg {
-        height: 30px;
-    }
-}
 </style>
 
 <script>
@@ -1259,14 +915,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Update total count display
         if (totalCountSpan && visibleCount !== totalItems) {
             totalCountSpan.textContent = visibleCount;
         } else if (totalCountSpan) {
             totalCountSpan.textContent = totalItems;
         }
         
-        // Show/hide clear button
         if (searchClear) {
             searchClear.style.display = searchTerm !== '' ? 'flex' : 'none';
         }
@@ -1336,11 +990,6 @@ function closeLightbox() {
 
 document.addEventListener('keydown', function(e) {
     if (e.key === "Escape") closeLightbox();
-});
-
-// Tambahkan delay animation yang berbeda untuk setiap item
-document.querySelectorAll('.gallery-item').forEach((item, index) => {
-    item.style.setProperty('--delay', index);
 });
 </script>
 

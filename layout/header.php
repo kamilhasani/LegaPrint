@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Lega DigiPrint - Jasa Percetakan Tangerang</title>
+    <title>Lega DigiPrint - Jasa Percetakan Jakarta</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,7 +12,7 @@
         /* --- RESET & VARIABLES --- */
         :root {
             --primary: #004ea2;
-            --primary-dark: #004ea2;
+            --primary-dark: #003875;
             --dark: #0f172a;
             --text-main: #1e293b;
             --white: #ffffff;
@@ -55,7 +55,7 @@
 
         /* --- HEADER NAVIGATION --- */
         header {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             height: 80px;
@@ -70,53 +70,54 @@
 
         nav {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             width: 100%;
+            position: relative;
         }
 
-        /* Mengatur kontainer utama logo agar gambar dan teks sejajar horizontal */
+        /* Logo Ujung Kiri */
         .logo {
             display: inline-flex;
             align-items: center;
             text-decoration: none;
+            margin-right: auto;
         }
 
-        /* Membuat teks judul dan subtitle menyusun ke bawah (vertikal) */
         .logo-text-wrapper {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            text-align: left; /* Memastikan teks rata kiri */
+            text-align: left;
         }
 
-        /* Ukuran dan gaya teks utama (sesuaikan dengan css lamo kamu jika ada) */
         .logo-title {
             font-size: 1.4rem;
             font-weight: 800;
-            color: #1e293b; /* Warna gelap utama, sesuaikan sendiri */
-            line-height: 1.1; /* Merapatkan jarak bawah sedikit */
+            color: #1e293b;
+            line-height: 1.1;
         }
 
         .logo-title span {
-            color: var(--primary); /* Mengikuti warna biru/warna tema utama */
+            color: var(--primary);
         }
 
-        /* Ukuran dan gaya tulisan di bawahnya (Digital Printing) */
         .logo-subtitle {
-            font-size: 0.75rem; /* Ukuran lebih kecil */
+            font-size: 0.75rem;
             font-weight: 500;
-            color: #64748b; /* Warna abu-abu elegan */
-            letter-spacing: 1px; /* Memberikan sedikit jarak antar huruf agar rapi */
-            margin-top: 2px; /* Jarak halus dari tulisan utama di atasnya */
+            color: #64748b;
+            letter-spacing: 1px;
+            margin-top: 2px;
         }
 
-        /* Nav Links (Desktop) */
+        /* Nav Links Tengah */
         .nav-links {
             display: flex;
             align-items: center;
             gap: 35px;
             list-style: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .nav-links li a {
@@ -129,7 +130,6 @@
             padding: 6px 0;
         }
 
-        /* GARIS ANIMASI HOVER */
         .nav-links li a::after {
             content: '';
             position: absolute;
@@ -142,190 +142,124 @@
             transition: 0.3s ease;
         }
 
-        .nav-links li a:hover::after {
-            width: 100%;
-        }
-
-        /* TAB AKTIF */
-        .nav-links li a.active {
-            color: var(--primary);
-        }
-
+        .nav-links li a:hover::after,
         .nav-links li a.active::after {
             width: 100%;
         }
 
-        /* --- DROPDOWN SYSTEM --- */
-        .dropdown {
-            position: relative;
+        .nav-links li a.active {
+            color: var(--primary);
+        }
+
+        /* --- SOCIAL MEDIA ICONS (DESKTOP) --- */
+        .header-socials {
             display: flex;
             align-items: center;
+            gap: 12px;
+            margin-left: auto;
         }
 
-        .dropbtn {
-            cursor: pointer;
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: var(--dark);
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
         }
 
-        .dropbtn i {
-            font-size: 0.8rem;
-            transition: transform 0.3s;
+        .social-btn:hover {
+            color: var(--white);
+            transform: translateY(-3px);
         }
 
-        .dropdown-content {
+        .social-btn.whatsapp:hover { background: #25D366; }
+        .social-btn.instagram:hover { background: #E4405F; }
+        .social-btn.facebook:hover { background: #1877F2; }
+        .social-btn.tiktok:hover { background: #000000; }
+
+        /* Hide Mobile Social Section di Desktop */
+        .mobile-socials {
             display: none;
-            position: absolute;
-            background: var(--white);
-            min-width: 200px;
-            top: 100%;
-            left: 0;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            padding: 10px 0;
-            list-style: none;
-            z-index: 1100;
-            margin-top: 10px;
         }
 
-        .dropdown-content li { width: 100%; }
-
-        /* --- BUTTONS & TOGGLE (TAMPILAN LAPTOP / DESKTOP) --- */
+        /* --- TOGGLE BUTTON --- */
         .mobile-toggle {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--dark);
+            margin-left: 15px;
         }
-
-        .btn-cta {
-            background: var(--primary);
-            color: var(--white) !important;
-            min-width: 140px; 
-            padding: 12px 28px; 
-            border-radius: 50px;             
-            font-size: 1.05rem; 
-            font-weight: 700 !important;
-            text-decoration: none;           
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3); 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;                       
-            border: none;                    
-            cursor: pointer;
-            transition: var(--transition); 
-        }
-
-        .btn-cta:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);     
-            box-shadow: 0 12px 24px rgba(56, 189, 248, 0.45); 
-        }
-
-        .btn-cta i, 
-        .btn-cta img {
-            font-size: 1.2rem;               
-            height: 1.2rem;                  
-            width: auto;
-        }
-
-        /* Desktop Hover Dropdown */
-        @media (min-width: 993px) {
-            .dropdown:hover .dropdown-content { display: block; }
-            .dropdown:hover .dropbtn i { transform: rotate(180deg); }
-        }
-
 
         /* --- RESPONSIVE MOBILE (< 992px) --- */
         @media (max-width: 992px) {
-        .mobile-toggle { display: block; }
+            .mobile-toggle { display: block; }
+            .header-socials { display: none; } /* Sembunyikan medsol header atas */
 
-        .nav-links {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100vh;
-            background: var(--white);
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start; 
-            padding: 100px 24px;
-            transition: 0.4s;
-            z-index: 999;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-            gap: 15px;
-        }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                left: auto;
+                transform: none;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start; 
+                padding: 90px 24px 30px;
+                transition: 0.4s ease-in-out;
+                z-index: 999;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                gap: 15px;
+            }
 
-        .nav-links li {
-            width: 100%;
-            text-align: left;
-        }
+            .nav-links.active { right: 0; }
 
-        .nav-links li a {
-            display: block;
-            width: 100%;
-            padding: 10px 0;
-            text-align: left;
-        }
+            .nav-links li {
+                width: 100%;
+                text-align: left;
+            }
 
-        .nav-links.active { right: 0; }
+            .nav-links li a {
+                display: block;
+                width: 100%;
+                padding: 10px 0;
+            }
 
-        .dropdown { 
-            flex-direction: column; 
-            width: 100%; 
-            align-items: flex-start; 
-        }
-        
-        .dropbtn {
-            width: 100%;
-            text-align: left;
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            padding: 10px 0;
-        }
-        
-        .dropdown-content {
-            position: static;
-            display: none;
-            width: 100%;
-            box-shadow: none;
-            background: #f8fafc;
-            margin-top: 5px;
-            padding-left: 15px; 
-        }
+            /* Social Media Section di Drawer Mobile */
+            .mobile-socials {
+                display: block;
+                margin-top: auto;
+                width: 100%;
+                padding-top: 20px;
+                border-top: 1px solid #e2e8f0;
+            }
 
-        .dropdown-content a {
-            text-align: left;
-            padding: 8px 0;
-        }
+            .mobile-socials p {
+                font-size: 0.8rem;
+                font-weight: 700;
+                color: #64748b;
+                margin-bottom: 12px;
+                text-transform: uppercase;
+            }
 
-        .dropdown.active .dropdown-content { display: block; }
-        .dropdown.active .dropbtn i { transform: rotate(180deg); }
+            .mobile-social-icons {
+                display: flex;
+                gap: 10px;
+            }
 
-        .nav-links .login-item,
-        .nav-links li:last-child { 
-            margin-top: auto; 
-            width: 100%;
-            display: flex;
-            justify-content: center; 
-            padding-top: 20px;
+            .mobile-social-icons .social-btn {
+                background: #f1f5f9;
+            }
         }
-
-        .nav-links .login-item a,
-        .nav-links li:last-child a {
-            text-align: center !important;
-            display: inline-block;
-            width: 85%;
-            padding: 12px 0;
-            background: #004ea2; 
-            color: #ffffff !important;
-            border-radius: 25px; 
-        }
-    }
     </style>
 </head>
 <body>
@@ -334,6 +268,7 @@
 
     <header>
         <nav class="container">
+            <!-- LOGO -->
             <a href="index.php" class="logo">
                 <img src="assets/images/logo/logo.jpeg" alt="Logo LegaDigiPrint" style="height: 40px; vertical-align: middle; margin-right: 8px;">
                 <div class="logo-text-wrapper">
@@ -342,20 +277,51 @@
                 </div>
             </a>
 
+            <!-- NAV MENU -->
             <ul class="nav-links" id="nav-menu">
-                <li><a href="index.php">Beranda</a></li>
-                <li><a href="tentang.php">Tentang Kami</a></li>
-                <li><a href="galeri.php">Galeri</a></li>
-                <li><a href="produk.php">Produk </a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="tentang.php">About</a></li>
+                <li><a href="galeri.php">Gallery</a></li>
+                <li><a href="produk.php">Product</a></li>
+                <li><a href="kontak.php">Contact</a></li>
 
-                <li><a href="kontak.php">Kontak</a></li>
-                <li class="mobile-only">
-                <a href="../legaprint/admin/login.php" class="btn-cta">
-                    <i class="fas fa-key"></i> Login
-                </a>
-            </li>
+                <!-- SOCIAL MEDIA KHUSUS MOBILE DRAWER -->
+                <li class="mobile-socials">
+                    <p>Ikuti Kami</p>
+                    <div class="mobile-social-icons">
+                        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://instagram.com/legadigiprint" target="_blank" rel="noopener noreferrer" class="social-btn instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/legadigiprint" target="_blank" rel="noopener noreferrer" class="social-btn facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://tiktok.com/@legadigiprint" target="_blank" rel="noopener noreferrer" class="social-btn tiktok" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </li>
             </ul>
 
+            <!-- SOCIAL MEDIA DESKTOP -->
+            <div class="header-socials">
+                <a href="https://wa.me/6282117773741?text=Halo%20Lega%20DigiPrint,%20saya%20ingin%20bertanya%20mengenai%20layanan%20percetakan." target="_blank" rel="noopener noreferrer" class="social-btn whatsapp" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com/legadigiprint" target="_blank" rel="noopener noreferrer" class="social-btn instagram" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com/legadigiprint" target="_blank" rel="noopener noreferrer" class="social-btn facebook" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://tiktok.com/@legadigiprint" target="_blank" rel="noopener noreferrer" class="social-btn tiktok" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+
+            <!-- MOBILE TOGGLE BUTTON -->
             <div class="mobile-toggle" id="mobile-btn">
                 <i class="fas fa-bars"></i>
             </div>
@@ -377,39 +343,35 @@
                 icon.classList.replace('fa-bars', 'fa-times');
             } else {
                 icon.classList.replace('fa-times', 'fa-bars');
-                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
             }
         });
-
 
         // Close when overlay clicked
         overlay.addEventListener('click', () => {
             navMenu.classList.remove('active');
             overlay.classList.remove('active');
             icon.classList.replace('fa-times', 'fa-bars');
-            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
         });
 
-        // Close when link clicked (except dropdown button)
+        // Close when link clicked
         const navItems = document.querySelectorAll('.nav-links a');
         navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                if (!item.classList.contains('dropbtn')) {
-                    navMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    icon.classList.replace('fa-times', 'fa-bars');
-                }
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                icon.classList.replace('fa-times', 'fa-bars');
             });
         });
+
         // AUTO ACTIVE NAVBAR
-    const currentPage = window.location.pathname.split("/").pop();
-    const navLinks = document.querySelectorAll(".nav-links a");
-    navLinks.forEach(link => {
-        const linkPage = link.getAttribute("href");
-        if (linkPage === currentPage) {
-            link.classList.add("active");
-        }
-    });
+        const currentPage = window.location.pathname.split("/").pop() || "index.php";
+        const navLinks = document.querySelectorAll(".nav-links a");
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute("href");
+            if (linkPage === currentPage) {
+                link.classList.add("active");
+            }
+        });
     </script>
 
 </body>
